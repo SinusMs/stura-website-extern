@@ -56,3 +56,11 @@ Things you may want to cover:
 ### Database Migration
 - executes all pending database migrations
 - run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
+
+## Useful Links
+- [Rails Guides](https://guides.rubyonrails.org/index.html)
+- [Rails API Doc](https://guides.rubyonrails.org/index.html)
+- [Docker Guides + Documentation](https://docs.docker.com/get-started/)
+
+## Deployment Instructions
+TODO...
