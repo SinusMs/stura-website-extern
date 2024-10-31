@@ -37,8 +37,10 @@ Things you may want to cover:
    3. "Git Bash"
 4. Ensure Docker is running
 5. execute `docker compose up --build -w` from project directory
+    - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Init"
     - This will create the docker containers, install reqired dependencies and start the containers
 6. If containers are already created: execute `docker compose up -w` from project drectory
+    - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Run"
    - This will start the docker containers
 7. Web application available under http://localhost:3000
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
