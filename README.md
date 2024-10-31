@@ -46,8 +46,13 @@ Things you may want to cover:
 7. Web application available under http://localhost:3000
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 
-**Note:** With the current setup, the webserver will be completely rebuilt whenever changes are detected by docker. This process takes a few seconds.
-
-## Database Migration
+## Additional utility Shell Scripts/VS Code Tasks
+**Note:** All Shell scripts are also available as VS Code Tasks (`Ctrl` + `Shift` + `B` -> Select Task)
+### Webserver Shell
+- Starts a shell within the container "stura-website-web-1"
+### Docker Shell
+- Starts a shell within the container specified by its name
+- `./docker-shell.sh <name>`
+### Database Migration
+- executes all pending database migrations
 - run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
-- Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Migrate Database"
