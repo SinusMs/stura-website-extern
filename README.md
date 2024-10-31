@@ -46,4 +46,5 @@ Things you may want to cover:
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 
 ## Database Migration
-run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
+- run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
+- Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Migrate Database"
