@@ -9,15 +9,7 @@ services:
     environment:
       - RAILS_ENV=development
     #env_file: "webapp.env"
-    volumes:
-      - ./:/rails:rw
-      # "Statt mounten würde man auf Deutsch montieren sagen. 
-      #  Wörtlich übersetzt heißt das zwar eigentlich reiten, aber kein Mensch reitet seinen PC." 
-      #   ~ Prof. Baumgartl
-    develop:
-      watch:
-        - action: rebuild
-          path: .
+    
   db:
     image: postgres:latest
     secrets:
