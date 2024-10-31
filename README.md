@@ -48,12 +48,12 @@ Things you may want to cover:
 
 ## Additional utility Shell Scripts/VS Code Tasks
 **Note:** All Shell scripts are also available as VS Code Tasks (`Ctrl` + `Shift` + `B` -> Select Task)
-### Webserver Shell
+### Webserver Shell (webserver-shell.sh)
 - Starts a shell within the container "stura-website-web-1"
-### Docker Shell
+### Docker Shell (docker-shell.sh)
 - Starts a shell within the container specified by its name
 - `./docker-shell.sh <name>`
-### Database Migration
+### Database Migration (migrate.sh)
 - executes all pending database migrations
 - run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
 
