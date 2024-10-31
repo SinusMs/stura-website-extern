@@ -37,10 +37,10 @@ Things you may want to cover:
    2. "Terminal: Select default Profile"
    3. "Git Bash"
 4. Ensure Docker is running
-5. First start: execute `docker compose up --build -w` from project directory
+5. First start: execute `docker compose up --build` from project directory
     - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Init"
     - This will create the docker containers, install required dependencies and start the containers
-6. If containers have already been created: execute `docker compose up -w` from project directory
+6. If containers have already been created: execute `docker compose up` from project directory
     - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Run"
    - This will start the docker containers
 7. Web application available under http://localhost:3000
