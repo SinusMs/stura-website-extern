@@ -1,0 +1,30 @@
+services:
+  web:
+    build: .
+    command: bundle exec rails s -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=test
+    env_file: "webapp.env"
+
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+  db:
+    image: postgres:latest
+    secrets:
+      - db-password
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+secrets:
+  db-password:
+    file: db/password.txt
