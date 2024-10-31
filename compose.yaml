@@ -8,7 +8,7 @@ services:
       - db
     environment:
       - RAILS_ENV=development
-    env_file: "webapp.env"
+    #env_file: "webapp.env"
 
     develop:
       watch:
