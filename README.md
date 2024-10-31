@@ -41,7 +41,7 @@ Things you may want to cover:
 6. If containers are already created: execute `docker compose up -w` from project drectory
    - This will start the docker containers
 7. Web application available under http://localhost:3000
-8. With the Running Task focused in VS Code: `Ctrl` + `C` to stop server
+8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 
-## Database Initialization
-run `docker exec -it docker-ruby-on-rails-web-1 rake db:migrate RAILS_ENV=test` from project directory
+## Database Migration
+run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
