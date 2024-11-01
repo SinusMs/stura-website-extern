@@ -46,20 +46,29 @@ Things you may want to cover:
 7. Web application available under http://localhost:3000
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 
+## Rails CLI
+- **Note:** Because ruby runs in a docker container, all cli commands must be executed from a [shell within the container](#webserver-shell-webserver-shellsh).
+- Most important commands:
+  - `bin/rails generate`: Generate e.g. controllers along with their view and test files using `bin/rails generate controller <Controller Name> <Action/View Name>`
+  - `bin/rails db:migrate`: Execute database migrations
+- A more detailed overview can be found [here](https://guides.rubyonrails.org/command_line.html).
+
 ## Additional utility Shell Scripts/VS Code Tasks
 **Note:** All Shell scripts are also available as VS Code Tasks (`Ctrl` + `Shift` + `B` -> Select Task)
 ### Webserver Shell (webserver-shell.sh)
 - Starts a shell within the container "stura-website-web-1"
+- `./webserver-shell.sh`
 ### Docker Shell (docker-shell.sh)
 - Starts a shell within the container specified by its name
 - `./docker-shell.sh <name>`
 ### Database Migration (migrate.sh)
 - executes all pending database migrations
-- run `docker exec -it stura-website-web-1 rake db:migrate RAILS_ENV=development` from project directory
+- `./migrate.sh`
 
 ## Useful Links
 - [Rails Guides](https://guides.rubyonrails.org/index.html)
 - [Rails API Doc](https://guides.rubyonrails.org/index.html)
+- [Rails CLI](https://guides.rubyonrails.org/command_line.html)
 - [Docker Guides + Documentation](https://docs.docker.com/get-started/)
 
 ## Deployment Instructions
