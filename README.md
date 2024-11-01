@@ -25,7 +25,7 @@ Things you may want to cover:
 
 ## Prerequisites
 - Linux or Windows
-  - Note: If you encounter problems on Windows, you could also use [WSL2](https://docs.docker.com/desktop/wsl/) to run a Linux instance on top of Windows.
+  - **Note:** If you use Windows and want proper syntax highlighting/autocompletion for Ruby scripts, you should use [WSL2](https://docs.docker.com/desktop/wsl/) to run a Linux instance on top of Windows. Setting up a languaga server for Ruby on Windows natively is an absolute pain in the ass.
 - [Latest version of Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [VS Code](https://code.visualstudio.com/)
 
