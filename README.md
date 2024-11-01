@@ -74,6 +74,7 @@ Things you may want to cover:
 - `./migrate.sh`
 
 ## Useful Links
+- [Ruby Doc](https://www.ruby-lang.org/en/documentation/)
 - [Rails Guides](https://guides.rubyonrails.org/index.html)
 - [Rails API Doc](https://guides.rubyonrails.org/index.html)
 - [Rails CLI](https://guides.rubyonrails.org/command_line.html)
