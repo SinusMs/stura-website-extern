@@ -24,7 +24,7 @@ Things you may want to cover:
 * ... -->
 
 ## Prerequisites
-- Ubuntu Linux or Windows
+- Linux or Windows
   - Note: If you encounter problems on Windows, you could also use [WSL2](https://docs.docker.com/desktop/wsl/) to run a Linux instance on top of Windows.
 - [Latest version of Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [VS Code](https://code.visualstudio.com/)
@@ -45,6 +45,11 @@ Things you may want to cover:
    - This will start the docker containers
 7. Web application available under http://localhost:3000
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
+9. (Optional) Set up Ruby syntax highlighting and autocomplete
+   1. Install Ruby 3.3.5 WITH DEVKIT  
+      - [Windows Dowload](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.5-1/rubyinstaller-devkit-3.3.5-1-x64.exe)
+      - [Other Platforms](https://www.ruby-lang.org/en/downloads/)
+   2. Add extension [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) to VS Code
 
 ## Rails CLI
 - **Note:** Because ruby runs in a docker container, all cli commands must be executed from a [shell within the container](#webserver-shell-webserver-shellsh).
