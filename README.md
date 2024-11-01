@@ -46,8 +46,8 @@ Things you may want to cover:
 7. Web application available under http://localhost:3000
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 9. (Optional) Set up Ruby syntax highlighting and autocomplete
-   1. Install Ruby 3.3.5
-      - [Windows Dowload](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.5-1/rubyinstaller-devkit-3.3.5-1-x64.exe)
+   1. Install Ruby 3.3.0
+      - [Windows Dowload](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
       - Linux recommended installation method: via [Ruby Version Manager](https://www.ruby-lang.org/en/downloads/)
         - Alternative Ways: https://www.ruby-lang.org/en/downloads/
    2. Navigate to Folder `Ruby-LSP` in your local project and execute `bundle install`
