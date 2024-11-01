@@ -46,10 +46,13 @@ Things you may want to cover:
 7. Web application available under http://localhost:3000
 8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 9. (Optional) Set up Ruby syntax highlighting and autocomplete
-   1. Install Ruby 3.3.5 WITH DEVKIT  
+   1. Install Ruby 3.3.5
       - [Windows Dowload](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.5-1/rubyinstaller-devkit-3.3.5-1-x64.exe)
-      - [Other Platforms](https://www.ruby-lang.org/en/downloads/)
-   2. Add extension [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) to VS Code
+      - Linux recommended installation method: via [Ruby Version Manager](https://www.ruby-lang.org/en/downloads/)
+        - Alternative Ways: https://www.ruby-lang.org/en/downloads/
+   2. Navigate to Folder `Ruby-LSP` in your local project and execute `bundle install`
+      - This will install all dependencies required by the Ruby Language Server for this project
+   3. Add extension [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) to VS Code
 
 ## Rails CLI
 - **Note:** Because ruby runs in a docker container, all cli commands must be executed from a [shell within the container](#webserver-shell-webserver-shellsh).
