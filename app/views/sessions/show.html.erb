@@ -2,6 +2,7 @@
 Logged in: <%=  logged_in? %><br>
 <% if logged_in? %>
     Username: <%=  @user.username %><br>
+    Is Admin: <%= !!@user.is_admin %><br>
     User ID: <%=  @user.id %><br>   
     <%= button_to "Logout", logout_path, method: :get %>
 <% else %>
