@@ -1,0 +1,9 @@
+<h1>Session Information</h1>
+Logged in: <%=  logged_in? %><br>
+<% if logged_in? %>
+    Username: <%=  @user.username %><br>
+    User ID: <%=  @user.id %><br>   
+    <%= button_to "Logout", logout_path, method: :get %>
+<% else %>
+    <%= button_to "Login", login_path, method: :get %>
+<% end %>
