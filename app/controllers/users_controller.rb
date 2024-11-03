@@ -9,6 +9,11 @@ class UsersController < ApplicationController
   def create
     if not helpers.current_user.is_admin
       redirect_to root_path
+      return
+    end
+    if User.exists? username: user_params[:username]
+      redirect_to request.referrer, notice: "Username " + user_params[:username] + " already exists"
+      return
     end
     @user = User.new(user_params)
     @user.is_admin = false
