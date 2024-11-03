@@ -61,6 +61,7 @@ Things you may want to cover:
           - Alternative Ways: https://www.ruby-lang.org/en/downloads/
      3. Navigate to Folder `Ruby-LSP` in your local project and execute `bundle install`
         - This will install all dependencies required by the Ruby Language Server for this project
+        - You will need to redo this step whenever a new dependency is added to the file "Gemfile" in the root folder
      4. Add extension [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) to VS Code
 
 ## Rails CLI
