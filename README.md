@@ -25,7 +25,15 @@ Things you may want to cover:
 
 ## Prerequisites
 - Linux or Windows
-  - **Note:** If you use Windows and want proper syntax highlighting/autocompletion for Ruby scripts, you should use [WSL2](https://docs.docker.com/desktop/wsl/) to run a Linux instance on top of Windows. Setting up a languaga server for Ruby on Windows natively is an absolute pain in the ass.
+  - **Note:** If you use Windows and want proper syntax highlighting/autocompletion for Ruby scripts, you should install and use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) to run a Linux instance on top of Windows. Setting up a language server for Ruby on Windows natively is an absolute pain in the ass.
+  - WSL2 setup instructions:
+    - [Install a Linux distro using WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)
+    - Install VS Code and Docker Desktop to your WINDOWS system
+    - Clone the repostitory inside your WSL2 LINUX INSTALLATION
+    - [Set up VS Code for working with WSL](https://code.visualstudio.com/docs/remote/wsl)
+    - [Set up Docker for working whith WSL2](https://docs.docker.com/desktop/wsl/)
+    - To open the project, type `code <path/to/project>` inside Linux Command Line
+    - Follow the [Development Environment Setup Instructions](#development-environment-setup) as if you were using Linux :)
 - [Latest version of Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [VS Code](https://code.visualstudio.com/)
 
@@ -37,22 +45,23 @@ Things you may want to cover:
    2. "Terminal: Select default Profile"
    3. "Git Bash"
 4. Ensure Docker is running
-5. First start: execute `docker compose up --build` from project directory
+6. First start: execute `docker compose up --build` from project directory
     - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Init"
     - This will create the docker containers, install required dependencies and start the containers
-6. If containers have already been created: execute `docker compose up` from project directory
+7. If containers have already been created: execute `docker compose up` from project directory
     - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Run"
    - This will start the docker containers
-7. Web application available under http://localhost:3000
-8. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
-9. (Optional) Set up Ruby syntax highlighting and autocomplete
-   1. Install Ruby 3.3.0
-      - [Windows Dowload](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
-      - Linux recommended installation method: via [Ruby Version Manager](https://www.ruby-lang.org/en/downloads/)
-        - Alternative Ways: https://www.ruby-lang.org/en/downloads/
-   2. Navigate to Folder `Ruby-LSP` in your local project and execute `bundle install`
-      - This will install all dependencies required by the Ruby Language Server for this project
-   3. Add extension [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) to VS Code
+8. Web application available under http://localhost:3000
+9. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
+10. (Optional) Set up Ruby syntax highlighting and autocomplete
+     1. Install Ruby 3.3.0
+        - **Note for WSL2 Users:** Ruby needs to be installed to your LINUX installation, NOT Windows
+        - [Windows Dowload](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
+        - Linux recommended installation method: via [Ruby Version Manager](https://www.ruby-lang.org/en/downloads/)
+          - Alternative Ways: https://www.ruby-lang.org/en/downloads/
+     3. Navigate to Folder `Ruby-LSP` in your local project and execute `bundle install`
+        - This will install all dependencies required by the Ruby Language Server for this project
+     4. Add extension [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) to VS Code
 
 ## Rails CLI
 - **Note:** Because ruby runs in a docker container, all cli commands must be executed from a [shell within the container](#webserver-shell-webserver-shellsh).
