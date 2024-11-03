@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
   def index
-    if not helpers.current_user.is_admin
+    if not helpers.is_admin?
       redirect_to root_path
       return
     end
     @users = User.all
   end
   def new
-    if not helpers.current_user.is_admin
+    if not helpers.is_admin?
       redirect_to root_path
     end
     @user = User.new
   end
 
   def create
-    if not helpers.current_user.is_admin
+    if not helpers.is_admin?
       redirect_to root_path
       return
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if not helpers.current_user.is_admin
+    if not helpers.is_admin?
       redirect_to root_path
     end
     @user = User.find(params[:id])

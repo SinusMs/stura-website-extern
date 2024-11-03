@@ -1,2 +1,5 @@
 <h1>User "<%=  @user.username %>"</h1>
 <%= render @user %>
+<% if is_admin? %>
+    <%= button_to "Show all Users", users_path, method: "get" %>
+<% end %>
