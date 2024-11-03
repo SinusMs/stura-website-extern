@@ -1,4 +1,2 @@
-<h1>User <%=  @user.id %></h1>
-Username: <%=  @user.username %><br>
-Is Admin: <%= !!@user.is_admin %><br>
-User ID: <%=  @user.id %><br>   
+<h1>User "<%=  @user.username %>"</h1>
+<%= render @user %>

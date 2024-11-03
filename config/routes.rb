@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "sessions#show"
 
-  resources :users, only: [ :new, :create, :edit, :update, :show, :destroy ]
+  resources :users, only: [ :new, :create, :edit, :update, :show, :destroy, :index ]
 
   get "/login", to: "sessions#login"
   post "/login", to: "sessions#create"
