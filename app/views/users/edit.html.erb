@@ -1,0 +1,10 @@
+<h1>Edit User "<%=  @user.username %>"</h1>
+
+<%= render "form", user: @user %>
+
+<br>
+
+<div>
+  <%= button_to "Show this User", @user, method: "get" %>
+  <%= button_to "Back to Users", users_path, method: "get" %>
+</div>
