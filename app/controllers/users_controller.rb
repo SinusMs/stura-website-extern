@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    if not helpers.is_admin?
+    if !helpers.is_admin?
       redirect_to root_path
       return
     end
@@ -10,13 +10,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    if not helpers.is_admin?
+    if access_to_user_denied?
       redirect_to root_path
     end
   end
 
   def new
-    if not helpers.is_admin?
+    if !helpers.is_admin?
       redirect_to root_path
     end
     @user = User.new
@@ -37,21 +37,20 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.is_admin = false
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to @user
     else
       render :new
     end
   end
 
   def update
-    if  !helpers.logged_in? ||
-        !(helpers.is_admin? || helpers.current_user.id == params[:id])
+    if access_to_user_denied?
       redirect_to root_path
       return
     end
+
     respond_to do |format|
-      if  @user.update(password: update_user_params[:new_password], password_confirmation: update_user_params[:repeat_new_password]) &&
+      if  @user.update(password: update_user_params[:password], password_confirmation: update_user_params[:repeat_password]) &&
           @user.update(update_user_params.slice :username)
         format.html { redirect_to @user, notice: "User was successfully updated." }
       else
@@ -75,6 +74,10 @@ class UsersController < ApplicationController
   end
 
   def update_user_params
-    params.require(:user).permit(:username, :password, :new_password, :repeat_new_password)
+    params.require(:user).permit(:username, :password, :password, :repeat_password)
+  end
+
+  def access_to_user_denied?
+    !helpers.is_admin? && !helpers.current_user.id == params[:id]
   end
 end
