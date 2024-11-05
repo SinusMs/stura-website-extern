@@ -33,10 +33,6 @@ class UsersController < ApplicationController
       redirect_to backend_root_path
       return
     end
-    if User.exists? username: user_params[:username]
-      redirect_to request.referrer, notice: "Username " + user_params[:username] + " already exists!"
-      return
-    end
 
     @user = User.new(user_params)
     respond_to do |format|
