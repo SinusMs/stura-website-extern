@@ -34,12 +34,14 @@ class UsersController < ApplicationController
       redirect_to request.referrer, notice: "Username " + user_params[:username] + " already exists!"
       return
     end
-    @user = User.new(user_params)
-    @user.is_admin = false
-    if @user.save
-      redirect_to @user
-    else
-      render :new
+
+    @user = User.new(user_params[:username])
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: "User was successfully created." }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -50,8 +52,8 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      if  @user.update(password: update_user_params[:password], password_confirmation: update_user_params[:repeat_password]) &&
-          @user.update(update_user_params.slice :username)
+      password_success = user_params[:password].empty? || @user.update(password: user_params[:password], password_confirmation: user_params[:password_confirmation])
+      if password_success && @user.update(user_params.except :password, :password_confirmation)
         format.html { redirect_to @user, notice: "User was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -85,11 +87,7 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.require(:user).permit(:username, :password)
-  end
-
-  def update_user_params
-    params.require(:user).permit(:username, :password, :password, :repeat_password)
+    params.require(:user).permit(:username, :password, :password_confirmation, :is_admin)
   end
 
   def access_to_user_denied?

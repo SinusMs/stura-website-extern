@@ -21,9 +21,16 @@
   </div>
 
   <div>
-    <%= form.label :repeat_password, style: "display: block" %>
-    <%= form.password_field :repeat_password %>
+    <%= form.label :password_confirmation, style: "display: block" %>
+    <%= form.password_field :password_confirmation %>
   </div>
+
+<% if is_admin? %>
+  <div>
+    <%= form.label :is_admin, style: "display: block" %>
+    <%= form.check_box :is_admin %>
+  </div>
+<% end %>
 
   <div>
     <%= form.submit %>
