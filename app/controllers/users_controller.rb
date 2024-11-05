@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     if !helpers.is_admin?
-      redirect_to root_path
+      redirect_to backend_root_path
       return
     end
     @users = User.all
@@ -11,13 +11,13 @@ class UsersController < ApplicationController
 
   def show
     if access_to_user_denied?
-      redirect_to root_path
+      redirect_to backend_root_path
     end
   end
 
   def new
     if !helpers.is_admin?
-      redirect_to root_path
+      redirect_to backend_root_path
     end
     @user = User.new
   end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def create
     if !helpers.is_admin?
-      redirect_to root_path
+      redirect_to backend_root_path
       return
     end
     if User.exists? username: user_params[:username]
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def update
     if access_to_user_denied?
-      redirect_to root_path
+      redirect_to backend_root_path
       return
     end
 
@@ -60,6 +60,21 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    if access_to_user_denied?
+      redirect_to backend_root_path
+      return
+    end
+
+    # logout if the currently logged in user is being deleted
+    if session[:user_id] == @user.id
+      session[:user_id] = nil
+    end
+
+    @user.destroy!
+
+    respond_to do |format|
+      format.html { render :destroy, status: :see_other, notice: "User " + @user.username + " was successfully destroyed." }
+    end
   end
 
   private

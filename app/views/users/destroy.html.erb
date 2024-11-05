@@ -1,0 +1,8 @@
+<h1>User <%= @user.username %> Deleted</h1>
+
+<%= button_to "Back to Main Page", backend_root_path, method: "get" %>
+<% if is_admin? %>
+    <%= button_to "View Users", users_path, method: :get %>
+    <%= button_to "New User", new_user_path, method: :get %>
+<% end %>
+<p id="notice"><%= notice %></p>

@@ -9,8 +9,9 @@
   <% @users.each do |user| %>
     <%= render user %>
     <p>
-      <%= button_to "Show this User", user, method: "get" %>
-      <%= button_to "Edit this User", edit_user_path(id: user.id), method: "get" %>
+      <%= button_to "Show " + user.username, user, method: "get" %>
+      <%= button_to "Edit " + user.username, edit_user_path(id: user.id), method: "get" %>
+      <%= button_to "Delete " + user.username, user, method: :delete %>
     </p>
   <% end %>
 </div>
