@@ -1,10 +1,11 @@
+<%= render "backend_menu" %>
+
 <h1>Edit User "<%=  @user.username %>"</h1>
 
-<%= button_to "Back to Main Page", backend_root_path, method: "get" %>
 <%= render "form", user: @user %>
+
 <% if is_admin? %>
-<%= button_to "Delete this User", @user, method: :delete %>
-<%= button_to "Show all Users", users_path, method: "get" %>
+    <%= button_to "Delete this User", @user, method: :delete %>
 <% else %>
-<%= button_to "Delete Account", @user, method: :delete %>
+    <%= button_to "Delete Account", @user, method: :delete %>
 <% end %>

@@ -1,10 +1,7 @@
-<p id="notice"><%= notice %></p>
-
+<%= render "backend_menu" %>
 
 <h1>Users</h1>
 
-<%= button_to "Back to Main Page", backend_root_path, method: "get" %>
-<%= button_to "New User", new_user_path, method: "get" %>
 <div id="users">
   <% @users.each do |user| %>
     <%= render user %>
@@ -15,3 +12,6 @@
     </p>
   <% end %>
 </div>
+
+
+<p id="notice"><%= notice %></p>

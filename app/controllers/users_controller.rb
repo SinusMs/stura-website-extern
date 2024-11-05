@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   end
 
   def verify_rights_to_access_user
-    if !helpers.is_admin? && !(helpers.current_user&.id == params[:id])
+    if !helpers.is_admin? && !(helpers.current_user&.id.to_i == params[:id].to_i)
       redirect_to backend_root_path
     end
   end
