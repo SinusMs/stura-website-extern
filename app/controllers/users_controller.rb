@@ -23,6 +23,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if access_to_user_denied?
+      redirect_to backend_root_path
+    end
   end
 
   def create
@@ -91,6 +94,6 @@ class UsersController < ApplicationController
   end
 
   def access_to_user_denied?
-    !helpers.is_admin? && !helpers.current_user.id == params[:id]
+    !helpers.is_admin? && !(helpers.current_user&.id == params[:id])
   end
 end
