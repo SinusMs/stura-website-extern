@@ -4,6 +4,13 @@ Logged in: <%=  logged_in? %><br>
     Username: <%=  @user.username %><br>
     Is Admin: <%= !!@user.is_admin %><br>
     User ID: <%=  @user.id %><br>   
+
+    <% if is_admin? %>
+        <%= button_to "View Users", users_path, method: :get %>
+        <%= button_to "New User", new_user_path, method: :get %>
+    <% end %>
+
+    <%= button_to "User Settings", edit_user_path(id: @user.id), method: :get %>
     <%= button_to "Logout", logout_path, method: :get %>
 <% else %>
     <%= button_to "Login", login_path, method: :get %>
