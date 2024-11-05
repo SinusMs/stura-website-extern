@@ -29,6 +29,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    # check if a non-admin user tries to make themselve an admin
+    if params[:is_admin] == true && !helpers.current_user.is_admin
+      return head :unauthorized
+    end
+
     respond_to do |format|
       password_success = user_params[:password].empty? || @user.update(password: user_params[:password], password_confirmation: user_params[:password_confirmation])
       if password_success && @user.update(user_params.except :password, :password_confirmation)
