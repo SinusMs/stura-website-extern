@@ -1,39 +1,23 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :verify_rights_to_access_user, only: %i[ show edit update destroy ]
+  before_action :verify_is_admin, only: %i[ index new create ]
 
   def index
-    if !helpers.is_admin?
-      redirect_to backend_root_path
-      return
-    end
     @users = User.all
   end
 
   def show
-    if access_to_user_denied?
-      redirect_to backend_root_path
-    end
   end
 
   def new
-    if !helpers.is_admin?
-      redirect_to backend_root_path
-    end
     @user = User.new
   end
 
   def edit
-    if access_to_user_denied?
-      redirect_to backend_root_path
-    end
   end
 
   def create
-    if !helpers.is_admin?
-      redirect_to backend_root_path
-      return
-    end
-
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
@@ -45,11 +29,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    if access_to_user_denied?
-      redirect_to backend_root_path
-      return
-    end
-
     respond_to do |format|
       password_success = user_params[:password].empty? || @user.update(password: user_params[:password], password_confirmation: user_params[:password_confirmation])
       if password_success && @user.update(user_params.except :password, :password_confirmation)
@@ -61,11 +40,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if access_to_user_denied?
-      redirect_to backend_root_path
-      return
-    end
-
     # logout if the currently logged in user is being deleted
     if session[:user_id] == @user.id
       session[:user_id] = nil
@@ -89,7 +63,15 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :password_confirmation, :is_admin)
   end
 
-  def access_to_user_denied?
-    !helpers.is_admin? && !(helpers.current_user&.id == params[:id])
+  def verify_rights_to_access_user
+    if !helpers.is_admin? && !(helpers.current_user&.id == params[:id])
+      redirect_to backend_root_path
+    end
+  end
+
+  def verify_is_admin
+    if !helpers.is_admin?
+      redirect_to backend_root_path
+    end
   end
 end
