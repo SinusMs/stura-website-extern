@@ -1,0 +1,9 @@
+<%= render "backend_menu" %>
+
+<h1>Session Information</h1>
+Logged in: <%=  logged_in? %><br>
+<% if logged_in? %>
+    Username: <%=  @user.username %><br>
+    Is Admin: <%= !!@user.is_admin %><br>
+    User ID: <%=  @user.id %><br>   
+<% end %>

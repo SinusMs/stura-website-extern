@@ -8,6 +8,8 @@ services:
     #   - db
     environment:
       - RAILS_ENV=development
+      - DEFAULT_USER_USERNAME=admin
+      - DEFAULT_USER_PASSWORD=123
     #env_file: "webapp.env"
     volumes:
       - ./:/rails:rw

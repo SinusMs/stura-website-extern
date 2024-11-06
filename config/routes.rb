@@ -10,5 +10,13 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "sessions#show"
+  get "/backend", to: "sessions#show", as: "backend_root"
+
+  resources :users, only: [ :new, :create, :edit, :update, :show, :destroy, :index ]
+
+  get "/login", to: "sessions#login", as: "login"
+  post "/login", to: "sessions#create"
+  get "/logout", to: "sessions#logout", as: "logout"
+  post "/logout", to: "sessions#logout"
 end

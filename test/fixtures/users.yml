@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+admin:
+  username: admin
+  password_digest: <%= BCrypt::Password.create("123") %>
+  is_admin: true
+
+user:
+  username: user
+  password_digest: <%= BCrypt::Password.create("123") %>
+  is_admin: false
