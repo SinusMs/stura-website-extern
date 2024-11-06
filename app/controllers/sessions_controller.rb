@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   layout "backend"
   def login
     if helpers.logged_in?
-      redirect_to root_path
+      redirect_to backend_root_path
     end
   end
 
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
     if !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to backend_root_path
     else
       message = "Error trying to log in!"
       redirect_to login_path, notice: message
