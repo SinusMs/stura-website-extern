@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if User.where(is_admin: true).blank?
+  puts "No admin account found, creating default admin account... "
+  User.create!(username: ENV["DEFAULT_USER_USERNAME"], password: ENV["DEFAULT_USER_PASSWORD"], is_admin: true).username
+  puts "Done!"
+end
