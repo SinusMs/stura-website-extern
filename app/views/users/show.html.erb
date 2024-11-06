@@ -1,5 +1,3 @@
-<%= render "backend_menu" %>
-
 <h1>User "<%=  @user.username %>"</h1>
 <%= render @user %>
 <%= button_to "Edit this User", edit_user_path(id: @user.id), method: "get" %>
