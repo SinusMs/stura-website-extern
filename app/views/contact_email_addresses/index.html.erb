@@ -1,3 +1,5 @@
+<%= render "backend_menu" %>
+
 <p style="color: green"><%= notice %></p>
 
 <% content_for :title, "Contact email addresses" %>
@@ -8,9 +10,7 @@
   <% @contact_email_addresses.each do |contact_email_address| %>
     <%= render contact_email_address %>
     <p>
-      <%= link_to "Show this contact email address", contact_email_address %>
+      <%= button_to "Show this contact email address", contact_email_address, method: :get %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New contact email address", new_contact_email_address_path %>

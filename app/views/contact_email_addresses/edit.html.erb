@@ -1,12 +1,5 @@
-<% content_for :title, "Editing contact email address" %>
+<%= render "backend_menu" %>
 
 <h1>Editing contact email address</h1>
 
 <%= render "form", contact_email_address: @contact_email_address %>
-
-<br>
-
-<div>
-  <%= link_to "Show this contact email address", @contact_email_address %> |
-  <%= link_to "Back to contact email addresses", contact_email_addresses_path %>
-</div>
