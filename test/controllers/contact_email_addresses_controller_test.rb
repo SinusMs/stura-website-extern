@@ -2,7 +2,8 @@ require "test_helper"
 
 class ContactEmailAddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @contact_email_address = contact_email_addresses(:one)
+    @contact_email_address = contact_email_addresses(:stu)
+    post login_url, params: { username: "admin", password: "123" }
   end
 
   test "should get index" do
