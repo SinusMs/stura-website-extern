@@ -3,5 +3,7 @@
     #main_menu {display: none}
   </style>
 <% end %>
-<%= render "backend_menu" %>
+<% content_for :backend_menu do %>
+  <%= render "backend_menu" %>
+<% end %>
 <%= render template: "layouts/application" %>

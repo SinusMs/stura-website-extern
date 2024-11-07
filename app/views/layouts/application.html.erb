@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
+    <%= content_for?(:head) ?  yield(:head) : nil %>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
@@ -19,6 +19,7 @@
 
   <%= render "main_menu" %>
   <body>
+    <%= content_for?(:backend_menu) ? yield(:backend_menu) : nil  %>
     <%= yield %>
   </body>
 </html>
