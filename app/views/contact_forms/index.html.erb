@@ -1,7 +1,7 @@
 <h1>Contact Form</h1>
 <%= form_with do |form| %>
     Send Contact Request to:
-    <%= form.select :name, options_from_collection_for_select(ContactEmailAddress.all, "id", "name") %><br>
+    <%= form.select :contact_email_address_id, options_from_collection_for_select(ContactEmailAddress.all, "id", "name") %><br>
     Your Request:
     <%= form.text_field :text %><br>
     Your Email Address:
