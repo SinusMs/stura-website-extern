@@ -16,12 +16,20 @@ class ContactEmailAddressesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create contact_email_address" do
+  test "should create contact_email_address with unique name" do
     assert_difference("ContactEmailAddress.count") do
-      post contact_email_addresses_url, params: { contact_email_address: { email_address: @contact_email_address.email_address, name: @contact_email_address.name } }
+      post contact_email_addresses_url, params: { contact_email_address: { email_address: "new@email.com", name: "New Contact Email" } }
     end
 
     assert_redirected_to contact_email_address_url(ContactEmailAddress.last)
+  end
+
+  test "should not create contact_email_address with duplicate name" do
+    assert_difference("ContactEmailAddress.count", 0) do
+      post contact_email_addresses_url, params: { contact_email_address: { email_address: @contact_email_address.email_address, name: @contact_email_address.name } }
+    end
+
+    assert_response :unprocessable_entity
   end
 
   test "should show contact_email_address" do
