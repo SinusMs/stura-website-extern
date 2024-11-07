@@ -7,6 +7,7 @@ class ContactEmailAddressesTest < ApplicationSystemTestCase
     fill_in "username", with: "admin"
     fill_in "password", with: "123"
     click_on "login"
+    assert_text "Logged in: true"
   end
 
   test "visiting the index" do
