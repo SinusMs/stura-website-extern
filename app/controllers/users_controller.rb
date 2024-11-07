@@ -23,8 +23,10 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: "User was successfully created." }
+        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,8 +41,10 @@ class UsersController < ApplicationController
       password_success = user_params[:password].empty? || @user.update(password: user_params[:password], password_confirmation: user_params[:password_confirmation])
       if password_success && @user.update(user_params.except :password, :password_confirmation)
         format.html { redirect_to @user, notice: "User was successfully updated." }
+        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,6 +59,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { render :destroy, status: :see_other, notice: "User " + @user.username + " was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 
