@@ -2,7 +2,11 @@ require "application_system_test_case"
 
 class ContactEmailAddressesTest < ApplicationSystemTestCase
   setup do
-    @contact_email_address = contact_email_addresses(:one)
+    @contact_email_address = contact_email_addresses(:stu)
+    visit login_url
+    fill_in "username", with: "admin"
+    fill_in "password", with: "123"
+    click_on "login"
   end
 
   test "visiting the index" do
