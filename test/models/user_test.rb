@@ -3,7 +3,13 @@ require "json"
 
 class UserTest < ActiveSupport::TestCase
   test "create with valid userdata" do
-    assert_model_valid(User.new(username: valid_username, password: valid_password, is_admin: false))
+    user = User.new(username: valid_username, password: valid_password, is_admin: false)
+    if !user.validate
+      user.errors.each do |error|
+        puts error.full_message
+      end
+    end
+    assert user.validate
   end
 
   test "create with invalid userdata" do
@@ -38,14 +44,5 @@ class UserTest < ActiveSupport::TestCase
 
   def valid_password
     "123"
-  end
-
-  def assert_model_valid(model)
-    if !model.validate
-      model.errors.each do |error|
-        puts error.full_message
-      end
-      fail "model should be invalid"
-    end
   end
 end
