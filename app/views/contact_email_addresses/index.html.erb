@@ -5,10 +5,19 @@
 <h1>Contact email addresses</h1>
 
 <div id="contact_email_addresses">
-  <% @contact_email_addresses.each do |contact_email_address| %>
-    <%= render contact_email_address %>
-    <p>
-      <%= button_to "Show this contact email address", contact_email_address, method: :get %>
-    </p>
-  <% end %>
+  <table>
+      <thead>
+        <th>Name</th> <th>E-Mail</th> <th>ID</th> <th>Show</th> <!--<th>Edit</th> <th>Delete</th>-->
+      </thead>
+      <tbody>
+        <% @contact_email_addresses.each do |contact_email_address| %>
+          <tr>
+              <td><%= contact_email_address.name %></td>
+              <td><%= contact_email_address.email_address %></td>
+              <td><%= contact_email_address.id %></td>
+              <td><%= button_to "Show this contact email address", contact_email_address, method: :get %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
 </div>
