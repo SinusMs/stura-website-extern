@@ -1,5 +1,6 @@
 <div id="backend_menu">
     <%= button_to "Main Page", backend_root_path, method: "get" %>
+    <%= button_to "View Site", root_path, method: :get %>
     <% if is_admin? %>
         <%= button_to "View Users", users_path, method: :get %>
         <%= button_to "New User", new_user_path, method: :get %>
@@ -11,7 +12,6 @@
         <%= button_to "New contact email address", new_contact_email_address_path, method: :get  %>
         <%= button_to "User Settings", edit_user_path(id: current_user.id), method: :get %>
         <%= button_to "Logout", logout_path, method: :get %>
-        <%= button_to "View Site", root_path, method: :get %>
     <% else %>
         <%= button_to "Login", login_path, method: :get %>
     <% end %>
