@@ -1,7 +1,7 @@
 <div id="<%= dom_id event %>">
   <p>
     <strong>Datetime:</strong>
-    <%= event.datetime %>
+    <%= event.datetime.strftime("%d.%m.%y %H:%M") %>
   </p>
 
   <p>

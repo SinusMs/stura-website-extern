@@ -13,7 +13,7 @@
       <tbody>
         <% @events.each do |event| %>
           <tr>
-            <td><%= event.datetime.strftime("%d.%m.%Y") %></td>
+            <td><%= event.datetime.strftime("%d.%m.%y") %></td>
             <td><%= event.datetime.strftime("%H:%M") %></td>
             <td><%= link_to event.title, event %></td>
             <% if logged_in? %>

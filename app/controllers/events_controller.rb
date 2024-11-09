@@ -5,7 +5,11 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @events = Event.all
+    if helpers.logged_in?
+      @events = Event.all.order(datetime: :desc)
+    else
+      @events = Event.where("datetime >= ?", Date.today).order(:datetime)
+    end
   end
 
   # GET /events/1 or /events/1.json
