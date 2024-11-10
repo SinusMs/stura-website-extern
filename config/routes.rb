@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :new, :create, :edit, :update, :show, :destroy, :index ]
   resources :contact_email_addresses
+  resources :events
 
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"
