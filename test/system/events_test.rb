@@ -16,8 +16,7 @@ class EventsTest < ApplicationSystemTestCase
   end
 
   test "should create event" do
-    visit events_url
-    click_on "New event"
+    visit new_event_url
 
     fill_in "Datetime", with: @event.datetime
     fill_in "Description", with: @event.description
@@ -25,7 +24,6 @@ class EventsTest < ApplicationSystemTestCase
     click_on "Create Event"
 
     assert_text "Event was successfully created"
-    click_on "Back"
   end
 
   test "should update Event" do
@@ -38,12 +36,11 @@ class EventsTest < ApplicationSystemTestCase
     click_on "Update Event"
 
     assert_text "Event was successfully updated"
-    click_on "Back"
   end
 
   test "should destroy Event" do
     visit event_url(@event)
-    click_on "Destroy this event", match: :first
+    click_on "Delete", match: :first
 
     assert_text "Event was successfully destroyed"
   end
