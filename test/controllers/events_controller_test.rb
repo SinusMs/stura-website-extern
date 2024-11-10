@@ -3,6 +3,7 @@ require "test_helper"
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @event = events(:one)
+    post login_url, params: { username: "admin", password: "123" }
   end
 
   test "should get index" do
