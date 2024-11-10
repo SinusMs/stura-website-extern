@@ -3,6 +3,11 @@ require "application_system_test_case"
 class EventsTest < ApplicationSystemTestCase
   setup do
     @event = events(:one)
+    visit login_url
+    fill_in "username", with: "admin"
+    fill_in "password", with: "123"
+    click_on "login"
+    assert_text "Logged in: true"
   end
 
   test "visiting the index" do
