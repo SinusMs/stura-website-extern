@@ -1,5 +1,7 @@
 class ArticleCategoriesController < ApplicationController
+  layout "backend"
   before_action :set_article_category, only: %i[ show edit update destroy ]
+  before_action :verify_is_logged_in, only: %i[ new edit create update destroy ]
 
   # GET /article_categories or /article_categories.json
   def index
@@ -66,5 +68,11 @@ class ArticleCategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_category_params
       params.require(:article_category).permit(:name, :enabled)
+    end
+
+    def verify_is_logged_in
+      if !helpers.logged_in?
+        head :unauthorized
+      end
     end
 end

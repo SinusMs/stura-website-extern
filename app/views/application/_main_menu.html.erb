@@ -1,5 +1,6 @@
 <div id="main_menu">
     <%= button_to "Home", root_path, method: "get" %>
+    <%= button_to "News", articles_path, method: "get" %>
     <%= button_to "Events", events_path, method: "get" %>
     <%= button_to "Contact", contact_path, method: "get" %>
     <% if logged_in? %>

@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
+  layout :determine_layout_for_user
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :verify_is_logged_in, only: %i[ new edit create update destroy ]
 
   # GET /articles or /articles.json
   def index
@@ -66,5 +68,19 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :published, :content, :article_category_id)
+    end
+
+    def verify_is_logged_in
+      if !helpers.logged_in?
+        head :unauthorized
+      end
+    end
+
+    def determine_layout_for_user
+      if helpers.logged_in?
+        "backend"
+      else
+        "application"
+      end
     end
 end
