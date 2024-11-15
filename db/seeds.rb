@@ -13,3 +13,11 @@ if User.where(is_admin: true).blank?
   User.create!(username: ENV["DEFAULT_USER_USERNAME"], password: ENV["DEFAULT_USER_PASSWORD"], is_admin: true).username
   puts "Done!"
 end
+
+if ArticleCategory.where(name: "News").blank?
+  ArticleCategory.create!(name: "News", enabled: true)
+end
+
+if ArticleCategory.where(name: "Stus Blog").blank?
+  ArticleCategory.create!(name: "Stus Blog", enabled: true)
+end
