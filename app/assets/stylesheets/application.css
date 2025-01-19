@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+input[type=checkbox]:checked ~ .toggleable-visibility { 
+    display: none !important;
+}
+.toggleable-visibility {
+    display: flex;
+    width: 100%;
+}
