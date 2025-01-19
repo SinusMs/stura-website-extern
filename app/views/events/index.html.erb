@@ -3,7 +3,10 @@
 <h1>Events</h1>
 
 <div id="events">
-  <button onclick="toggleRowVisibility()">Show/Hide Sessions</button>
+  <label for="events-checkbox">Show Events</label>
+  <input type="checkbox" onclick="toggleRowVisibility()" id="events-checkbox" checked="true">
+  <label for="sessions-checkbox">Show Sessions</label>
+  <input type="checkbox" onclick="toggleRowVisibility()" id="sessions-checkbox">
   <table>
       <thead>
         <th>Date</th> <th>Time</th> <th>Event</th>
@@ -33,12 +36,23 @@
 
 <script>  
   function toggleRowVisibility() {
-      var hiddenRows = document.getElementsByClassName("session-row")
-      for(var i=0, len=hiddenRows.length; i<len; i++){
-        if (hiddenRows[i].style.display === "none") {
-          hiddenRows[i].style.display = "";
+      var sessionRows = document.getElementsByClassName("session-row");
+      var sessionsCheckbox = document.getElementById("sessions-checkbox");
+      for(var i=0, len=sessionRows.length; i<len; i++){
+        if (sessionsCheckbox.checked == true) {
+          sessionRows[i].style.display = "";
         } else {
-          hiddenRows[i].style.display = "none";
+          sessionRows[i].style.display = "none";
+        }
+      }
+
+      var eventRows = document.getElementsByClassName("event-row");
+      var eventsCheckbox = document.getElementById("events-checkbox");
+      for(var i=0, len=eventRows.length; i<len; i++){
+        if (eventsCheckbox.checked == true) {
+          eventRows[i].style.display = "";
+        } else {
+          eventRows[i].style.display = "none";
         }
       }
   }
