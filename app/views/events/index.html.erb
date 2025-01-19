@@ -3,9 +3,7 @@
 <h1>Events</h1>
 
 <div id="events">
-  <label for="toggleCheckbox">Show</label>
-  <input type="checkbox" id="toggleCheckbox">
-  <div class="toggleable-visibility">AHHHH</div>
+  <button onclick="toggleRowVisibility()">Show/Hide Sessions</button>
   <table>
       <thead>
         <th>Date</th> <th>Time</th> <th>Event</th>
@@ -15,7 +13,11 @@
       </thead>
       <tbody>
         <% @events.each do |event| %>
-          <tr>
+        <% if event.is_session %>
+          <tr class="session-row" style="display: none;">
+        <% else %>
+          <tr class="event-row">
+        <% end %>
             <td><%= event.datetime.strftime("%d.%m.%y") %></td>
             <td><%= event.datetime.strftime("%H:%M") %></td>
             <td><%= link_to event.title, event %></td>
@@ -28,3 +30,16 @@
       </tbody>
   </table>
 </div>
+
+<script>  
+  function toggleRowVisibility() {
+      var hiddenRows = document.getElementsByClassName("session-row")
+      for(var i=0, len=hiddenRows.length; i<len; i++){
+        if (hiddenRows[i].style.display === "none") {
+          hiddenRows[i].style.display = "";
+        } else {
+          hiddenRows[i].style.display = "none";
+        }
+      }
+  }
+</script>
