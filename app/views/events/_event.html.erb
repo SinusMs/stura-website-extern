@@ -6,12 +6,23 @@
 
   <p>
     <strong>Title:</strong>
+    <% if event.is_session %>
+    [Session]
+    <% else %>
+    [Event]
+    <% end %>
     <%= event.title %>
   </p>
 
   <p>
     <strong>Description:</strong>
     <%= event.description %>
+  </p>
+
+
+  <p>
+    <strong>Is Session:</strong>
+    <%= event.is_session %>
   </p>
 
 </div>

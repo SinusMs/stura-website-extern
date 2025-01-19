@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_07_174413) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_29_115901) do
+  create_table "article_categories", force: :cascade do |t|
+    t.string "name"
+    t.boolean "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.datetime "published"
+    t.text "content"
+    t.integer "article_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_category_id"], name: "index_articles_on_article_category_id"
+  end
+
   create_table "contact_email_addresses", force: :cascade do |t|
     t.string "name"
     t.string "email_address"
@@ -24,6 +41,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_07_174413) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_session"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +51,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_07_174413) do
     t.datetime "updated_at", null: false
     t.boolean "is_admin"
   end
+
+  add_foreign_key "articles", "article_categories"
 end

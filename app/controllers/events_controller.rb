@@ -71,7 +71,7 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:datetime, :title, :description)
+      params.require(:event).permit(:datetime, :title, :description, :is_session)
     end
 
     def verify_is_logged_in

@@ -3,6 +3,10 @@
 <h1>Events</h1>
 
 <div id="events">
+  <label for="events-checkbox">Show Events</label>
+  <input type="checkbox" onclick="toggleRowVisibility()" id="events-checkbox" checked="true">
+  <label for="sessions-checkbox">Show Sessions</label>
+  <input type="checkbox" onclick="toggleRowVisibility()" id="sessions-checkbox">
   <table>
       <thead>
         <th>Date</th> <th>Time</th> <th>Event</th>
@@ -12,7 +16,11 @@
       </thead>
       <tbody>
         <% @events.each do |event| %>
-          <tr>
+        <% if event.is_session %>
+          <tr class="session-row" style="display: none;">
+        <% else %>
+          <tr class="event-row">
+        <% end %>
             <td><%= event.datetime.strftime("%d.%m.%y") %></td>
             <td><%= event.datetime.strftime("%H:%M") %></td>
             <td><%= link_to event.title, event %></td>
@@ -25,3 +33,27 @@
       </tbody>
   </table>
 </div>
+
+<script>  
+  function toggleRowVisibility() {
+      var sessionRows = document.getElementsByClassName("session-row");
+      var sessionsCheckbox = document.getElementById("sessions-checkbox");
+      for(var i=0, len=sessionRows.length; i<len; i++){
+        if (sessionsCheckbox.checked == true) {
+          sessionRows[i].style.display = "";
+        } else {
+          sessionRows[i].style.display = "none";
+        }
+      }
+
+      var eventRows = document.getElementsByClassName("event-row");
+      var eventsCheckbox = document.getElementById("events-checkbox");
+      for(var i=0, len=eventRows.length; i<len; i++){
+        if (eventsCheckbox.checked == true) {
+          eventRows[i].style.display = "";
+        } else {
+          eventRows[i].style.display = "none";
+        }
+      }
+  }
+</script>
