@@ -16,7 +16,7 @@
 
   <p>
     <strong>Article category:</strong>
-    <%= article.article_category_id %>
+    <%= ArticleCategory.find(article.article_category_id).name %>
   </p>
 
 </div>
