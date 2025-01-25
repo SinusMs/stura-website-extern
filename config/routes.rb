@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   resources :users, only: [ :new, :create, :edit, :update, :show, :destroy, :index ]
   resources :contact_email_addresses
   resources :events
-  resources :articles
+  resources :articles do
+    collection do
+      get "category/:article_category_id", to: "articles#category", as: "article_category"
+    end
+  end
   resources :article_categories
 
   get "/login", to: "sessions#login", as: "login"
