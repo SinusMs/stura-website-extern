@@ -5,7 +5,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all.order(published: :desc)
+    if helpers.logged_in?
+      @articles = Article.all.order(published: :desc)
+    else
+      @articles = Article.where(published: ..Time.now).order(published: :desc)
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -61,7 +65,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles/category/1
   def category
-    @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
+    if helpers.logged_in?
+      @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
+    else
+      @articles = Article.where(published: ..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
+    end
     @article_category = ArticleCategory.find(params[:article_category_id])
     render :index
   end
