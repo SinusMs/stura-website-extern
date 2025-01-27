@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.order(published: :desc)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/category/1
   def category
-    @articles = Article.where(article_category_id: params[:article_category_id])
+    @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
     @article_category = ArticleCategory.find(params[:article_category_id])
     render :index
   end
