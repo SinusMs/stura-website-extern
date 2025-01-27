@@ -1,0 +1,8 @@
+<div id="<%= dom_id article_preview%>">
+  <p>
+    <i><%= ArticleCategory.find(article_preview.article_category_id).name %></i><br>
+    <strong> <%= article_preview.title %> </strong><br>
+    <%= article_preview.published %><br>
+    <%= link_to "Read Article", article_preview %>
+  </p>
+</div>
