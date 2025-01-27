@@ -63,6 +63,7 @@ class ArticlesController < ApplicationController
   def category
     @articles = Article.where(article_category_id: params[:article_category_id])
     @article_category = ArticleCategory.find(params[:article_category_id])
+    render :index
   end
 
   private

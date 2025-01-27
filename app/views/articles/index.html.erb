@@ -1,8 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Articles" %>
+<% if @article_category == nil %>
+  <% content_for :title, "Articles" %>
+  <h1>Articles</h1>
+<% else %>
+  <% content_for :title, @article_category.name %>
+  <h1>Article Category: <%= @article_category.name %></h1>
+<% end %>
 
-<h1>Articles</h1>
 
 <div id="articles">
   <% @articles.each do |article| %>
