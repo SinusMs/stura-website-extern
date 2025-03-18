@@ -1,7 +1,13 @@
-<div id="<%= dom_id article_preview%>">
+<div id="<%= dom_id article_preview %>">
   <p>
     <i><%= ArticleCategory.find(article_preview.article_category_id).name %></i><br>
-    <strong> <%= article_preview.title %> </strong><br>
+      <% if article_preview.prioritize_until == nil or article_preview.prioritize_until < Time.now%>
+        <%= article_preview.title %> <br>
+      <% else %>
+        <strong>
+          <%= article_preview.title %> <br>
+        </strong>
+      <% end %>
     <%= article_preview.published %><br>
     <%= link_to "Read Article", article_preview %>
   </p>

@@ -9,6 +9,13 @@
     <%= article.published %>
   </p>
 
+  <% if logged_in? %>
+    <p>
+      <strong>Prioritize Until:</strong>
+      <%= article.prioritize_until %>
+    </p>
+  <% end %>
+
   <p>
     <strong>Content:</strong>
     <%= article.content %>

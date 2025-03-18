@@ -8,7 +8,8 @@ class ArticlesController < ApplicationController
     if helpers.logged_in?
       @articles = Article.all.order(published: :desc)
     else
-      @articles = Article.where(published: ..Time.now).order(published: :desc)
+      published_articles = Article.where(published: ..Time.now).order(published: :desc)
+      @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
     end
   end
 
@@ -68,7 +69,8 @@ class ArticlesController < ApplicationController
     if helpers.logged_in?
       @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
     else
-      @articles = Article.where(published: ..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
+      published_articles = Article.where(published: ..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
+      @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
     end
     @article_category = ArticleCategory.find(params[:article_category_id])
     render :index
@@ -82,7 +84,7 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :published, :content, :article_category_id)
+      params.require(:article).permit(:title, :published, :content, :prioritize_until, :article_category_id)
     end
 
     def verify_is_logged_in
