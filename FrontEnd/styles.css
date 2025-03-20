@@ -1,0 +1,335 @@
+/* Allgemeine Stile */
+:root {
+    --sehrdunkelpetrol: #1B423E;
+    --dunkelpetrol: #387D75;
+    --petrol: #58AAA0;
+    --hellpetrol: #CEE9E6;
+    --sehrdunkelorange: #6E2F04;
+    --dunkelorange: #BB500A;
+    --orange: #EC660C;
+    --hellorange: #FFD6BA;
+}
+
+.navbar {
+    background-color: var(--dunkelpetrol);
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .dropdown-item {
+    color: white !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .dropdown-item:hover {
+    color: var(--hellorange) !important; /* Optional: Farbe beim Hover ändern */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    background-color: var(--dunkelpetrol);
+    border: none;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* Optional: Adjust the margin to align the dropdown menu */
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: var(--petrol); /* Hintergrundfarbe beim Hover */
+    color: var(--sehrdunkelpetrol); /* Textfarbe beim Hover */
+}
+
+/* Hero Section */
+.hero-section {
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+.hero-section .overlay {
+    background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Welcome Section */
+.welcome-section {
+    height: 400px;
+    background-color: var(--sehrdunkelpetrol);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--hellorange);
+}
+
+.welcome-section p {
+    color: white;
+}
+
+/* Combined Section */
+.neues-section {
+    background-color: var(--hellpetrol);
+    display: grid;
+    place-items: center;
+    margin: 0; /* Ensure no margin between sections */
+    padding: 20px 0; /* Optional: Add padding for spacing within the section */
+}
+
+/* News Section */
+.news-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.news-section h2 {
+    color: var(--orange);
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.news-section .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%; /* Ensure the row takes full width */
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.read-more-button {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.read-more-button:hover {
+    background-color: var(--dunkelorange);
+}
+
+/* Event Section */
+.event-section {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    position: relative;
+    }
+
+.Monatsplan {
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
+    margin-bottom: 0px;
+}    
+
+.event-button {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px; 
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.event-button:hover {
+    background-color: var(--dunkelorange);
+}
+
+.StandOrt {
+    height: 300px;
+    background-color: var(--sehrdunkelpetrol);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.StandOrt h2 {
+    color: var(--hellorange);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.StandOrt p,
+.StandOrt p1,
+.StandOrt p2,
+.StandOrt p3 {
+    color: white;
+}
+
+
+.Icons {
+    background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.Icons .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 20px;
+}
+
+.Icons .social-icons a {
+    background-color: var(--orange); /* Hintergrundfarbe des Kreises */
+    color: white; /* Farbe der Icons */
+    font-size: 4rem;
+    text-decoration: none;
+    width: 90px; /* Breite des Kreises */
+    height: 90px; /* Höhe des Kreises */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Macht den Hintergrund zu einem Kreis */
+    transition: background-color 0.3s;
+}
+
+
+/* Footer */
+footer {
+    font-size: 16px;
+    height: auto; /* Höhe automatisch anpassen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sehrdunkelpetrol);
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+footer .footer-content .left,
+footer .footer-content .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+footer .footer-content .right .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .footer-content .right .footer-links a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer .footer-content .left p {
+    color: white;
+    margin: 1px 0; /* Enger zusammenrücken */
+    font-size: small;
+}
+
+
+footer .footer-content .right .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+footer .footer-content .right .social-icons a {
+    background-color: var(--orange); /* Hintergrundfarbe des Kreises */
+    color: white; /* Farbe der Icons */
+    font-size: 1rem;
+    text-decoration: none;
+    width: 25px; /* Breite des Kreises */
+    height: 25px; /* Höhe des Kreises */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Macht den Hintergrund zu einem Kreis */
+    transition: background-color 0.3s;
+}
+footer .footer-logo {
+    margin: 20px 0;
+}
+
+footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+footer .footer-links span {
+    color: white;
+    font-size: 1rem;
+}
+
+footer p {
+    color: white;
+    margin: 10px 0 0;
+}
+
+.py-3 {
+    text-align: center;
+    color: var(--hellorange);
+}
