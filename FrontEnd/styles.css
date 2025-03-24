@@ -299,7 +299,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: center;;
 }
 
 .Icons .social-icons {
@@ -321,8 +321,8 @@ body {
     justify-content: center;
     border-radius: 50%; /* Macht den Hintergrund zu einem Kreis */
     transition: background-color 0.3s;
+    padding: 50px;
 }
-
 
 /* Footer */
 footer {
@@ -341,6 +341,7 @@ footer {
 footer .footer-content {
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Center align items vertically */
     width: 100%;
     max-width: 1200px;
     padding: 20px;
@@ -350,13 +351,23 @@ footer .footer-content .left,
 footer .footer-content .right {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    flex: 1; /* Allow left and right sections to take up equal space */
+}
+
+footer .footer-content .left {
+    align-items: flex-start; /* Align items to the left */
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+footer .footer-content .right {
+    align-items: flex-end; /* Align items to the right */
+    text-align: right; /* Ensure text is right-aligned */
 }
 
 footer .footer-content .right .footer-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end; /* Align links to the right */
 }
 
 footer .footer-content .right .footer-links a {
@@ -369,7 +380,6 @@ footer .footer-content .left p {
     margin: 1px 0; /* Enger zusammenrücken */
     font-size: small;
 }
-
 
 footer .footer-content .right .social-icons {
     display: flex;
@@ -391,8 +401,11 @@ footer .footer-content .right .social-icons a {
     border-radius: 50%; /* Macht den Hintergrund zu einem Kreis */
     transition: background-color 0.3s;
 }
+
 footer .footer-logo {
     margin: 20px 0;
+    text-align: center; /* Center align the logo */
+    flex: 0; /* Prevent the logo from taking up extra space */
 }
 
 footer .footer-links {
