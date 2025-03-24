@@ -6,6 +6,7 @@
     <title>StuRa HTW Dresden</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +25,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="aktuellesDropdown">
                             <li><a class="dropdown-item" href="#">News</a></li>
-                            <li><a class="dropdown-item" href="#">Veranstaltungen</a></li>
+                            <li><a class="dropdown-item" href="#">Kalender</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -32,17 +33,9 @@
                             Über den StuRa
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="ueberDropdown">
-                            <li><a class="dropdown-item" href="#">Unsere Mission</a></li>
-                            <li><a class="dropdown-item" href="#">Team</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="mitmachenDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Mitmachen
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="mitmachenDropdown">
-                            <li><a class="dropdown-item" href="#">Mitglied werden</a></li>
-                            <li><a class="dropdown-item" href="#">Projekte</a></li>
+                            <li><a class="dropdown-item" href="#">Wer ist der StuRa?</a></li>
+                            <li><a class="dropdown-item" href="#">Was macht der StuRa?</a></li>
+                            <li><a class="dropdown-item" href="#">Mitmachen im StuRa</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -50,8 +43,26 @@
                             Studienleben
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="studienlebenDropdown">
-                            <li><a class="dropdown-item" href="#">Beratung</a></li>
-                            <li><a class="dropdown-item" href="#">Freizeit</a></li>
+                            <li><a class="dropdown-item" href="#">Semesterticket</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="https://www.htw-dresden.de/" target="_blank">HTW Dresden</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="https://mobil.htw-dresden.de/de/">Mobil App</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/organisation/bibliothek">Bibliothek</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/aktuelles/veranstaltungskalender">Veranstaltungskalender</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/gruendung">Gründungsschmiede</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/fakultaeten/info-math/forschung/smart-production-systems/lab-x">LabX</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Studentenwerk</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/mensen/mensen_cafeterien.html">Mensen</a></li>
+                                    <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/finanzierung/bafoeg.html">BaföG</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="https://www.kss-sachsen.de/">KSS-Sachsen</a></li>
+                            <li><a class="dropdown-item" href="https://www.bildung.sachsen.de/">Bildungsministerium</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
@@ -153,8 +164,7 @@
     <div class="container">
         <div class="col-md-12">
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-whatsapp"></i></a>
             </div>
@@ -180,8 +190,7 @@
                     <a href="#">Über unsere Einfahrt</a>
                 </div>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
@@ -201,5 +210,25 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
+    
+            dropdownSubmenus.forEach(function (submenu) {
+                submenu.addEventListener('mouseenter', function () {
+                    var submenuRect = submenu.getBoundingClientRect();
+                    var submenuMenu = submenu.querySelector('.dropdown-menu');
+    
+                    if (submenuRect.right + submenuMenu.offsetWidth > window.innerWidth) {
+                        submenuMenu.style.left = 'auto';
+                        submenuMenu.style.right = '100%';
+                    } else {
+                        submenuMenu.style.left = '100%';
+                        submenuMenu.style.right = 'auto';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
