@@ -25,12 +25,6 @@
     color: var(--hellorange) !important; /* Optional: Farbe beim Hover ändern */
 }
 
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 /* Dropdown Menu */
 .dropdown-menu {
     background-color: var(--dunkelpetrol);
@@ -96,6 +90,13 @@ body {
     }
 }
 
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 /* Hero Section */
 .hero-section {
     height: 600px;
@@ -131,6 +132,7 @@ body {
 }
 
 .welcome-section h1 {
+    margin-bottom: 40px;
     font-size: 2.5rem;
     font-weight: bold;
     color: var(--hellorange);
@@ -138,6 +140,8 @@ body {
 
 .welcome-section p {
     color: white;
+    margin-left: 100px;
+    margin-right: 100px;
 }
 
 /* Combined Section */
@@ -176,12 +180,43 @@ body {
     margin-bottom: 20px;
 }
 
+.article-card {
+    background-color: var(--dunkelpetrol); /* Replace with your desired green color */
+    color: white;
+    text-align: center;
+    position: relative;
+    border: none; /* Remove border */
+    border-radius: 5px; /* Remove border radius */
+}
+
+.article-logo-container {
+    background-color: var(--dunkelpetrol); /* Match the background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Adjust height as needed */
+    border-radius: 5px 5px 0 0;
+}
+
+.article-logo {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+}
+
+.card-body {
+    background-color: white; /* White background for the text */
+    color: black; /* Black text color */
+    padding: 20px; /* Add padding to separate text from logo */
+    border-top: 1px solid var(--dunkelpetrol); /* Optional: Add a border to separate the logo and text */
+    border-radius: 0 0 5px 5px;
+}
+
 .read-more-button {
     background-color: var(--orange);
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
 }
@@ -215,7 +250,7 @@ body {
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 15px; 
+    border-radius: 5px; 
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: 20px;
@@ -225,27 +260,36 @@ body {
     background-color: var(--dunkelorange);
 }
 
+/* StandOrt Section */
 .StandOrt {
-    height: 300px;
     background-color: var(--sehrdunkelpetrol);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 0px;
+    padding: 40px 20px; /* Add padding for spacing */
 }
 
 .StandOrt h2 {
     color: var(--hellorange);
-    font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
+    margin-top: 60px;
 }
 
-.StandOrt p,
-.StandOrt p1,
-.StandOrt p2,
-.StandOrt p3 {
+.StandOrt p {
     color: white;
+    margin-bottom: 50px; /* Add margin between paragraphs */
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.StandOrt a {
+    color: var(--hellorange); /* Link color */
+    text-decoration: underline; /* Underline links */
+}
+
+.StandOrt a:hover {
+    color: var(--orange); /* Change color on hover */
 }
 
 
@@ -312,7 +356,7 @@ footer .footer-content .right {
 footer .footer-content .right .footer-links {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 footer .footer-content .right .footer-links a {
