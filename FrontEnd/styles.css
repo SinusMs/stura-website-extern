@@ -31,6 +31,7 @@
     border: none;
 }
 
+
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0; /* Optional: Adjust the margin to align the dropdown menu */

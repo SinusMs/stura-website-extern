@@ -3,6 +3,7 @@
     background-color: var(--sehrdunkelpetrol); /* Dark green background */
     color: white;
     padding: 60px 20px;
+    margin-top: 40px;
 }
 
 .contact-intro .page-title {
@@ -36,7 +37,7 @@
 .info-section .info-text {
     color: var(--orange); /* Orange text */
     font-size: 1.2rem;
-    margin-top: 10px;
+    margin-top: 60px;
 }
 
 /* Contact Form Section */
