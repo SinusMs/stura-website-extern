@@ -1,6 +1,3 @@
-
-
-
 /* Allgemeine/Globale Stile */
 :root {
     --sehrdunkelpetrol: #1B423E;
@@ -13,6 +10,13 @@
     --hellorange: #FFD6BA;
 }
 
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
 .navbar {
     background-color: var(--dunkelpetrol);
 }
@@ -25,28 +29,32 @@
 
 .navbar .nav-link:hover,
 .navbar .dropdown-item:hover {
-    color: var(--hellorange) !important; /* Optional: Farbe beim Hover ändern */
+    color: var(--hellorange) !important;
 }
 
 /* Dropdown Menu */
 .dropdown-menu {
     background-color: var(--dunkelpetrol);
     border: none;
+    display: none; /* Ensure dropdowns are hidden by default */
 }
 
+.nav-item.dropdown:hover > .dropdown-menu {
+    display: block; /* Show dropdowns only when hovering over the parent */
+}
 
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
-    margin-top: 0; /* Optional: Adjust the margin to align the dropdown menu */
+    margin-top: 0;
 }
 
 .dropdown-item {
-    color: white;
+    color: var(--dunkelpetrol);
 }
 
 .dropdown-item:hover {
-    background-color: var(--petrol); /* Hintergrundfarbe beim Hover */
-    color: var(--sehrdunkelpetrol); /* Textfarbe beim Hover */
+    background-color: var(--petrol);
+    color: var(--sehrdunkelpetrol);
 }
 
 /* Nested Dropdown */
@@ -55,38 +63,27 @@
 }
 
 .dropdown-submenu .dropdown-menu {
-    display: none;
+    display: none; /* Ensure nested dropdowns are hidden by default */
     top: 0;
     left: 100%;
     margin-top: -1px;
 }
 
-.dropdown-submenu:hover .dropdown-menu {
-    display: block;
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block; /* Show nested dropdowns only when hovering over the submenu */
 }
 
-/* Ensure the parent dropdown stays open when hovering over the nested dropdown */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.nav-item.dropdown:hover .dropdown-submenu .dropdown-menu {
-    display: none;
-}
-
-.nav-item.dropdown .dropdown-submenu:hover .dropdown-menu {
-    display: block;
-}
-
-/* Adjust nested dropdown position based on screen size */
 @media (max-width: 768px) {
     .dropdown-submenu .dropdown-menu {
         left: -100%;
         right: auto;
     }
+
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: none;
+    }
 }
 
-/* Adjust nested dropdown position to prevent it from going off-screen */
 @media (min-width: 769px) {
     .dropdown-submenu:hover .dropdown-menu {
         left: auto;
@@ -94,18 +91,9 @@
     }
 }
 
-
-body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-
 /* Footer */
 footer {
     font-size: 16px;
-    height: auto; /* Höhe automatisch anpassen */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,7 +107,7 @@ footer {
 footer .footer-content {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Center align items vertically */
+    align-items: center;
     width: 100%;
     max-width: 1200px;
     padding: 20px;
@@ -129,23 +117,23 @@ footer .footer-content .left,
 footer .footer-content .right {
     display: flex;
     flex-direction: column;
-    flex: 1; /* Allow left and right sections to take up equal space */
+    flex: 1;
 }
 
 footer .footer-content .left {
-    align-items: flex-start; /* Align items to the left */
-    text-align: left; /* Ensure text is left-aligned */
+    align-items: flex-start;
+    text-align: left;
 }
 
 footer .footer-content .right {
-    align-items: flex-end; /* Align items to the right */
-    text-align: right; /* Ensure text is right-aligned */
+    align-items: flex-end;
+    text-align: right;
 }
 
 footer .footer-content .right .footer-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; /* Align links to the right */
+    align-items: flex-end;
 }
 
 footer .footer-content .right .footer-links a {
@@ -155,7 +143,7 @@ footer .footer-content .right .footer-links a {
 
 footer .footer-content .left p {
     color: white;
-    margin: 1px 0; /* Enger zusammenrücken */
+    margin: 1px 0;
     font-size: small;
 }
 
@@ -167,23 +155,22 @@ footer .footer-content .right .social-icons {
 }
 
 footer .footer-content .right .social-icons a {
-    background-color: var(--orange); /* Hintergrundfarbe des Kreises */
-    color: white; /* Farbe der Icons */
+    background-color: var(--orange);
+    color: white;
     font-size: 1rem;
     text-decoration: none;
-    width: 25px; /* Breite des Kreises */
-    height: 25px; /* Höhe des Kreises */
+    width: 25px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Macht den Hintergrund zu einem Kreis */
+    border-radius: 50%;
     transition: background-color 0.3s;
 }
 
 footer .footer-logo {
     margin: 20px 0;
-    text-align: center; /* Center align the logo */
-    flex: 0; /* Prevent the logo from taking up extra space */
+    text-align: center;
 }
 
 footer .footer-links {
@@ -214,12 +201,6 @@ footer p {
     color: var(--hellorange);
 }
 
-
-/*//////////////////////////////////// */
-/*//////////////////////////////////// */
-/*///////////  INDEX.HTML  /////////// */
-/*//////////////////////////////////// */
-/*//////////////////////////////////// */
 /* Hero Section */
 .hero-section {
     height: 600px;
@@ -229,6 +210,7 @@ footer p {
     text-align: center;
     position: relative;
 }
+
 .hero-section .overlay {
     background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
     position: absolute;
@@ -246,8 +228,6 @@ footer p {
     height: 400px;
     background-color: var(--sehrdunkelpetrol);
     text-align: center;
-    margin: 0;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,8 +243,7 @@ footer p {
 
 .welcome-section p {
     color: white;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin: 0 100px;
 }
 
 /* Combined Section */
@@ -272,10 +251,9 @@ footer p {
     background-color: var(--hellpetrol);
     display: grid;
     place-items: center;
-    margin: 0; /* Ensure no margin between sections */
-    padding: 20px 0; /* Optional: Add padding for spacing within the section */
+    margin: 0;
+    padding: 20px 0;
 }
-
 
 /* News Section */
 .news-section {
@@ -297,7 +275,7 @@ footer p {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%; /* Ensure the row takes full width */
+    width: 100%;
 }
 
 .card {
@@ -305,34 +283,32 @@ footer p {
 }
 
 .article-card {
-    background-color: var(--dunkelpetrol); /* Replace with your desired green color */
+    background-color: var(--dunkelpetrol);
     color: white;
     text-align: center;
     position: relative;
-    border: none; /* Remove border */
-    border-radius: 5px; /* Remove border radius */
+    border: none;
+    border-radius: 5px;
 }
 
 .article-logo-container {
-    background-color: var(--dunkelpetrol); /* Match the background color */
+    background-color: var(--dunkelpetrol);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px; /* Adjust height as needed */
-    border-radius: 5px 5px 0 0;
+    height: 150px;
 }
 
 .article-logo {
-    width: 100px; /* Adjust size as needed */
+    width: 100px;
     height: auto;
 }
 
 .card-body {
-    background-color: white; /* White background for the text */
-    color: black; /* Black text color */
-    padding: 20px; /* Add padding to separate text from logo */
-    border-top: 1px solid var(--dunkelpetrol); /* Optional: Add a border to separate the logo and text */
-    border-radius: 0 0 5px 5px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-top: 1px solid var(--dunkelpetrol);
 }
 
 .read-more-button {
@@ -349,7 +325,6 @@ footer p {
     background-color: var(--dunkelorange);
 }
 
-
 /* Event Section */
 .event-section {
     height: 300px;
@@ -357,9 +332,9 @@ footer p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center; 
+    text-align: center;
     position: relative;
-    }
+}
 
 .Monatsplan {
     height: 600px;
@@ -367,15 +342,15 @@ footer p {
     align-items: center;
     justify-content: center;
     background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
-    margin-bottom: 0px;
-}    
+    margin-bottom: 0;
+}
 
 .event-button {
     background-color: var(--orange);
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px; 
+    border-radius: 5px;
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: 20px;
@@ -385,8 +360,6 @@ footer p {
     background-color: var(--dunkelorange);
 }
 
-
-
 /* StandOrt Section */
 .StandOrt {
     background-color: var(--sehrdunkelpetrol);
@@ -394,39 +367,36 @@ footer p {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 40px 20px; /* Add padding for spacing */
+    padding: 40px 20px;
 }
 
 .StandOrt h2 {
     color: var(--hellorange);
-    margin-bottom: 60px;
-    margin-top: 60px;
+    margin: 60px 0;
 }
 
 .StandOrt p {
     color: white;
-    margin-bottom: 50px; /* Add margin between paragraphs */
-    margin-left: 150px;
-    margin-right: 150px;
+    margin: 0 150px 50px;
 }
 
 .StandOrt a {
-    color: var(--hellorange); /* Link color */
-    text-decoration: underline; /* Underline links */
+    color: var(--hellorange);
+    text-decoration: underline;
 }
 
 .StandOrt a:hover {
-    color: var(--orange); /* Change color on hover */
+    color: var(--orange);
 }
 
-
+/* Icons Section */
 .Icons {
     background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
     height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;;
+    text-align: center;
 }
 
 .Icons .social-icons {
@@ -437,37 +407,30 @@ footer p {
 }
 
 .Icons .social-icons a {
-    background-color: var(--orange); /* Hintergrundfarbe des Kreises */
-    color: white; /* Farbe der Icons */
+    background-color: var(--orange);
+    color: white;
     font-size: 4rem;
     text-decoration: none;
-    width: 90px; /* Breite des Kreises */
-    height: 90px; /* Höhe des Kreises */
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%; /* Macht den Hintergrund zu einem Kreis */
+    border-radius: 50%;
     transition: background-color 0.3s;
     padding: 50px;
 }
 
-/*//////////////////////////////////// */
-/*//////////////////////////////////// */
-/*//////////  KONTAKT.HTML  ////////// */
-/*//////////////////////////////////// */
-/*//////////////////////////////////// */
-
-
 /* Contact Intro Section */
 .contact-intro {
-    background-color: var(--sehrdunkelpetrol); /* Dark green background */
+    background-color: var(--sehrdunkelpetrol);
     color: white;
     padding: 60px 20px;
     margin-top: 40px;
 }
 
 .contact-intro .page-title {
-    color: var(--hellorange); /* Light orange color */
+    color: var(--hellorange);
     font-size: 2.5rem;
     margin-bottom: 30px;
 }
@@ -479,35 +442,35 @@ footer p {
 
 /* Map Section */
 .map-section {
-    background-color: var(--hellpetrol); /* Light green background */
+    background-color: var(--hellpetrol);
     padding: 20px 0;
 }
 
 .map-section iframe {
-    border-radius: 8px; /* Optional: Rounded corners for the map */
+    border-radius: 8px;
 }
 
 /* Info Section */
 .info-section {
-    background-color: var(--hellpetrol); /* Light green background */
+    background-color: var(--hellpetrol);
     padding: 40px 20px;
     margin: 0;
 }
 
 .info-section .info-text {
-    color: var(--orange); /* Orange text */
+    color: var(--orange);
     font-size: 1.2rem;
     margin-top: 60px;
 }
 
 /* Contact Form Section */
 .contact-form-section {
-    background-color: var(--hellpetrol); /* Light green background */
+    background-color: var(--hellpetrol);
     padding: 40px 20px;
 }
 
 .contact-form-section h2 {
-    color: var(--dunkelpetrol); /* Dark green text */
+    color: var(--dunkelpetrol);
     margin-bottom: 20px;
 }
 
@@ -518,37 +481,35 @@ footer p {
 }
 
 .contact-form-section form .form-label {
-    color: var(--dunkelpetrol); /* Dark green text for labels */
+    color: var(--dunkelpetrol);
 }
 
-/* General Input Styles */
 .contact-form-section .form-control {
-    border: 1px solid var(--petrol); /* Default border color */
+    border: 1px solid var(--petrol);
     border-radius: 5px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form-section .form-control:focus {
-    border-color: var(--orange); /* Highlight border in orange */
-    box-shadow: 0 0 5px var(--orange); /* Add an orange glow */
-    outline: none; /* Remove the default blue outline */
+    border-color: var(--orange);
+    box-shadow: 0 0 5px var(--orange);
+    outline: none;
 }
 
-/* Dropdown (Select) Styles */
 .contact-form-section .form-select {
     border-radius: 5px;
-    border: 1px solid var(--petrol); /* Default border color */
+    border: 1px solid var(--petrol);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form-section .form-select:focus {
-    border-color: var(--orange); /* Highlight border in orange */
-    box-shadow: 0 0 5px var(--orange); /* Add an orange glow */
-    outline: none; /* Remove the default blue outline */
+    border-color: var(--orange);
+    box-shadow: 0 0 5px var(--orange);
+    outline: none;
 }
 
 .contact-form-section .btn-primary {
-    background-color: var(--orange); /* Orange button */
+    background-color: var(--orange);
     border: none;
     padding: 10px 20px;
     font-size: 1rem;
@@ -557,10 +518,9 @@ footer p {
 }
 
 .contact-form-section .btn-primary:hover {
-    background-color: var(--dunkelorange); /* Darker orange on hover */
+    background-color: var(--dunkelorange);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .contact-intro .page-title {
         font-size: 2rem;
