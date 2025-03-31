@@ -32,63 +32,80 @@ body {
     color: var(--hellorange) !important;
 }
 
-/* Dropdown Menu */
-.dropdown-menu {
-    background-color: var(--dunkelpetrol);
-    border: none;
-    display: none; /* Ensure dropdowns are hidden by default */
-}
-
 .nav-item.dropdown:hover > .dropdown-menu {
-    display: block; /* Show dropdowns only when hovering over the parent */
+    display: block; /* Open dropdown on hover */
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
+.dropdown-menu {
+    background-color: var(--dunkelpetrol); /* Match navbar background */
+    color: white; /* Ensure text remains white */
+    border: none; /* Remove border */
+    border-radius: 0; /* Remove rounded corners */
+    margin-top: 0; /* Align with navbar */
+    box-shadow: none; /* Remove shadow */
 }
 
-.dropdown-item {
-    color: var(--dunkelpetrol);
+.dropdown-menu .dropdown-item {
+    color: white; /* Ensure dropdown items have white text */
 }
 
-.dropdown-item:hover {
-    background-color: var(--petrol);
-    color: var(--sehrdunkelpetrol);
+.dropdown-menu .dropdown-item:hover {
+    background-color: var(--petrol); /* Highlight on hover */
+    color: var(--hellorange); /* Optional: Change text color on hover */
 }
 
-/* Nested Dropdown */
-.dropdown-submenu {
-    position: relative;
-}
-
-.dropdown-submenu .dropdown-menu {
-    display: none; /* Ensure nested dropdowns are hidden by default */
+.dropdown-menu .dropdown-menu {
+    position: absolute;
     top: 0;
     left: 100%;
     margin-top: -1px;
+    display: none; /* Hidden by default */
 }
 
-.dropdown-submenu:hover > .dropdown-menu {
-    display: block; /* Show nested dropdowns only when hovering over the submenu */
+.dropdown-menu .dropdown:hover > .dropdown-menu {
+    display: block; /* Show nested dropdowns on hover */
 }
 
-@media (max-width: 768px) {
-    .dropdown-submenu .dropdown-menu {
-        left: -100%;
-        right: auto;
-    }
-
-    .nav-item.dropdown:hover .dropdown-menu {
-        display: none;
-    }
+.nav-item.dropdown.show > .dropdown-menu {
+    display: block; /* Keep dropdown open when clicked */
 }
 
-@media (min-width: 769px) {
-    .dropdown-submenu:hover .dropdown-menu {
-        left: auto;
-        right: 100%;
-    }
+.dropdown.show > .dropdown-menu {
+    display: block; /* Keep nested dropdown open when clicked */
+}
+
+/* Ensure parent dropdown button retains its styles */
+.dropdown:hover > .dropdown-toggle {
+    background-color: var(--dunkelpetrol); /* Original background color */
+    color: white; /* Original text color */
+}
+
+/* Prevent hover styles from affecting the parent dropdown button */
+.dropdown-menu:hover > .dropdown-toggle {
+    background-color: var(--dunkelpetrol); /* Original background color */
+    color: white; /* Original text color */
+}
+
+/* Submenu items hover styles */
+.dropdown-menu .dropdown-item:hover {
+    background-color: var(--petrol); /* Highlight color for submenu items */
+    color: var(--sehrdunkelpetrol); /* Text color for submenu items */
+}
+
+/* Ensure dropdown items retain their styles on focus or active state */
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: var(--petrol); /* Same as hover background color */
+    color: var(--hellorange); /* Same as hover text color */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Ensure parent dropdown button retains its styles */
+.dropdown-toggle:focus,
+.dropdown-toggle:active {
+    background-color: var(--dunkelpetrol); /* Original background color */
+    color: white; /* Original text color */
+    outline: none; /* Remove default focus outline */
 }
 
 /* Footer */
@@ -536,5 +553,10 @@ footer p {
 
     .contact-form-section h2 {
         font-size: 1.5rem;
+    }
+
+    .dropdown-menu .dropdown-menu {
+        left: auto;
+        right: 100%; /* Adjust for smaller screens */
     }
 }

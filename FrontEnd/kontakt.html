@@ -10,7 +10,8 @@
         <link href="styles.css" rel="stylesheet">
     </head>
     <body>
-          <!-- Navigation -->
+
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html"><img src="https://www.stura.htw-dresden.de/stura/ref/oea/cd/logo/logo-mit-htwd-weiss/image_preview" alt="StuRa HTW Logo" height="30"></a>
@@ -42,11 +43,13 @@
                         <a class="nav-link dropdown-toggle" href="#" id="studienlebenDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Studienleben
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="studienlebenDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="studienlebenDropdown" data-bs-popper="static">
                             <li><a class="dropdown-item" href="#">Semesterticket</a></li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="https://www.htw-dresden.de/" target="_blank">HTW Dresden</a>
-                                <ul class="dropdown-menu">
+                            <li class="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="htwDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    HTW Dresden
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="htwDropdown" data-bs-popper="static">
                                     <li><a class="dropdown-item" href="https://mobil.htw-dresden.de/de/">Mobil App</a></li>
                                     <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/organisation/bibliothek">Bibliothek</a></li>
                                     <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/aktuelles/veranstaltungskalender">Veranstaltungskalender</a></li>
@@ -54,9 +57,11 @@
                                     <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/fakultaeten/info-math/forschung/smart-production-systems/lab-x">LabX</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">Studentenwerk</a>
-                                <ul class="dropdown-menu">
+                            <li class="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="studentenwerkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Studentenwerk
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="studentenwerkDropdown">
                                     <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/mensen/mensen_cafeterien.html">Mensen</a></li>
                                     <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/finanzierung/bafoeg.html">BaföG</a></li>
                                 </ul>
