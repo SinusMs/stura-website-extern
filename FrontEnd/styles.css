@@ -1,4 +1,5 @@
 /* Allgemeine/Globale Stile */
+/* Used by all HTML files */
 :root {
     --sehrdunkelpetrol: #1B423E;
     --dunkelpetrol: #387D75;
@@ -17,6 +18,7 @@ body {
 }
 
 /* Navbar */
+/* Used by index.html, faq.html, kontakt.html, and other pages with navigation */
 .navbar {
     background-color: var(--dunkelpetrol);
 }
@@ -36,6 +38,8 @@ body {
     display: block; /* Open dropdown on hover */
 }
 
+/* Dropdown Styles */
+/* Used by index.html, faq.html, kontakt.html, and other pages with dropdown menus */
 .dropdown-menu {
     background-color: var(--dunkelpetrol); /* Match navbar background */
     color: white; /* Ensure text remains white */
@@ -109,6 +113,7 @@ body {
 }
 
 /* Footer */
+/* Used by index.html, faq.html, kontakt.html, and other pages with the footer */
 footer {
     font-size: 16px;
     display: flex;
@@ -219,6 +224,7 @@ footer p {
 }
 
 /* Hero Section */
+/* Used by index.html */
 .hero-section {
     height: 600px;
     display: flex;
@@ -241,6 +247,7 @@ footer p {
 }
 
 /* Welcome Section */
+/* Used by index.html */
 .welcome-section {
     height: 400px;
     background-color: var(--sehrdunkelpetrol);
@@ -264,6 +271,7 @@ footer p {
 }
 
 /* Combined Section */
+/* Used by index.html */
 .neues-section {
     background-color: var(--hellpetrol);
     display: grid;
@@ -273,6 +281,7 @@ footer p {
 }
 
 /* News Section */
+/* Used by index.html */
 .news-section {
     display: flex;
     flex-direction: column;
@@ -343,6 +352,7 @@ footer p {
 }
 
 /* Event Section */
+/* Used by index.html */
 .event-section {
     height: 300px;
     display: flex;
@@ -378,6 +388,7 @@ footer p {
 }
 
 /* StandOrt Section */
+/* Used by index.html */
 .StandOrt {
     background-color: var(--sehrdunkelpetrol);
     display: flex;
@@ -407,6 +418,7 @@ footer p {
 }
 
 /* Icons Section */
+/* Used by index.html */
 .Icons {
     background: url('https://cloud.stura.htw-dresden.de/apps/files_sharing/publicpreview/nWaYrP4ENF7Sxwm?file=/&fileId=339146&x=2560&y=1440&a=true&etag=f51a07d0673c2698daa18a4942de6618') no-repeat center center/cover;
     height: 400px;
@@ -439,6 +451,7 @@ footer p {
 }
 
 /* Contact Intro Section */
+/* Used by kontakt.html */
 .contact-intro {
     background-color: var(--sehrdunkelpetrol);
     color: white;
@@ -458,6 +471,7 @@ footer p {
 }
 
 /* Map Section */
+/* Used by kontakt.html */
 .map-section {
     background-color: var(--hellpetrol);
     padding: 20px 0;
@@ -468,6 +482,7 @@ footer p {
 }
 
 /* Info Section */
+/* Used by kontakt.html */
 .info-section {
     background-color: var(--hellpetrol);
     padding: 40px 20px;
@@ -480,9 +495,25 @@ footer p {
     margin-top: 60px;
 }
 
+.info-section .btn {
+    background-color: var(--orange);
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    z-index: 2; /* Ensure the button is above the image */
+}
+
+.info-section .btn:hover {
+    background-color: var(--dunkelorange);
+}
+
 /* Contact Form Section */
+/* Used by kontakt.html */
 .contact-form-section {
-    background-color: var(--hellpetrol);
+    background-color: var (--hellpetrol);
     padding: 40px 20px;
 }
 
@@ -498,7 +529,7 @@ footer p {
 }
 
 .contact-form-section form .form-label {
-    color: var(--dunkelpetrol);
+    color: var (--dunkelpetrol);
 }
 
 .contact-form-section .form-control {
@@ -538,6 +569,121 @@ footer p {
     background-color: var(--dunkelorange);
 }
 
+/* FAQ Section */
+/* Used by faq.html */
+
+/* FAQ Header */
+/* Used by faq.html */
+.faq-header {
+    background-color: var(--dunkelpetrol);
+    color: var(--hellorange);
+    padding: 50px 20px;
+    margin: 0;
+    text-align: center;
+}
+
+.faq-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.faq-header p {
+    font-size: 1.2rem;
+    color: white;
+    line-height: 1.6;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+/* FAQ Content */
+/* Used by faq.html */
+.faq-content {
+    background-color: var(--hellpetrol);
+    padding: 40px 20px;
+}
+
+.accordion-button {
+    background-color: white;
+    color: var(--sehrdunkelpetrol);
+    font-weight: bold;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--petrol);
+    color: white;
+}
+
+.accordion-body {
+    background-color: white;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 2px;
+}
+
+.accordion-button:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: none; /* Remove any box shadow */
+}
+
+/* FAQ Footer */
+/* Used by faq.html */
+.faq-footer {
+    background-color: var(--hellpetrol);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.faq-footer h2 {
+    font-size: 1.8rem;
+    color: var(--sehrdunkelpetrol);
+    margin-bottom: 20px;
+}
+
+.faq-footer .btn {
+    background-color: var(--orange);
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.faq-footer .btn:hover {
+    background-color: var(--dunkelorange);
+}
+
+/* Responsive Styles for FAQ */
+/* Used by faq.html */
+@media (max-width: 768px) {
+    .faq-header h1 {
+        font-size: 2rem;
+    }
+
+    .faq-header p {
+        font-size: 1rem;
+    }
+
+    .faq-footer h2 {
+        font-size: 1.5rem;
+    }
+
+    .faq-footer .btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Responsive Styles */
+/* Used by all HTML files */
 @media (max-width: 768px) {
     .contact-intro .page-title {
         font-size: 2rem;
@@ -559,4 +705,15 @@ footer p {
         left: auto;
         right: 100%; /* Adjust for smaller screens */
     }
+}
+
+/* Custom Link Styles */
+a {
+    color: var(--orange); /* Default link color */
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+a:hover {
+    color: var(--dunkelorange); /* Hover color */
+    text-decoration: underline; /* Optional: Add underline on hover */
 }

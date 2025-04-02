@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="https://www.stura.htw-dresden.de/stura/ref/oea/cd/logo/logo-mit-htwd-weiss/image_preview" alt="StuRa HTW Logo" height="30"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aktuellesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Aktuelles
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aktuellesDropdown">
+                            <li><a class="dropdown-item" href="#">News</a></li>
+                            <li><a class="dropdown-item" href="#">Kalender</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="ueberDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Über den StuRa
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="ueberDropdown">
+                            <li><a class="dropdown-item" href="werStura.html">Wer ist der StuRa?</a></li>
+                            <li><a class="dropdown-item" href="#">Was macht der StuRa?</a></li>
+                            <li><a class="dropdown-item" href="#">Mitmachen im StuRa</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="studienlebenDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Studienleben
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="studienlebenDropdown" data-bs-popper="static">
+                            <li><a class="dropdown-item" href="#">Semesterticket</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="htwDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    HTW Dresden
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="htwDropdown" data-bs-popper="static">
+                                    <li><a class="dropdown-item" href="https://mobil.htw-dresden.de/de/">Mobil App</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/organisation/bibliothek">Bibliothek</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/aktuelles/veranstaltungskalender">Veranstaltungskalender</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/gruendung">Gründungsschmiede</a></li>
+                                    <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/fakultaeten/info-math/forschung/smart-production-systems/lab-x">LabX</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-item dropdown-toggle" href="#" id="studentenwerkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Studentenwerk
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="studentenwerkDropdown">
+                                    <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/mensen/mensen_cafeterien.html">Mensen</a></li>
+                                    <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/finanzierung/bafoeg.html">BaföG</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="https://www.kss-sachsen.de/">KSS-Sachsen</a></li>
+                            <li><a class="dropdown-item" href="https://www.bildung.sachsen.de/">Bildungsministerium</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="kontaktDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kontakt
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="kontaktDropdown">
+                            <li><a class="dropdown-item" href="kontakt.html">So findet man uns</a></li>
+                            <li><a class="dropdown-item" href="#">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="faq-header text-center py-5" style="background-color: var(--sehrdunkelpetrol); color: var(--hellorange);">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Du brauchst eine Antwort und dann auch noch relativ schnell? Vielleicht ist deine Frage mit passender Antwort hier dabei.<br>
+                Hier findest du alle häufig gestellten Fragen und weitere besonders relevanten Informationen auf einen Blick.</p>
+            </div>
+        </section>
+
+        <section class="faq-content py-5" style="background-color: var(--hellpetrol);">
+            <div class="container">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Ihr macht das doch mit dem Semesterticket? Und da gibt es doch so einen Antrag?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Jo! Wir machen das mit dem <a href="https://www.stura.htw-dresden.de/stura/ref/verwaltung/ticket/informationen-zum-antrag-zum-semesterticket">Semesterticket</a>. Dazu gibt es einen <a href="https://www.stura.htw-dresden.de/stura/ref/verwaltung/ticket/antrag">Antrag</a>!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Seid ihr diejenigen, die die Ordnungen der Studentinnenschaft beschließen? Sind die auch online bekanntgegeben?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Jo! Alle <a href="https://www.stura.htw-dresden.de/stura/ordnungen">Ordnungen</a> der Studentinnenschaft (und des StuRa) sind auf der Website öffentlich.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Ihr seid doch auch diejenigen, die alles für uns Studentinnen beschließen? Kann ich da einen Antrag stellen?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Jein! Wir (als StuRa) fassen die Beschlüsse für alle Studentinnen. Die grundsätzliche Meinungsbildung dazu findet im <a href = "https://www.stura.htw-dresden.de/stura/plenum">Plenum</a> statt, dort sitzen die Vertreterinnen der Fakultäten, die von allen Studierenden gewählt werden. Jedoch kann dies auch im <a href="https://www.stura.htw-dresden.de/stura/rk">Referatskollegium</a> passieren, wo unserer 11 Referate und andere Entscheidende des StuRa zusammen kommen. Scheut euch nicht im Zweifelsfall <a href="https://www.stura.htw-dresden.de/stura/plenum/sitzungen/2024-2025/uebersicht/antraege">Anträge zu Sitzungen des StuRa</a> zu stellen.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingfour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                Ich hab eine Frage zum BAföG. Zur Beratung zum Studentenwerk zu gehen erscheint mir problematisch, da es ja auch das BAföG-Amt ist.
+                            </button>
+                        </h2>
+                        <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Bei uns findest du Informationen und Beratung zum <a href="https://www.stura.htw-dresden.de/stura/ref/soziales/stud-fin/bafoeg">BAföG</a>. Idealer Weise bieten wir regelmäßige Sprechzeiten aus rein studentischer Perspektive.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingfive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                Der Semesterbeitrag, dessen Höhe ihr doch festgelegt habt, macht mir das Weiterstudieren unmöglich. Könntet ihr da nicht eine Ausnahme als Härtefall machen?
+                            </button>
+                        </h2>
+                        <div id="collapsefive" class="accordion-collapse collapse" aria-labelledby="headingfive" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Es gibt einen vom StuRa eingesetzten <a href="https://www.stura.htw-dresden.de/weitere/hfa/informationen-zum-antrag-auf-haertefallanerkennung">Härtefallausschuss</a>, der im Rahmen der Möglichkeiten <a href="https://www.stura.htw-dresden.de/weitere/hfa/antrag">einen solchen Antrag</a> bewilligen kann.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingsix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
+                                Ich war selbst in der studentischen Vertretung, also der studentischen Selbstverwaltung, aktiv. Jedoch habe ich gar nicht begriffen wie das mit der Bestätigung durch uns selbst ist. Es gibt doch Gremiensemester?
+                            </button>
+                        </h2>
+                        <div id="collapsesix" class="accordion-collapse collapse" aria-labelledby="headingsix" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Wir sind die Stelle, die die Mitwirkung auf <a href="https://www.stura.htw-dresden.de/stura/ref/personal/mitwirkung/gremiensemester/antrag-htw-dresden">Antrag (der Hochschule)</a> für die studentische Selbstverwaltung bestätigt. Andere Stellen entscheiden dann aber über die Folgen, etwa die Hochschule über die Nichtanrechnung der Studienzeit oder das BAföG-Amt über die Förderung über die Förderungshöchstdauer hinaus. Im Übrigen musst du nach unserer gemeinsamen <a href="https://www.stura.htw-dresden.de/stura/a/struk/mito">Mitwirkungsordnung</a> mitgewirkt haben.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingseven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseseven" aria-expanded="false" aria-controls="collapseseven">
+                                Wenn ich bei euch was mitmachen möchte, was müsste ich da machen?
+                            </button>
+                        </h2>
+                        <div id="collapseseven" class="accordion-collapse collapse" aria-labelledby="headingseven" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Im Allgemeinen ist das Einfachste einfach eine Mail an <a href="https://www.stura.htw-dresden.de/mitmachen">mitmachen@stura.htw-dresden.de</a> zu schreiben. Aber gern kann durch einfach zu einer der Sprechzeiten vorbeikommen, die du auf unserer <a href="https://www.stura.htw-dresden.de/">Startseite</a> findest.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more accordion items as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-footer text-center py-5" style="background-color: var(--hellpetrol);">
+            <div class="container">
+                <h2>Deine Frage war nicht dabei?</h2>
+                <a href="kontakt.html#contact-form-section" class="btn btn-warning mt-3" style="background-color: var(--orange); color: white;">So erreichst du uns!</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="left">
+                <p>StuRa HTW Dresden</p>
+                <p>A-Gebäude 1. Etage (Erdgeschoss) rechts</p>
+                <p>Räume A101 - A110</p>
+                <p>Andreas-Schubert-Straße 23</p>
+                <p>01069 Dresden</p>
+            </div>
+            <div class="footer-logo">
+                <img src="https://www.stura.htw-dresden.de/stura/ref/oea/cd/logo/logo-mit-htwd-weiss/image_preview" alt="StuRa HTW Logo" height="60">
+            </div>
+            <div class="right">
+                <div class="footer-links">
+                    <a href="#">Über uns</a>
+                    <a href="#">Anfahrt</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">FAQ</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-links">
+            <a href="#">Login</a>
+            <span>|</span>
+            <a href="#">Impressum</a>
+            <span>|</span>
+            <a href="#">Datenschutzerklärung</a>
+        </div>
+        <p>Copyright &copy; 2024 StuRa HTW Dresden</p>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbarToggler = document.querySelector('.navbar-toggler');
+            var navbarCollapse = document.querySelector('#navbarNav');
+
+            // Close the navbar when clicking outside on smaller screens
+            document.addEventListener('click', function (event) {
+                if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
+                    navbarCollapse.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
