@@ -513,41 +513,29 @@ footer p {
 /* Contact Form Section */
 /* Used by kontakt.html */
 .contact-form-section {
-    background-color: var (--hellpetrol);
+    background-color: var(--hellpetrol);
     padding: 40px 20px;
 }
 
 .contact-form-section h2 {
-    color: var(--dunkelpetrol);
+    color: var(--sehrdunkelpetrol);
     margin-bottom: 20px;
 }
 
 .contact-form-section p {
     font-size: 1rem;
-    color: var(--dunkelpetrol);
+    color: var(--sehrdunkelpetrol);
     margin-bottom: 30px;
 }
 
 .contact-form-section form .form-label {
-    color: var (--dunkelpetrol);
-}
-
-.contact-form-section .form-control {
-    border: 1px solid var(--petrol);
-    border-radius: 5px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: var(--sehrdunkelpetrol);
 }
 
 .contact-form-section .form-control:focus {
     border-color: var(--orange);
     box-shadow: 0 0 5px var(--orange);
     outline: none;
-}
-
-.contact-form-section .form-select {
-    border-radius: 5px;
-    border: 1px solid var(--petrol);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-form-section .form-select:focus {
@@ -569,13 +557,28 @@ footer p {
     background-color: var(--dunkelorange);
 }
 
+/* Style for the dropdown to match input fields */
+.contact-form-section .form-select {
+    color: gray; /* Default text color */
+}
+
+.contact-form-section .form-select:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 5px var(--orange);
+    outline: none;
+}
+
+.contact-form-section .form-select option[value=""] {
+    color: gray; /* Placeholder text color */
+}
+
 /* FAQ Section */
 /* Used by faq.html */
 
 /* FAQ Header */
 /* Used by faq.html */
 .faq-header {
-    background-color: var(--dunkelpetrol);
+    background-color: var(--sehrdunkelpetrol);
     color: var(--hellorange);
     padding: 50px 20px;
     margin: 0;
