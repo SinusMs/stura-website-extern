@@ -626,18 +626,18 @@ footer p {
 }
 
 .faq-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: bold;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    margin-bottom: 70px;
+    margin-top: 80px;
 }
 
 .faq-header p {
     font-size: 1.2rem;
     color: white;
     line-height: 1.6;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-inline: 100px;
+    margin-bottom: 30px;
 }
 
 /* FAQ Content */
@@ -760,5 +760,4 @@ a {
 
 a:hover {
     color: var(--dunkelorange); /* Hover color */
-    text-decoration: underline; /* Optional: Add underline on hover */
 }
