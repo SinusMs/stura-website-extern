@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
     if helpers.logged_in?
       @articles = Article.all.order(published: :desc)
     else
-      published_articles = Article.where(published: ..Time.now).order(published: :desc)
+      published_articles = Article.where(published: (Time.now - Settings.first().showArticlesForDays.days)..Time.now).order(published: :desc)
       @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
     end
   end
@@ -69,7 +69,7 @@ class ArticlesController < ApplicationController
     if helpers.logged_in?
       @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
     else
-      published_articles = Article.where(published: ..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
+      published_articles = Article.where(published: (Time.now - Settings.first().showArticlesForDays.days)..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
       @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
     end
     @article_category = ArticleCategory.find(params[:article_category_id])
