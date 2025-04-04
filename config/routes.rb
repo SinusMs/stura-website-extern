@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
   resources :article_categories
+  resource :settings, only: [ :edit, :update ]
 
   get "/login", to: "sessions#login", as: "login"
   post "/login", to: "sessions#create"

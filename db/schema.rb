@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_18_132303) do
+ActiveRecord::Schema[7.2].define(version: 2025_04_04_080537) do
   create_table "article_categories", force: :cascade do |t|
     t.string "name"
     t.boolean "enabled"
@@ -43,6 +43,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_18_132303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_session"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer "showArticlesForDays"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
