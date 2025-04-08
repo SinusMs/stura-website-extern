@@ -750,7 +750,25 @@ footer p {
     }
 }
 
+/* Ensure dropdown menus display correctly in mobile view */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: static; /* Ensure dropdowns are positioned correctly */
+        float: none; /* Prevent floating issues */
+        width: 100%; /* Full width for mobile */
+    }
 
+    .dropdown-menu .dropdown-menu {
+        left: 0; /* Align nested dropdowns */
+        right: auto;
+        margin-top: 0; /* Remove margin for nested dropdowns */
+    }
+
+    .dropdown-item.dropdown-toggle::after {
+        content: '\25BC'; /* Add a down arrow for nested dropdowns */
+        float: right;
+    }
+}
 
 /* Custom Link Styles */
 a {
