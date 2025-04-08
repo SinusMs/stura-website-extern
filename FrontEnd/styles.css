@@ -21,6 +21,7 @@ body {
 /* Used by index.html, faq.html, kontakt.html, and other pages with navigation */
 .navbar {
     background-color: var(--dunkelpetrol);
+    padding: 0.5rem 1rem; /* Reduce padding for smaller screens */
 }
 
 .navbar .nav-link,
@@ -36,6 +37,24 @@ body {
 
 .nav-item.dropdown:hover > .dropdown-menu {
     display: block; /* Open dropdown on hover */
+}
+
+.navbar-brand img {
+    height: 25px; /* Reduce logo size */
+}
+
+.navbar-nav .nav-link {
+    font-size: 0.9rem; /* Reduce font size for links */
+}
+
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 20px; /* Further reduce logo size for very small screens */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 0.8rem; /* Further reduce font size for links */
+    }
 }
 
 /* Dropdown Styles */
@@ -133,6 +152,12 @@ footer .footer-content {
     width: 100%;
     max-width: 1200px;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Add spacing between items */
+    text-align: center; /* Default center alignment */
 }
 
 footer .footer-content .left,
@@ -140,6 +165,8 @@ footer .footer-content .right {
     display: flex;
     flex-direction: column;
     flex: 1;
+    flex: 1; /* Allow equal space distribution */
+    text-align: left; /* Align text to the left */
 }
 
 footer .footer-content .left {
@@ -193,6 +220,8 @@ footer .footer-content .right .social-icons a {
 footer .footer-logo {
     margin: 20px 0;
     text-align: center;
+    flex: 0 0 auto; /* Prevent logo from stretching */
+    text-align: center; /* Center-align logo */
 }
 
 footer .footer-links {
@@ -221,6 +250,27 @@ footer p {
 .py-3 {
     text-align: center;
     color: var(--hellorange);
+}
+
+@media (max-width: 768px) {
+    footer .footer-content {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        text-align: center; /* Center-align all text */
+        gap: 15px; /* Reduce spacing between items */
+    }
+
+    footer .footer-content .left,
+    footer .footer-content .right {
+        text-align: center; /* Override left alignment for smaller screens */
+    }
+
+    footer .footer-links a {
+        font-size: 0.9rem; /* Adjust link font size */
+    }
+
+    footer p {
+        font-size: 0.8rem; /* Adjust copyright text size */
+    }
 }
 
 /* Hero Section */
@@ -254,6 +304,17 @@ footer p {
     }
 }
 
+/* Hero Section Responsiveness */
+.hero-section {
+    height: 400px; /* Default height for smaller screens */
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 300px; /* Reduce height for mobile devices */
+    }
+}
+
 /* Welcome Section */
 /* Used by index.html */
 .welcome-section {
@@ -276,6 +337,16 @@ footer p {
 .welcome-section p {
     color: white;
     margin: 0 100px;
+}
+
+/* Welcome Section Responsiveness */
+.welcome-section h1 {
+    font-size: 2rem; /* Adjust heading size */
+}
+
+.welcome-section p {
+    font-size: 1rem; /* Adjust paragraph size */
+    margin: 0 20px; /* Reduce side margins */
 }
 
 /* Combined Section */
@@ -357,6 +428,23 @@ footer p {
 
 .read-more-button:hover {
     background-color: var(--dunkelorange);
+}
+
+/* News Section Responsiveness */
+.news-section h2 {
+    font-size: 2rem; /* Adjust heading size */
+}
+
+.news-section .card {
+    margin-bottom: 15px; /* Reduce spacing between cards */
+}
+
+.news-section .card-title {
+    font-size: 1.2rem; /* Adjust card title size */
+}
+
+.news-section .card-text {
+    font-size: 0.9rem; /* Adjust card text size */
 }
 
 /* Event Section */
@@ -459,19 +547,44 @@ footer p {
     margin-top: 20px;
 }
 
+@media (max-width: 480px) {
+    .Icons .social-icons {
+        gap: 40px; /* Reduce spacing for smaller screens */
+    }
+}
+
 .Icons .social-icons a {
     background-color: var(--orange);
     color: white;
-    font-size: 4rem;
+    font-size: 3rem; /* Default size for desktop */
     text-decoration: none;
-    width: 90px;
-    height: 90px;
+    width: 80px; /* Default width for desktop */
+    height: 80px; /* Default height for desktop */
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    transition: background-color 0.3s;
-    padding: 50px;
+    transition: background-color 0.3s, width 0.3s, height 0.3s;
+    margin: 0 15px; /* Default spacing for desktop */
+}
+
+@media (max-width: 768px) {
+    .Icons .social-icons a {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+        width: 50px; /* Reduce width for smaller screens */
+        height: 50px; /* Reduce height for smaller screens */
+        margin: 0 10px; /* Reduce spacing for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .Icons .social-icons a {
+        font-size: 1.8rem; /* Further reduce font size for very small screens */
+        width: 45px; /* Further reduce width for very small screens */
+        height: 45px; /* Further reduce height for very small screens */
+        margin: 0 5px; /* Further reduce spacing for very small screens */
+        
+    }
 }
 
 /* Contact Intro Section */
@@ -551,7 +664,7 @@ footer p {
 
 .contact-form-section p {
     font-size: 18px; /* Schriftgröße */
-    color: var(--sehrdunkelpetrol); /* Textfarbe */
+    color: var (--sehrdunkelpetrol); /* Textfarbe */
     margin-bottom: 60px;
     text-align: center; /* Zentrierter Text */
     max-width: 800px; /* Begrenzte Breite für Desktop */
@@ -570,7 +683,7 @@ footer p {
 }
 
 .contact-form-section form .form-label {
-    color: var(--sehrdunkelpetrol);
+    color: var (--sehrdunkelpetrol);
     text-align: left;
     padding-left: 12px;
     font-weight: bold;
