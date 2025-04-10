@@ -2,5 +2,3 @@
 
 settings:
   showArticlesForDays: 180
-  created_at: Time.current
-  updated_at: Time.current

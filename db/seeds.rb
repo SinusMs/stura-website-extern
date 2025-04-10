@@ -22,6 +22,6 @@ if ArticleCategory.where(name: "Stus Blog").blank?
   ArticleCategory.create!(name: "Stus Blog", enabled: true)
 end
 
-if Settings.first().blank?
-  Settings.create!(showArticlesForDays: 180)
+if Setting.first().blank?
+  Setting.create!(showArticlesForDays: 180)
 end
