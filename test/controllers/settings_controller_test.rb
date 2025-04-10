@@ -3,6 +3,7 @@ require "test_helper"
 class SettingsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @settings = settings(:settings)
+    post login_url, params: { username: "admin", password: "123" }
   end
 
   test "should get edit" do
