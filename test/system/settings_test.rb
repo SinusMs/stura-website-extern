@@ -11,10 +11,10 @@ class SettingsTest < ApplicationSystemTestCase
   end
 
   test "should update Settings" do
-    visit settings_url
+    visit edit_settings_url
 
     fill_in "Showarticlesfordays", with: @settings.showArticlesForDays
-    click_on "Update Settings"
+    click_on "Update Setting"
 
     assert_text "Settings was successfully updated"
     click_on "Back"

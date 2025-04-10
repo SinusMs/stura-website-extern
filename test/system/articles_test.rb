@@ -17,7 +17,7 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test "should create article" do
     visit articles_url
-    click_on "New article"
+    click_on "New Article"
 
     fill_in "Article category", with: @article.article_category_id
     fill_in "Content", with: @article.content
