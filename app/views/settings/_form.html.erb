@@ -1,0 +1,22 @@
+<%= form_with(model: setting, url: settings_url) do |form| %>
+  <% if setting.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+        <% setting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :showArticlesForDays, style: "display: block" %>
+    <%= form.number_field :showArticlesForDays %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

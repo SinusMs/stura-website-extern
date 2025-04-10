@@ -6,10 +6,18 @@
         <%= button_to "New User", new_user_path, method: :get %>
     <% end %>
     <% if logged_in? %>
+        <%= button_to "Articles", articles_path, method: :get %>
+        <% ArticleCategory.all.each do |category| %>
+            <%= button_to category.name, article_category_articles_path(category.id), method: "get" %>
+        <% end %>
+        <%= button_to "New Article", new_article_path, method: :get %>
+        <%= button_to "New Article Category", new_article_category_path, method: :get %>
+        <%= button_to "Article Categories", article_categories_path, method: :get %>
         <%= button_to "Events", events_path, method: :get %>
         <%= button_to "New Event", new_event_path, method: :get %>
         <%= button_to "Contact email addresses", contact_email_addresses_path, method: :get %>
         <%= button_to "New contact email address", new_contact_email_address_path, method: :get  %>
+        <%= button_to "Site Settings", edit_settings_path, method: :get  %>
         <%= button_to "User Settings", edit_user_path(id: current_user.id), method: :get %>
         <%= button_to "Logout", logout_path, method: :get %>
     <% else %>

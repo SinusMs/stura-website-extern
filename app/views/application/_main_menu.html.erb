@@ -1,5 +1,9 @@
 <div id="main_menu">
     <%= button_to "Home", root_path, method: "get" %>
+    <%= button_to "Articles", articles_path, method: "get" %>
+    <% ArticleCategory.all.each do |category| %>
+        <%= button_to category.name, article_category_articles_path(category.id), method: "get" %>
+    <% end %>
     <%= button_to "Events", events_path, method: "get" %>
     <%= button_to "Contact", contact_path, method: "get" %>
     <% if logged_in? %>
