@@ -9,19 +9,16 @@
 #   end
 
 if User.where(is_admin: true).blank?
-  puts "No admin account found, creating default admin account... "
+  puts "No admin account found, creating default admin account."
   User.create!(username: ENV["DEFAULT_USER_USERNAME"], password: ENV["DEFAULT_USER_PASSWORD"], is_admin: true).username
-  puts "Done!"
 end
 
 if ArticleCategory.where(name: "News").blank?
+  puts "No News Category found, creating default News Category."
   ArticleCategory.create!(name: "News", enabled: true)
 end
 
-if ArticleCategory.where(name: "Stus Blog").blank?
-  ArticleCategory.create!(name: "Stus Blog", enabled: true)
-end
-
 if Setting.first().blank?
+  puts "No Settings found, creating default Settings."
   Setting.create!(showArticlesForDays: 180)
 end
