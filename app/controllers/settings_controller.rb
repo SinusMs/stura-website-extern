@@ -10,7 +10,7 @@ class SettingsController < ApplicationController
   # PATCH/PUT /settings or /settings.json
   def update
     respond_to do |format|
-      if @setting.update(settings_params)
+      if @setting.update(setting_params)
         format.html { redirect_to edit_settings_path, notice: "Settings was successfully updated." }
         format.json { render :show, status: :ok, location: @setting }
       else
@@ -27,8 +27,8 @@ class SettingsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def settings_params
-      params.require(:settings).permit(:showArticlesForDays)
+    def setting_params
+      params.require(:setting).permit(:showArticlesForDays)
     end
 
     def verify_is_logged_in

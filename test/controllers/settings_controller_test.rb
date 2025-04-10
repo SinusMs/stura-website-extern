@@ -12,7 +12,7 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update setting" do
-    patch settings_url, params: { settings: { showArticlesForDays: @settings.showArticlesForDays } }
+    patch settings_url, params: { setting: { showArticlesForDays: @settings.showArticlesForDays } }
     assert_redirected_to edit_settings_url
   end
 end

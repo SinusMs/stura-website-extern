@@ -17,6 +17,5 @@ class SettingsTest < ApplicationSystemTestCase
     click_on "Update Setting"
 
     assert_text "Settings was successfully updated"
-    click_on "Back"
   end
 end
