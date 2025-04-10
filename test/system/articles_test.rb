@@ -19,7 +19,8 @@ class ArticlesTest < ApplicationSystemTestCase
     visit articles_url
     click_on "New Article"
 
-    fill_in "Article category", with: @article.article_category_id
+    # fill_in "Article category", with: @article.article_category_id
+    # select @article.article_category_id, from: "Article category"
     fill_in "Content", with: @article.content
     fill_in "Published", with: @article.published
     fill_in "Title", with: @article.title
@@ -33,7 +34,8 @@ class ArticlesTest < ApplicationSystemTestCase
     visit article_url(@article)
     click_on "Edit this article", match: :first
 
-    fill_in "Article category", with: @article.article_category_id
+    # fill_in "Article category", with: @article.article_category_id
+    # select @article.article_category_id, from: "Article category"
     fill_in "Content", with: @article.content
     fill_in "Published", with: @article.published.to_s
     fill_in "Title", with: @article.title
