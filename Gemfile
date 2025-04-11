@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem "sprockets-rails"
+gem "sprockets-rails", ">= 2.3.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", ">= 1.4"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -33,6 +33,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+
+# Bootstrap CSS Framework for responsive design
+gem "bootstrap", "~> 5.3.3"
+
+# Sass Engine required by Bootstrap
+gem "dartsass-sprockets"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
