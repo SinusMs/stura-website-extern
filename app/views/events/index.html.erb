@@ -9,7 +9,7 @@
   <input type="checkbox" onclick="toggleRowVisibility()" id="sessions-checkbox">
   <table>
       <thead>
-        <th>Date</th> <th>Time</th> <th>Event</th>
+        <th>Date</th> <th>Time</th> <th>Event</th> <th>Location</th>
         <% if logged_in? %>
           <th>Edit</th> <th>Delete</th>
         <% end %>
@@ -21,9 +21,10 @@
         <% else %>
           <tr class="event-row">
         <% end %>
-            <td><%= event.datetime.strftime("%d.%m.%y") %></td>
-            <td><%= event.datetime.strftime("%H:%M") %></td>
+            <td><%= event.datetime.try(:strftime, "%d.%m.%y") %></td>
+            <td><%= event.datetime.try(:strftime, "%H:%M") %></td>
             <td><%= link_to event.title, event %></td>
+            <td><%= event.location %></td>
             <% if logged_in? %>
                 <td><%= button_to "Edit", edit_event_path(event), method: :get %></td>
                 <td><%= button_to "Delete", event, method: :delete %></td>
