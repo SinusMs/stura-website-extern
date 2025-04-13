@@ -16,6 +16,9 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 build-essential nodejs && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
+# Install Yarn 
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.22 
+
 ENV BUNDLE_PATH="/usr/local/bundle"
 
 # Install application gems
