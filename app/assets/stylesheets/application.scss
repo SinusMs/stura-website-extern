@@ -11,5 +11,45 @@
  * It is generally better to create a new file per style scope.
  */
 
+// All overridable bootstrap variables can be found under https://github.com/twbs/bootstrap-rubygem/blob/main/assets/stylesheets/bootstrap/_variables.scss 
+
+// Stura HTW Corporate Design Colors
+$petrol-light:     #CEE9E6;
+$petrol:           #58AAA0;
+$petrol-dark:      #387D75;
+$petrol-very-dark: #1B423E;
+$orange-light:     #FFD6BA;
+$orange:           #EC660C;
+$orange-dark:      #BB500A;
+$orange-very-dark: #6E2F04;
+
+
+// Bootstrap overrides
+$custom-colors: (
+    "petrol-light":     $petrol-light,
+    "petrol":           $petrol,
+    "petrol-dark":      $petrol-dark,
+    "petrol-very-dark": $petrol-very-dark,
+    "orange-light":     $orange-light,
+    "orange":           $orange,
+    "orange-dark":      $orange-dark,
+    "orange-very-dark": $orange-very-dark,
+);
+
+$theme-colors: (
+  "primary":    $petrol-dark,
+  "secondary":  $orange,
+  "info":       $orange-light,
+  "light":      $petrol-light,
+  "dark":       $petrol-very-dark,
+//   "success":    $success,
+//   "warning":    $warning,
+//   "danger":     $danger,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$body-bg:       $petrol-light;
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";

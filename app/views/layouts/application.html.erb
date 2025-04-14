@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Stu Ra Website" %></title>
+    <title><%= content_for(:title) || "StuRa Website" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -19,10 +19,12 @@
     <%= javascript_include_tag "bootstrap.min", "data-turbo-track": "reload", defer: true  %>
   </head>
 
-  <%= render "main_menu" %>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
+    <%= render "main_menu" %>
     <%= content_for?(:backend_menu) ? yield(:backend_menu) : nil  %>
+    <main class="flex-shrink-0">
     <%= yield %>
+    </main>
+    <%= render "footer" %>
   </body>
-  <%= render "footer" %>
 </html>
