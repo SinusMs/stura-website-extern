@@ -886,9 +886,17 @@ footer p {
 /* Custom Link Styles */
 a {
     color: var(--orange); /* Default link color */
-    text-decoration: none; /* Optional: Remove underline */
 }
 
 a:hover {
     color: var(--dunkelorange); /* Hover color */
+}
+
+/* Override link color for the footer links */
+.row.mt-3 a {
+    color: white; /* Set the desired color */
+}
+
+.row.mt-3 a:hover {
+    color: var(--hellorange); /* Optional: Set hover color */
 }
