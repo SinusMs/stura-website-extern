@@ -22,7 +22,7 @@
   <body class="d-flex flex-column min-vh-100">
     <%= render "main_menu" %>
     <%= content_for?(:backend_menu) ? yield(:backend_menu) : nil  %>
-    <main class="flex-shrink-0">
+    <main class="flex-shrink-0 pt-5">
     <%= yield %>
     </main>
     <%= render "footer" %>
