@@ -73,10 +73,6 @@ body {
   color: $orange-light !important;
 }
 
-.nav-item.dropdown:hover > .dropdown-menu {
-  display: block; /* Open dropdown on hover */
-}
-
 .navbar-brand img {
   height: 25px; /* Reduce logo size */
 }
@@ -91,35 +87,10 @@ body {
   box-shadow: none; /* Remove shadow */
 }
 
-.dropdown-menu .dropdown-menu {
-  top: 0;
-  left: 100%;
-}
-
-/* Ensure parent dropdown button retains its styles */
-.dropdown:hover > .dropdown-toggle {
-  background-color: $petrol-dark; /* Original background color */
-  color: white; /* Original text color */
-}
-
-/* Prevent hover styles from affecting the parent dropdown button */
-.dropdown-menu:hover > .dropdown-toggle {
-  background-color: $petrol-dark; /* Original background color */
-  color: white; /* Original text color */
-}
-
 /* Submenu items hover styles */
 .dropdown-menu .dropdown-item:hover {
   background-color: $petrol-dark; /* Highlight color for submenu items */
   color: $petrol-very-dark; /* Text color for submenu items */
-}
-
-/* Ensure dropdown items retain their styles on focus or active state */
-.dropdown-item:focus,
-.dropdown-item:active {
-  background-color: $petrol-dark; /* Same as hover background color */
-  color: $orange-light; /* Same as hover text color */
-  outline: none; /* Remove default focus outline */
 }
 
 /* Footer */
