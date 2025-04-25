@@ -1,30 +1,32 @@
 <footer>
   <div class="container">
-    <div class="row">
-      <div class="col-md-4 text-begin">
-        <p>StuRa HTW Dresden</p>
-        <p>A-Gebäude 1. Etage (Erdgeschoss) rechts</p>
-        <p>Räume A101 - A110</p>
-        <p>Andreas-Schubert-Straße 23</p>
-        <p>01069 Dresden</p>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-4 text-begin order-md-1 order-last col-auto">
+        <span>StuRa HTW Dresden<br></span>
+        <span>A-Gebäude 1. Etage (Erdgeschoss) rechts<br></span>
+        <span>Räume A101 - A110<br></span>
+        <span>Andreas-Schubert-Straße 23<br></span>
+        <span>01069 Dresden<br></span>
       </div>
 
-      <div class="col-md-4 d-flex justify-content-center align-items-center">
+      <div class="col-md-4 d-flex justify-content-center align-items-center order-5 order-md-3 p-3">
         <img src="https://www.stura.htw-dresden.de/stura/ref/oea/cd/logo/logo-mit-htwd-weiss/image_preview" alt="StuRa HTW Logo" height="60">
       </div>
 
-      <div class="col-md-4">
-        <div class="text-end">
-          <p><a href="werStura.html">Über uns</a></p>
-          <p><a href="kontakt.html">Anfahrt</a></p>
+      <div class="col-md-4 order-md-5 order-1 d-flex flex-md-column justify-content-md-center justify-content-center flex-wrap column-gap-2">
+        <div class="text-md-end text-center order-md-1 order-2">
+          <a href="werStura.html">Über uns</a>
         </div>
-        <div class="social-icons d-flex justify-content-end">
+        <div class="text-md-end text-center order-md-2 order-3">
+          <a href="kontakt.html">Anfahrt</a>
+        </div>
+        <div class="social-icons d-flex justify-content-md-end justify-content-center order-md-3 order-last w-100">
           <a href="#"><%= bootstrap_icon "discord" %></a>
           <a href="#"><%= bootstrap_icon "instagram" %></a>
           <a href="#"><%= bootstrap_icon "whatsapp" %></a>
         </div>
-        <div class="text-end">
-          <p><a href="faq.html">FAQ</a></p>
+        <div class="text-md-end text-center order-md-4 order-4">
+          <a href="faq.html">FAQ</a>
         </div>
       </div>
     </div>
