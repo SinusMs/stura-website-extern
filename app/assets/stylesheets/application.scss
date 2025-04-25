@@ -52,24 +52,16 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 $body-bg:           $petrol-light;
 $link-color:      white;
 $link-hover-color:  $orange-light;
-$link-hover-decoration:                   null !default;
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
 /* Allgemeine/Globale Stile */
-
 body {
   font-family: 'Open Sans', Arial, sans-serif;
 }
 
 /* Navbar */
-/* Used by index.html, faq.html, kontakt.html, and other pages with navigation */
-.navbar {
-  background-color: $petrol-dark;
-  padding: 0.5rem 1rem; /* Reduce padding for smaller screens */
-}
-
 .navbar .nav-link,
 .navbar .navbar-brand,
 .navbar .dropdown-item {
@@ -89,22 +81,7 @@ body {
   height: 25px; /* Reduce logo size */
 }
 
-.navbar-nav .nav-link {
-  font-size: 0.9rem; /* Reduce font size for links */
-}
-
-@media (max-width: 768px) {
-  .navbar-brand img {
-      height: 20px; /* Further reduce logo size for very small screens */
-  }
-
-  .navbar-nav .nav-link {
-      font-size: 0.8rem; /* Further reduce font size for links */
-  }
-}
-
 /* Dropdown Styles */
-/* Used by index.html, faq.html, kontakt.html, and other pages with dropdown menus */
 .dropdown-menu {
   background-color: $petrol-dark; /* Match navbar background */
   color: white; /* Ensure text remains white */
@@ -114,21 +91,9 @@ body {
   box-shadow: none; /* Remove shadow */
 }
 
-.dropdown-menu .dropdown-item {
-  color: white; /* Ensure dropdown items have white text */
-}
-
-.dropdown-menu .dropdown-item:hover {
-  background-color: $petrol; /* Highlight on hover */
-  color: $orange-light; /* Optional: Change text color on hover */
-}
-
 .dropdown-menu .dropdown-menu {
-  position: absolute;
   top: 0;
   left: 100%;
-  margin-top: -1px;
-  display: none; /* Hidden by default */
 }
 
 .dropdown-menu .dropdown:hover > .dropdown-menu {
@@ -192,8 +157,8 @@ footer .social-icons {
 footer .social-icons a {
   background-color: $orange;
   color: white;
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -203,46 +168,4 @@ footer .social-icons a {
 footer p {
   color: white;
   margin: 10px 0 0;
-}
-
-@media (max-width: 768px) {
-  footer .footer-content {
-      flex-direction: column; /* Stack items vertically on smaller screens */
-      text-align: center; /* Center-align all text */
-      gap: 15px; /* Reduce spacing between items */
-  }
-
-  footer .footer-content .left,
-  footer .footer-content .right {
-      text-align: center; /* Override left alignment for smaller screens */
-  }
-
-  footer .footer-links a {
-      font-size: 0.9rem; /* Adjust link font size */
-  }
-
-  footer p {
-      font-size: 0.8rem; /* Adjust copyright text size */
-  }
-}
-
-/* Responsive Styles */
-/* Ensure dropdown menus display correctly in mobile view */
-@media (max-width: 768px) {
-  .dropdown-menu {
-      position: static; /* Ensure dropdowns are positioned correctly */
-      float: none; /* Prevent floating issues */
-      width: 100%; /* Full width for mobile */
-  }
-
-  .dropdown-menu .dropdown-menu {
-      left: 0; /* Align nested dropdowns */
-      right: auto;
-      margin-top: 0; /* Remove margin for nested dropdowns */
-  }
-
-  .dropdown-item.dropdown-toggle::after {
-      content: '\25BC'; /* Add a down arrow for nested dropdowns */
-      float: right;
-  }
 }
