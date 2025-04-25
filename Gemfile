@@ -37,6 +37,7 @@ gem "bootsnap", require: false
 # Bootstrap CSS Framework for responsive design
 gem "bootstrap", "~> 5.3.3"
 gem "jquery-rails"
+gem "bootstrap-icons-helper"
 
 # Sass Engine required by Bootstrap
 gem "dartsass-sprockets"
