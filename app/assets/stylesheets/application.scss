@@ -96,18 +96,6 @@ body {
   left: 100%;
 }
 
-.dropdown-menu .dropdown:hover > .dropdown-menu {
-  display: block; /* Show nested dropdowns on hover */
-}
-
-.nav-item.dropdown.show > .dropdown-menu {
-  display: block; /* Keep dropdown open when clicked */
-}
-
-.dropdown.show > .dropdown-menu {
-  display: block; /* Keep nested dropdown open when clicked */
-}
-
 /* Ensure parent dropdown button retains its styles */
 .dropdown:hover > .dropdown-toggle {
   background-color: $petrol-dark; /* Original background color */
@@ -122,23 +110,15 @@ body {
 
 /* Submenu items hover styles */
 .dropdown-menu .dropdown-item:hover {
-  background-color: $petrol; /* Highlight color for submenu items */
+  background-color: $petrol-dark; /* Highlight color for submenu items */
   color: $petrol-very-dark; /* Text color for submenu items */
 }
 
 /* Ensure dropdown items retain their styles on focus or active state */
 .dropdown-item:focus,
 .dropdown-item:active {
-  background-color: $petrol; /* Same as hover background color */
+  background-color: $petrol-dark; /* Same as hover background color */
   color: $orange-light; /* Same as hover text color */
-  outline: none; /* Remove default focus outline */
-}
-
-/* Ensure parent dropdown button retains its styles */
-.dropdown-toggle:focus,
-.dropdown-toggle:active {
-  background-color: $petrol-dark; /* Original background color */
-  color: white; /* Original text color */
   outline: none; /* Remove default focus outline */
 }
 
