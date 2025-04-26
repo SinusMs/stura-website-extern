@@ -53,6 +53,14 @@ $link-color:      white;
 $link-hover-color:  $orange-light;
 $btn-color:       white !important;
 
+$input-bg:                    white;
+$input-border-width:            0px;
+$input-border-radius:           5px;
+$input-color:                   $petrol-very-dark;
+$input-font-family:             Open-Sans;
+$focus-ring-box-shadow:         0 0 0 3px $petrol;
+$form-select-focus-box-shadow:  $focus-ring-box-shadow;
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
