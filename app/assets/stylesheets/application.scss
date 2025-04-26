@@ -51,7 +51,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 $body-bg:           $petrol-light;
 $link-color:      white;
 $link-hover-color:  $orange-light;
-$btn-color:         $orange;
+$btn-color:       white !important;
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
