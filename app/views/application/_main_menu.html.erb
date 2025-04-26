@@ -1,11 +1,11 @@
 <header class="container-fluid">
-<nav class="navbar navbar-expand-lg bg-primary navbar-expand-md fixed-top">
+<nav class="navbar bg-primary navbar-expand-md fixed-top">
   <div class="container">
     <a class="navbar-brand" href=<%=root_url%>><%= image_tag "logo-mit-htwd-weiss.png", height: 30, alt: "Stura HTW" %></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarContent">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
           <%= link_to "Home", root_path, method: "get", class: "nav-link" %>
