@@ -23,7 +23,6 @@ $orange:           #EC660C;
 $orange-dark:      #BB500A;
 $orange-very-dark: #6E2F04;
 
-
 // Bootstrap overrides
 $custom-colors: (
     "petrol-light":     $petrol-light,
@@ -56,12 +55,11 @@ $link-hover-color:  $orange-light;
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-/* Allgemeine/Globale Stile */
 body {
   font-family: 'Open Sans', Arial, sans-serif;
 }
 
-/* Navbar */
+// Navbar 
 .navbar .nav-link,
 .navbar .navbar-brand,
 .navbar .dropdown-item {
@@ -74,10 +72,10 @@ body {
 }
 
 .navbar-brand img {
-  height: 25px; /* Reduce logo size */
+  height: 25px; 
 }
 
-/* Dropdown Styles */
+// Dropdown Styles
 .dropdown-menu {
   background-color: $petrol-dark; /* Match navbar background */
   color: white; /* Ensure text remains white */
@@ -87,13 +85,13 @@ body {
   box-shadow: none; /* Remove shadow */
 }
 
-/* Submenu items hover styles */
+// Submenu items hover styles
 .dropdown-menu .dropdown-item:hover {
-  background-color: $petrol-dark; /* Highlight color for submenu items */
-  color: $petrol-very-dark; /* Text color for submenu items */
+  background-color: $petrol-dark; 
+  color: $petrol-very-dark;
 }
 
-/* Footer */
+// Footer
 footer {
   background-color: $petrol-very-dark;
   margin: 0;
