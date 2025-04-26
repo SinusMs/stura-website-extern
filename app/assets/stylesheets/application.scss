@@ -51,6 +51,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 $body-bg:           $petrol-light;
 $link-color:      white;
 $link-hover-color:  $orange-light;
+$btn-color:         $orange;
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
@@ -75,6 +76,42 @@ $link-hover-color:  $orange-light;
 
 body {
   font-family: Open-Sans, Arial, sans-serif;
+}
+
+.section-dark {
+  background-color: $petrol-very-dark;
+  color: white;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $orange-light;
+    font-weight: bolder;
+  }
+
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: $orange-light;
+  }
+}
+
+.section-light {
+  background-color: $petrol-light;
+  color: $petrol-very-dark;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $orange;
+    font-weight: bolder;
+  }
+
+  a {
+    color: $petrol-very-dark;
+  }
+
+  a:hover {
+    color: $petrol;
+  }
 }
 
 // Navbar 
@@ -110,12 +147,6 @@ body {
 }
 
 // Footer
-footer {
-  background-color: $petrol-very-dark;
-  margin: 0;
-  padding: 20px 0;
-}
-
 footer .social-icons {
   gap: 10px;
   margin-top: 10px;
@@ -130,10 +161,4 @@ footer .social-icons a {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-}
-
-footer span,
-footer p {
-  color: white;
-  margin: 10px 0 0;
 }
