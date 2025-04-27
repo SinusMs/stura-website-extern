@@ -148,10 +148,9 @@ body {
   box-shadow: none; /* Remove shadow */
 }
 
-// Submenu items hover styles
-.dropdown-menu .dropdown-item:hover {
-  background-color: $petrol-dark; 
-  color: $petrol-very-dark;
+.dropdown-header {
+  color: $petrol-light;
+  font-weight: bold;
 }
 
 // Footer
