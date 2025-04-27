@@ -42,6 +42,9 @@ gem "bootstrap-icons-helper"
 # Sass Engine required by Bootstrap
 gem "dartsass-sprockets"
 
+# easy routing for static pages [https://github.com/thoughtbot/high_voltage]
+gem "high_voltage", "~> 4.0.0"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
