@@ -82,6 +82,23 @@ $form-select-focus-box-shadow:  $focus-ring-box-shadow;
   font-display: swap;
 }
 
+@mixin link($color, $hover-color){
+  a {
+    color: $color;
+  }
+  a:hover {
+    color: $hover-color;
+  }
+}
+
+@mixin dark-link{
+  @include link($petrol-very-dark, $petrol)
+}
+
+@mixin light-link{
+  @include link(white, $orange-light)
+}
+
 body {
   font-family: Open-Sans, Arial, sans-serif;
 }
@@ -95,13 +112,7 @@ body {
     font-weight: bolder;
   }
 
-  a {
-    color: white;
-  }
-
-  a:hover {
-    color: $orange-light;
-  }
+  @include light-link;
 }
 
 .section-light {
@@ -113,13 +124,34 @@ body {
     font-weight: bolder;
   }
 
-  a {
-    color: $petrol-very-dark;
+  @include dark-link;
+}
+
+.accordion {
+  border-radius: 5px;
+  border: 0px;
+
+  .accordion-item {
+    border: 1px;
+    margin-bottom: 2px;
   }
 
-  a:hover {
-    color: $petrol;
+  .accordion-button {
+    box-shadow: none;
+    font-weight: bold;
   }
+
+  .accordion-button:not(.collapsed) {
+    background-color: $petrol;
+    color: white;
+  }
+
+  .accordion-button, .accordion-body {
+    color: $petrol-very-dark;
+    background-color: white;
+  }
+  
+  @include dark-link;
 }
 
 // Navbar 
