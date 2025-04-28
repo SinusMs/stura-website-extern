@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { render :destroy, status: :see_other, notice: "User " + @user.username + " was successfully destroyed." }
+      format.html { redirect_to users_path, notice: "User \"" + @user.username + "\" was successfully destroyed." }
       format.json { head :no_content }
     end
   end

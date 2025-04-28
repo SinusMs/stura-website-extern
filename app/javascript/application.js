@@ -3,3 +3,11 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "popper"
 import "bootstrap"
+
+document.addEventListener('turbo:load', function() {
+    const toastLiveExample = document.getElementById('liveToast');
+    if (toastLiveExample) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+        toastBootstrap.show();
+    }
+});

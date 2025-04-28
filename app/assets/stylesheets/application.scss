@@ -61,6 +61,10 @@ $input-font-family:             Open-Sans;
 $focus-ring-box-shadow:         0 0 0 3px $petrol;
 $form-select-focus-box-shadow:  $focus-ring-box-shadow;
 
+$toast-background-color:            $orange-light;
+$toast-color:                       $petrol-very-dark;
+$toast-border-radius:               5px;
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
