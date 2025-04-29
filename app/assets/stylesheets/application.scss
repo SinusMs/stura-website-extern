@@ -65,6 +65,10 @@ $toast-background-color:            $orange-light;
 $toast-color:                       $petrol-very-dark;
 $toast-border-radius:               5px;
 
+$border-color: $petrol-very-dark;
+$border-width: 1px;
+$offcanvas-border-color:            $petrol-very-dark;
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
@@ -105,6 +109,25 @@ $toast-border-radius:               5px;
 
 body {
   font-family: Open-Sans, Arial, sans-serif;
+}
+
+.offcanvas{
+  .offcanvas-body {
+    background-color: $petrol-light;
+    color: $petrol-very-dark !important;
+    .border-top {
+      color: $petrol-very-dark !important;
+    }
+    @include dark-link;
+  }
+
+  .offcanvas-header {
+    background-color: $petrol-light;
+  }
+  
+  .offcanvas-title {
+    color: $petrol-very-dark;
+  }
 }
 
 .section-dark {

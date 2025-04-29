@@ -1,0 +1,61 @@
+<button class="btn btn-secondary btn-lg position-fixed bottom-0 start-0 m-3 d-flex align-items-center justify-content-center" style="z-index: 1055;  width: 60px; height: 60px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><%= bootstrap_icon "gear-fill", class: "w-100 h-100" %></button>
+<div class="offcanvas offcanvas-start bg-primary w-auto" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title mx-auto" id="offcanvasScrollingLabel">Einstellungen</h4>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav nav-pills flex-column mb-auto">
+      <% if is_admin? %>
+        <li class="nav-item">
+          <%= link_to "Alle Nutzer", users_path, method: :get, class: "nav-link"  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Nutzer erstellen", new_user_path, method: :get, class: "nav-link"  %>
+        </li>
+        <li class="border-top my-3"></li>
+      <% end %>
+      <li class="nav-item">
+        <%= link_to "Alle Artikel", articles_path, method: :get, class: "nav-link"  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Artikel erstellen", new_article_path, method: :get, class: "nav-link"  %>
+      </li>
+      <% ArticleCategory.all.each do |category| %>
+        <li class="nav-item">
+          <%= link_to category.name, article_category_articles_path(category.id), method: :get, class: "nav-link"  %>
+        </li>
+      <% end %>
+      <li class="border-top my-3"></li>
+      <li class="nav-item">
+        <%= link_to "Alle Artikelkategorien", article_categories_path, method: :get, class: "nav-link"  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Artikelkategorie erstellen", new_article_category_path, method: :get, class: "nav-link"  %>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="nav-item">
+        <%= link_to "Alle Veranstaltungen", events_path, method: :get, class: "nav-link"  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Veranstaltung erstellen", new_event_path, method: :get, class: "nav-link"  %>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="nav-item">
+        <%= link_to "Alle Kontakt-Email-Adressen", contact_email_addresses_path, method: :get, class: "nav-link"  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Kontakt Email-Adresse erstellen", new_contact_email_address_path, method: :get, class: "nav-link"   %>
+      </li>
+      <li class="border-top my-3"></li>
+      <li class="nav-item">
+        <%= link_to "Seiteneinstellungen", edit_settings_path, method: :get, class: "nav-link"   %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Nutzereinstellungen", edit_user_path(id: current_user.id), method: :get, class: "nav-link"  %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Ausloggen", logout_path, method: :get, class: "nav-link"  %>
+      </li>
+    </ul>
+  </div>
+</div>
