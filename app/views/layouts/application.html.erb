@@ -31,7 +31,6 @@
     <%= render "settings_panel" %>
     <% end %>
     <%= render "main_menu" %>
-    <%= content_for?(:backend_menu) ? yield(:backend_menu) : nil  %>
     <main class="mt-5 flex-grow-1">
     <%= yield %>
     </main>

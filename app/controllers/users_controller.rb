@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "backend"
+  layout "application"
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :verify_rights_to_access_user, only: %i[ show edit update destroy ]
   before_action :verify_is_admin, only: %i[ index new create ]

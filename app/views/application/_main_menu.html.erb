@@ -51,11 +51,6 @@
         <li class="nav-item">
           <%= link_to "FAQ", page_path("faq"), method: "get", class: "nav-link" %>
         </li>
-        <% if logged_in? %>
-            <li class="nav-item">
-              <%= link_to "Backend", backend_root_path, method: "get", class: "nav-link" %>
-            </li>
-        <% end %>
       </ul>
     </div>
   </div>

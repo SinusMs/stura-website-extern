@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  layout "backend"
+  layout "application"
   before_action :verify_is_logged_in
   before_action :set_setting, only: %i[ edit update ]
 
