@@ -58,6 +58,7 @@ $input-border-width:            0px;
 $input-border-radius:           5px;
 $input-color:                   $petrol-very-dark;
 $input-font-family:             Open-Sans;
+$focus-ring-color:              $petrol;
 $focus-ring-box-shadow:         0 0 0 3px $petrol;
 $form-select-focus-box-shadow:  $focus-ring-box-shadow;
 
@@ -68,6 +69,10 @@ $toast-border-radius:               5px;
 $border-color: $petrol-very-dark;
 $border-width: 1px;
 $offcanvas-border-color:            $petrol-very-dark;
+
+$form-switch-color:         $petrol-very-dark;
+$form-switch-checked-color: $petrol-very-dark;
+$form-switch-focus-color:   $petrol-very-dark;
 
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
@@ -109,6 +114,54 @@ $offcanvas-border-color:            $petrol-very-dark;
 
 body {
   font-family: Open-Sans, Arial, sans-serif;
+}
+
+.table {
+  th {
+    background-color: $petrol-very-dark;
+    color: $petrol;
+  }
+
+  tbody {
+    tr {
+      &.event-row td {
+        background-color: $petrol !important;
+        color: $petrol-light;
+        @include link($petrol-light, white)
+      }
+
+      &.session-row td {
+        background-color: $petrol-dark !important;
+        color: $orange-light;
+        @include link($orange-light, white)
+      }
+
+      td {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.form-check-input {
+  border: none;
+  
+  &:checked {
+    background-color: white;
+
+    &.event-check {
+      background-color: $petrol;
+    }
+
+    &.session-check {
+      background-color: $petrol-dark;
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+    // border: 1px solid $petrol-dark;
+  }
 }
 
 .offcanvas{
