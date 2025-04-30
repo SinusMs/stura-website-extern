@@ -122,23 +122,27 @@ body {
     color: $petrol;
   }
 
-  tbody {
-    tr {
-      &.event-row td {
-        background-color: $petrol !important;
-        color: $petrol-light;
-        @include link($petrol-light, white)
-      }
+  td {
+    background-color: $petrol-dark !important;
+    color: $petrol-light;
+    font-weight: bold;
+  }
 
-      &.session-row td {
-        background-color: $petrol-dark !important;
-        color: $orange-light;
-        @include link($orange-light, white)
-      }
+  tr {
+    &.event-row td {
+      background-color: $petrol !important;
+      color: $petrol-light;
+      @include link($petrol-light, white)
+    }
 
-      td {
-        vertical-align: middle;
-      }
+    &.session-row td {
+      background-color: $petrol-dark !important;
+      color: $orange-light;
+      @include link($orange-light, white)
+    }
+
+    td {
+      vertical-align: middle;
     }
   }
 }

@@ -1,32 +1,20 @@
 <div id="<%= dom_id event %>">
-  <p>
-    <strong>Datetime:</strong>
-    <%= event.datetime.try(:strftime, "%d.%m.%y %H:%M") %>
-  </p>
+  <h1><%= event.title %></h1>
+  <div class="d-flex flex-md-row flex-column-reverse justify-content-between">
+    <p class="text-wrap text-break">
+      <%= event.description %>
+    </p>
 
-  <p>
-    <strong>Title:</strong>
-    <% if event.is_session %>
-    [Session]
-    <% else %>
-    [Event]
-    <% end %>
-    <%= event.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
-
-  <p>
-    <strong>Is Session:</strong>
-    <%= event.is_session %>
-  </p>
-
+    <table class="table table-borderless w-auto align-self-start flex-shrink-0">
+      <tr>
+        <th>Zeit</th><td><%= event.datetime.try(:strftime, "%d.%m.%y %H:%M") %></td>
+      </tr>
+      <tr>
+        <th>Ort</th><td><%= event.location %></td>
+      </tr>
+      <tr>
+        <th>Typ</th><td><% if event.is_session %>Sitzung<% else %>Veranstaltung<% end %></td>
+      </tr>
+    </table>
+  </div>
 </div>
