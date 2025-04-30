@@ -1,46 +1,46 @@
 <div class="overflow-y-hidden py-4 section-light">
-<div class="container text-center">
-<h1>Kalender</h1>
+  <div class="container text-center">
+    <h1>Kalender</h1>
 
-<div id="events">
-  <div class="d-flex flex-column align-items-center">
-  <div class="form-check form-switch w-auto text-start" style="min-width: 250px;">
-    <label class="form-check-label" for="events-checkbox">Veranstaltungen anzeigen</label>
-    <input class="form-check-input event-check" type="checkbox" onclick="toggleRowVisibility()" id="events-checkbox" checked>
-  </div>
-  <div class="form-check form-switch w-auto text-start" style="min-width: 250px;">
-    <label class="form-check-label" for="sessions-checkbox">Sitzungen anzeigen</label>
-    <input class="form-check-input session-check" type="checkbox" onclick="toggleRowVisibility()" id="sessions-checkbox">
-  </div>
-  </div>
-  <table class="table table-hover table-borderless w-auto mx-auto">
-      <thead>
-        <th>Datum</th> <th>Uhrzeit</th> <th class="text-start">Veranstaltung</th> <th>Ort</th>
-        <% if logged_in? %>
-          <th>Bearbeiten</th> <th>Löschen</th>
-        <% end %>
-      </thead>
-      <tbody>
-        <% @events.each do |event| %>
-        <% if event.is_session %>
-          <tr class="session-row" style="display: none;">
-        <% else %>
-          <tr class="event-row">
-        <% end %>
-            <td><%= event.datetime.try(:strftime, "%d.%m.%y") %></td>
-            <td><%= event.datetime.try(:strftime, "%H:%M") %></td>
-            <td class="text-start"><%= link_to event.title, event %></td>
-            <td><%= event.location %></td>
-            <% if logged_in? %>
-                <td><%= link_to "Bearbeiten", edit_event_path(event), method: :get %></td>
-                <td><%= link_to "Löschen", event, method: :delete %></td>
+    <div id="events">
+      <div class="d-flex flex-column align-items-center">
+      <div class="form-check form-switch w-auto text-start" style="min-width: 250px;">
+        <label class="form-check-label" for="events-checkbox">Veranstaltungen anzeigen</label>
+        <input class="form-check-input event-check" type="checkbox" onclick="toggleRowVisibility()" id="events-checkbox" checked>
+      </div>
+      <div class="form-check form-switch w-auto text-start" style="min-width: 250px;">
+        <label class="form-check-label" for="sessions-checkbox">Sitzungen anzeigen</label>
+        <input class="form-check-input session-check" type="checkbox" onclick="toggleRowVisibility()" id="sessions-checkbox">
+      </div>
+      </div>
+      <table class="table table-hover table-borderless w-auto mx-auto">
+        <thead>
+          <th>Datum</th> <th>Uhrzeit</th> <th class="text-start">Veranstaltung</th> <th>Ort</th>
+          <% if logged_in? %>
+            <th>Bearbeiten</th> <th>Löschen</th>
+          <% end %>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <% if event.is_session %>
+              <tr class="session-row" style="display: none;">
+            <% else %>
+              <tr class="event-row">
             <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-  </table>
-</div>
-</div>
+                <td><%= event.datetime.try(:strftime, "%d.%m.%y") %></td>
+                <td><%= event.datetime.try(:strftime, "%H:%M") %></td>
+                <td class="text-start"><%= link_to event.title, event %></td>
+                <td><%= event.location %></td>
+                <% if logged_in? %>
+                  <td><%= link_to "Bearbeiten", edit_event_path(event), method: :get %></td>
+                  <td><%= link_to "Löschen", event, method: :delete %></td>
+                <% end %>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <script>  
