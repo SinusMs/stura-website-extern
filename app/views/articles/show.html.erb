@@ -1,8 +1,9 @@
-<%= render @article %>
+<%= render partial: @article, layout: "layouts/section-dark" %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
+<div class="container mt-3 d-flex flex-row align-items-center gap-3">
+  <% if logged_in? %>
+    <%= button_to "Bearbeiten", edit_article_path(@article), method: :get, class: "btn btn-secondary" %>
+    <%= button_to "Löschen", @article, method: :delete, class: "btn btn-secondary"   %>
+  <% end %>
+  <%= button_to "Artikelübersicht", articles_path, method: :get, class: "btn btn-secondary" %>
 </div>

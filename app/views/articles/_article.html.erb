@@ -1,29 +1,27 @@
 <div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
+  <h1 class="m-0">
     <%= article.title %>
-  </p>
+  </h1>
 
-  <p>
-    <strong>Published:</strong>
-    <%= article.published %>
-  </p>
+  <div class="d-flex gap-2">
+    <%= article.published.try(:strftime, "%d.%m.%y") %>
+    <i><%= ArticleCategory.find(article.article_category_id).name %></i>
+  </div>
 
   <% if logged_in? %>
-    <p>
-      <strong>Prioritize Until:</strong>
-      <%= article.prioritize_until %>
-    </p>
+    <% if article.prioritize_until != nil and article.prioritize_until >= Time.now %>
+      <strong>Priorisiert:</strong> Ja <br>
+    <% else %>
+      <strong>Priorisiert:</strong> Nein <br>
+    <% end %>
+
+    <% if article.prioritize_until != nil %>
+      <strong>Priorisiert bis: </strong>
+      <%= article.prioritize_until.try(:strftime, "%d.%m.%y %H:%M") %>
+    <% end %>
   <% end %>
 
-  <p>
-    <strong>Content:</strong>
+  <p class="text-wrap text-break mt-4">
     <%= article.content %>
   </p>
-
-  <p>
-    <strong>Article category:</strong>
-    <%= ArticleCategory.find(article.article_category_id).name %>
-  </p>
-
 </div>
