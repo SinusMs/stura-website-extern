@@ -1,7 +1,7 @@
 <%= render partial: @event, layout: "layouts/section-light" %>
 
 <% if logged_in? %>
-  <div class="container d-flex flex-column align-items-center gap-3">
+  <div class="container d-flex flex-row align-items-center gap-3">
       <%= button_to "Bearbeiten", edit_event_path(@event), method: :get, class: "btn btn-secondary" %>
       <%= button_to "Löschen", @event, method: :delete, class: "btn btn-secondary" %>
   </div>
