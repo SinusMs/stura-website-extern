@@ -1,3 +1,5 @@
-<h1>User "<%=  @user.username %>"</h1>
-<%= render @user %>
-<%= button_to "Edit this User", edit_user_path(id: @user.id), method: "get" %>
+<div class="container py-4 section-light">
+    <h1>User "<%= @user.username %>"</h1>
+    <%= render @user %>
+    <%= button_to "Edit this User", edit_user_path(id: @user.id), method: "get", class: "btn btn-secondary" %>
+</div>

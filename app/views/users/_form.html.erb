@@ -10,29 +10,29 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username  %>
+  <div class="form-group my-3">
+    <%= form.label :username, class: "form-label" %>
+    <%= form.text_field :username, class: "form-control"  %>
   </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password %>
+  <div class="form-group my-3">
+    <%= form.label :password, class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation %>
+  <div class="form-group my-3">
+    <%= form.label :password_confirmation, class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
 
-<% if is_admin? %>
-  <div>
-    <%= form.label :is_admin, style: "display: block" %>
-    <%= form.check_box :is_admin %>
-  </div>
-<% end %>
+  <% if is_admin? %>
+    <div class="form-check form-switch">
+      <%= form.check_box :is_admin, class: "form-check-input event-check", id: "user_is_admin" %>
+      <%= form.label :is_admin, class: "form-check-label", for: "user_is_admin" %>
+    </div>
+  <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Bestätigen", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>

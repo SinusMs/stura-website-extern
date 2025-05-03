@@ -1,9 +1,11 @@
-<h1>Edit User "<%=  @user.username %>"</h1>
+<div class="container py-4 section-light">
+    <h1>Edit User "<%= @user.username %>"</h1>
 
-<%= render "form", user: @user %>
+    <%= render "form", user: @user %>
 
-<% if is_admin? %>
-    <%= button_to "Delete this User", @user, method: :delete %>
-<% else %>
-    <%= button_to "Delete Account", @user, method: :delete %>
-<% end %>
+    <% if is_admin? %>
+        <%= button_to "Delete this User", @user, method: :delete, class: "btn btn-secondary btn-lg my-3" %>
+    <% else %>
+        <%= button_to "ACCOUNT LÖSCHEN", @user, method: :delete, class: "btn btn-secondary btn-lg my-3" %>
+    <% end %>
+</div>
