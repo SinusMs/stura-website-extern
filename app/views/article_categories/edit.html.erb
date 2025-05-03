@@ -1,12 +1,11 @@
 <% content_for :title, "Editing article category" %>
 
-<h1>Editing article category</h1>
+<div class="container section-light">
+  <h1>Editing article category</h1>
 
-<%= render "form", article_category: @article_category %>
+  <%= render "form", article_category: @article_category %>
 
-<br>
-
-<div>
-  <%= link_to "Show this article category", @article_category %> |
-  <%= link_to "Back to article categories", article_categories_path %>
+  <div>
+    <%= button_to "Artikelkategorien anzeigen", article_categories_path, method: :get, class: "btn btn-secondary my-3" %>
+  </div>
 </div>

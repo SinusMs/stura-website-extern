@@ -1,9 +1,8 @@
-<%= form_with(model: article_category) do |form| %>
+<%= form_with(model: article_category, class: "needs-validation", local: true) do |form| %>
   <% if article_category.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article_category.errors.count, "error") %> prohibited this article_category from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(article_category.errors.count, "error") %> prohibited this article_category from being saved:</h4>
+      <ul class="mb-0">
         <% article_category.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,17 +10,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", style: "max-width: 400px" %>
+  </div>
+
+  <div class="mb-3 form-check form-switch ">
+    <%= form.check_box :enabled, class: "form-check-input event-check", id: "article_category_enabled" %>
+    <%= form.label :enabled, "Aktivieren", class: "form-check-label", for: "article_category_enabled" %>
   </div>
 
   <div>
-    <%= form.label :enabled, style: "display: block" %>
-    <%= form.check_box :enabled %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Speichern", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>
