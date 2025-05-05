@@ -112,6 +112,10 @@ $form-switch-focus-color:   $petrol-very-dark;
   @include link(white, $orange-light)
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   font-family: Open-Sans, Arial, sans-serif;
 }
