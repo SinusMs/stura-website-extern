@@ -242,35 +242,35 @@ body {
   @include dark-link;
 }
 
-// Navbar 
-.navbar .nav-link,
-.navbar .navbar-brand,
-.navbar .dropdown-item {
-  color: white !important;
-}
+.navbar {
+  .nav-link, .navbar-brand, .dropdown-item {
+    color: white !important;
 
-.navbar .nav-link:hover,
-.navbar .dropdown-item:hover {
-  color: $orange-light !important;
-}
+    &:hover, &:focus, &:active {
+      color: $orange-light !important;
+      background-color: transparent;
+    }
+  }
 
-.navbar-brand img {
-  height: 25px; 
-}
+  .dropdown-menu {
+    background-color: $petrol-dark;
+    color: white;
+    border: none;
+    border-radius: 0;
+    margin-top: 0;
+    box-shadow: none;
+  }
 
-// Dropdown Styles
-.dropdown-menu {
-  background-color: $petrol-dark; /* Match navbar background */
-  color: white; /* Ensure text remains white */
-  border: none; /* Remove border */
-  border-radius: 0; /* Remove rounded corners */
-  margin-top: 0; /* Align with navbar */
-  box-shadow: none; /* Remove shadow */
-}
+  .dropdown-header {
+    color: $petrol-light;
+    font-weight: bold;
+  }
 
-.dropdown-header {
-  color: $petrol-light;
-  font-weight: bold;
+  .navbar-brand {
+    img {
+      height: 25px;
+    }
+  }
 }
 
 // Footer
