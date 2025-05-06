@@ -65,4 +65,9 @@
         }
       }
   }
+
+  // necessary to match row visibilities with checkbox states after page reload
+  document.addEventListener("DOMContentLoaded", function () {
+    toggleRowVisibility();
+  });
 </script>
