@@ -112,6 +112,10 @@ $form-switch-focus-color:   $petrol-very-dark;
   @include link(white, $orange-light)
 }
 
+.turbo-progress-bar {
+  background-color: $orange-light;
+}
+
 html {
   overflow-y: scroll;
 }
