@@ -176,6 +176,11 @@ body {
   }
 }
 
+.form-select option {
+  // necessary to apply font to options in firefox
+  font-family: Open-Sans, Arial, sans-serif;
+}
+
 .offcanvas{
   .offcanvas-body {
     background-color: $petrol-light;
