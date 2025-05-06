@@ -277,19 +277,20 @@ body {
   }
 }
 
-// Footer
-footer .social-icons {
-  gap: 10px;
-  margin-top: 10px;
-}
-
-footer .social-icons a {
-  background-color: $orange;
-  color: white;
-  width: 25px;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+footer {
+  .social-icons {
+    gap: 10px;
+    margin-top: 10px;
+    
+    a {
+      background-color: $orange;
+      color: white;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+  }
 }
