@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "backend"
+  layout "application"
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :verify_rights_to_access_user, only: %i[ show edit update destroy ]
   before_action :verify_is_admin, only: %i[ index new create ]
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { render :destroy, status: :see_other, notice: "User " + @user.username + " was successfully destroyed." }
+      format.html { redirect_to users_path, notice: "User \"" + @user.username + "\" was successfully destroyed." }
       format.json { head :no_content }
     end
   end

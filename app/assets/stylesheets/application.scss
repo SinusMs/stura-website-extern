@@ -11,5 +11,320 @@
  * It is generally better to create a new file per style scope.
  */
 
+// All overridable bootstrap variables can be found under https://github.com/twbs/bootstrap-rubygem/blob/main/assets/stylesheets/bootstrap/_variables.scss 
+
+// Stura HTW Corporate Design Colors
+$petrol-light:     #CEE9E6;
+$petrol:           #58AAA0;
+$petrol-dark:      #387D75;
+$petrol-very-dark: #1B423E;
+$orange-light:     #FFD6BA;
+$orange:           #EC660C;
+$orange-dark:      #BB500A;
+$orange-very-dark: #6E2F04;
+
+// Other custom Variables
+$scrollbar-bg: $petrol-light;
+$scrollbar-thumb: $petrol;
+
+// Bootstrap overrides
+$custom-colors: (
+    "petrol-light":     $petrol-light,
+    "petrol":           $petrol,
+    "petrol-dark":      $petrol-dark,
+    "petrol-very-dark": $petrol-very-dark,
+    "orange-light":     $orange-light,
+    "orange":           $orange,
+    "orange-dark":      $orange-dark,
+    "orange-very-dark": $orange-very-dark,
+);
+
+$theme-colors: (
+  "primary":    $petrol-dark,
+  "secondary":  $orange,
+  "info":       $orange-light,
+  "light":      $petrol-light,
+  "dark":       $petrol-very-dark,
+//   "success":    $success,
+//   "warning":    $warning,
+//   "danger":     $danger,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+$body-bg:           $petrol-light;
+$link-color:      white;
+$link-hover-color:  $orange-light;
+$btn-color:       white !important;
+
+$input-bg:                    white;
+$input-border-width:            0px;
+$input-border-radius:           5px;
+$input-color:                   $petrol-very-dark;
+$input-font-family:             Open-Sans;
+$focus-ring-color:              $petrol;
+$focus-ring-box-shadow:         0 0 0 3px $petrol;
+$form-select-focus-box-shadow:  $focus-ring-box-shadow;
+
+$toast-background-color:            $orange-light;
+$toast-color:                       $petrol-very-dark;
+$toast-border-radius:               5px;
+
+$border-color: $petrol-very-dark;
+$border-width: 1px;
+$offcanvas-border-color:            $petrol-very-dark;
+
+$form-switch-color:         $petrol-very-dark;
+$form-switch-checked-color: $petrol-very-dark;
+$form-switch-focus-color:   $petrol-very-dark;
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+@font-face {
+  font-family: Open-Sans;
+  src: url('fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Open-Sans;
+  src: url('fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
+@mixin link($color, $hover-color){
+  a {
+    color: $color;
+  }
+  a:hover {
+    color: $hover-color;
+  }
+}
+
+@mixin dark-link{
+  @include link($petrol-very-dark, $petrol)
+}
+
+@mixin light-link{
+  @include link(white, $orange-light)
+}
+
+.turbo-progress-bar {
+  background-color: $orange-light;
+}
+
+html {
+  overflow: scroll;
+  scrollbar-width: none;    // Firefox
+  -ms-overflow-style: none; // IE 10+
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  scrollbar-width: thin; // Firefox
+  scrollbar-color: $scrollbar-thumb $scrollbar-bg;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $scrollbar-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb;
+    border-radius: 4px;
+    border: 2px solid $scrollbar-bg;
+  }
+}
+
+body {
+  font-family: Open-Sans, Arial, sans-serif;
+}
+
+.table {
+  th {
+    background-color: $petrol-very-dark;
+    color: $petrol;
+  }
+
+  td {
+    background-color: $petrol-dark !important;
+    color: $petrol-light;
+    font-weight: bold;
+  }
+
+  tr {
+    &.event-row td {
+      background-color: $petrol !important;
+      color: $petrol-light;
+      @include link($petrol-light, white)
+    }
+
+    &.session-row td {
+      background-color: $petrol-dark !important;
+      color: $orange-light;
+      @include link($orange-light, white)
+    }
+
+    td {
+      vertical-align: middle;
+    }
+  }
+}
+
+.form-check-input {
+  border: none;
+  
+  &:checked {
+    background-color: white;
+
+    &.event-check {
+      background-color: $petrol;
+    }
+
+    &.session-check {
+      background-color: $petrol-dark;
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.form-select option {
+  // necessary to apply font to options in firefox
+  font-family: Open-Sans, Arial, sans-serif;
+}
+
+.offcanvas{
+  .offcanvas-body {
+    background-color: $petrol-light;
+    color: $petrol-very-dark !important;
+    .border-top {
+      color: $petrol-very-dark !important;
+    }
+    @include dark-link;
+  }
+
+  .offcanvas-header {
+    background-color: $petrol-light;
+  }
+  
+  .offcanvas-title {
+    color: $petrol-very-dark;
+  }
+}
+
+.section-dark {
+  background-color: $petrol-very-dark;
+  color: white;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $orange-light;
+    font-weight: bolder;
+  }
+
+  @include light-link;
+}
+
+.section-light {
+  background-color: $petrol-light;
+  color: $petrol-very-dark;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: $orange;
+    font-weight: bolder;
+  }
+
+  @include dark-link;
+}
+
+.accordion {
+  border-radius: 5px;
+  border: 0px;
+
+  .accordion-item {
+    border: 1px;
+    margin-bottom: 2px;
+  }
+
+  .accordion-button {
+    box-shadow: none;
+    font-weight: bold;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: $petrol;
+    color: white;
+  }
+
+  .accordion-button, .accordion-body {
+    color: $petrol-very-dark;
+    background-color: white;
+  }
+  
+  @include dark-link;
+}
+
+.navbar {
+  .nav-link, .navbar-brand, .dropdown-item {
+    color: white !important;
+
+    &:hover, &:focus, &:active {
+      color: $orange-light !important;
+      background-color: transparent;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $petrol-dark;
+    color: white;
+    border: none;
+    border-radius: 0;
+    margin-top: 0;
+    box-shadow: none;
+  }
+
+  .dropdown-header {
+    color: $petrol-light;
+    font-weight: bold;
+  }
+
+  .navbar-brand {
+    img {
+      height: 25px;
+    }
+  }
+}
+
+footer {
+  .social-icons {
+    gap: 10px;
+    margin-top: 10px;
+    
+    a {
+      background-color: $orange;
+      color: white;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+  }
+}

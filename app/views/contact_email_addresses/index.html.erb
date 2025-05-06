@@ -1,23 +1,27 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Contact email addresses" %>
+<div class="container section-light">
+  <h1 class="mt-3">Kontakt Email-Adressen</h1>
 
-<h1>Contact email addresses</h1>
-
-<div id="contact_email_addresses">
-  <table>
+  <div id="contact_email_addresses">
+    <table class="table w-auto">
       <thead>
-        <th>Name</th> <th>E-Mail</th> <th>ID</th> <th>Show</th> <!--<th>Edit</th> <th>Delete</th>-->
+        <tr>
+          <th>Bezeichnung</th>
+          <th>E-Mail</th>
+          <th>Anzeigen</th>
+        </tr>
       </thead>
       <tbody>
         <% @contact_email_addresses.each do |contact_email_address| %>
           <tr>
-              <td><%= contact_email_address.name %></td>
-              <td><%= contact_email_address.email_address %></td>
-              <td><%= contact_email_address.id %></td>
-              <td><%= button_to "Show this contact email address", contact_email_address, method: :get %></td>
+            <td><%= contact_email_address.name %></td>
+            <td><%= contact_email_address.email_address %></td>
+            <td>
+              <%= link_to "Bearbeiten", edit_contact_email_address_path(contact_email_address) %>
+            </td>
           </tr>
         <% end %>
       </tbody>
-  </table>
+    </table>
+  </div>
 </div>

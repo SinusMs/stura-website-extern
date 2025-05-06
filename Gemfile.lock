@@ -87,6 +87,11 @@ GEM
     bootstrap (5.3.3)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 2.11.8, < 3)
+    bootstrap-icons (1.0.14)
+      nokogiri (~> 1)
+    bootstrap-icons-helper (2.0.2)
+      bootstrap-icons (~> 1)
+      rails (>= 7.0)
     brakeman (7.0.2)
       racc
     builder (3.3.0)
@@ -120,6 +125,7 @@ GEM
     google-protobuf (4.30.2-x86_64-linux)
       bigdecimal
       rake (>= 13)
+    high_voltage (4.0.0)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.3)
@@ -337,10 +343,12 @@ DEPENDENCIES
   bcrypt
   bootsnap
   bootstrap (~> 5.3.3)
+  bootstrap-icons-helper
   brakeman
   capybara
   dartsass-sprockets
   debug
+  high_voltage (~> 4.0.0)
   importmap-rails
   jbuilder
   jquery-rails

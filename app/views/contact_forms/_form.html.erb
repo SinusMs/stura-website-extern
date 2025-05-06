@@ -1,0 +1,13 @@
+<%= form_with do |form| %>
+    <%= form.label :your_email, "Deine E-Mail Adresse", class: "form-label" %>
+    <%= form.email_field :your_email, class: "form-control" %><br>
+    
+    <%= form.label :contact_email_address_id, "Wie können wir dir helfen?", class: "form-label" %>
+    <%= form.select :contact_email_address_id, options_from_collection_for_select(ContactEmailAddress.all, "id", "name"), {}, class: "form-select" %><br>
+
+    <%= form.label :text, "Nachricht", class: "form-label" %>
+    <%= form.text_area :text, class: "form-control", rows: 10 %><br>
+    <div class="text-center">
+        <%= form.submit "Senden", class: "btn btn-secondary btn-lg" %><br>
+    </div>
+<% end %>

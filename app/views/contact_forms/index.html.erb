@@ -1,11 +1,4 @@
-<h1>Contact Form</h1>
-<%= form_with do |form| %>
-    Send Contact Request to:
-    <%= form.select :contact_email_address_id, options_from_collection_for_select(ContactEmailAddress.all, "id", "name") %><br>
-    Your Request:
-    <%= form.text_field :text %><br>
-    Your Email Address:
-    <%= form.email_field :your_email %><br>
-    <%= form.submit "Send" %><br>
-    <%= notice %><br>
-<% end %>
+<%= render partial: "intro", layout: "layouts/section-dark" %>
+<%= render partial: "openstreetmap", layout: "layouts/section-dark" %>
+<%= render partial: "form_text", layout: "layouts/section-light" %>
+<%= render partial: "form", layout: "layouts/section-light" %>

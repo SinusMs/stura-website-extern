@@ -37,9 +37,13 @@ gem "bootsnap", require: false
 # Bootstrap CSS Framework for responsive design
 gem "bootstrap", "~> 5.3.3"
 gem "jquery-rails"
+gem "bootstrap-icons-helper"
 
 # Sass Engine required by Bootstrap
 gem "dartsass-sprockets"
+
+# easy routing for static pages [https://github.com/thoughtbot/high_voltage]
+gem "high_voltage", "~> 4.0.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

@@ -1,9 +1,8 @@
-<%= form_with(model: setting, url: settings_url) do |form| %>
+<%= form_with(model: setting, url: settings_url, class: "needs-validation", local: true) do |form| %>
   <% if setting.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h4>
+      <ul class="mb-0">
         <% setting.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,12 +10,12 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :showArticlesForDays, style: "display: block" %>
-    <%= form.number_field :showArticlesForDays %>
+  <div class="mb-3">
+    <%= form.label :showArticlesForDays, "Zeige Artikel für x Tage ab Veröffentlichung", class: "form-label" %>
+    <%= form.number_field :showArticlesForDays, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Speichern", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>

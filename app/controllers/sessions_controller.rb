@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  layout "backend"
+  layout "application"
   def login
     if helpers.logged_in?
       redirect_to backend_root_path

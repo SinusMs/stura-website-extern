@@ -1,12 +1,58 @@
-<div id="main_menu">
-    <%= button_to "Home", root_path, method: "get" %>
-    <%= button_to "Articles", articles_path, method: "get" %>
-    <% ArticleCategory.all.each do |category| %>
-        <%= button_to category.name, article_category_articles_path(category.id), method: "get" %>
-    <% end %>
-    <%= button_to "Events", events_path, method: "get" %>
-    <%= button_to "Contact", contact_path, method: "get" %>
-    <% if logged_in? %>
-        <%= button_to "Backend", backend_root_path, method: "get" %>
-    <% end %>
-</div>
+<header class="container-fluid">
+<nav class="navbar bg-primary navbar-expand-md fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href=<%=root_path%>><%= image_tag "logo-mit-htwd-weiss.png", height: 30, alt: "Stura HTW" %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to "Kalender", events_path, method: "get", class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            News
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Alle Artikel", articles_path, method: "get", class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-header text-md-center py-md-0 py-1" style="color: #CEE9E6; font-weight: bold">Kategorien</li>
+            <% ArticleCategory.all.each do |category| %>
+                <li><%= link_to category.name, article_category_articles_path(category.id), method: "get", class: "dropdown-item" %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Studienleben
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Semesterticket", "https://www.stura.htw-dresden.de/stura/ref/verwaltung/ticket/deutschlandsemesterticket", method: "get", class: "dropdown-item" %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-header text-md-center py-md-0 py-1">HTW Dresden</li>
+            <li><a class="dropdown-item" href="https://mobil.htw-dresden.de/de/">Mobil App</a></li>
+            <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/organisation/bibliothek">Bibliothek</a></li>
+            <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/aktuelles/veranstaltungskalender">Veranstaltungskalender</a></li>
+            <li><a class="dropdown-item" href="https://www.htw-dresden.de/gruendung">Gründungsschmiede</a></li>
+            <li><a class="dropdown-item" href="https://www.htw-dresden.de/hochschule/fakultaeten/info-math/forschung/smart-production-systems/lab-x">LabX</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li class="dropdown-header text-md-center py-md-0 py-1">Studentenwerk</li>
+            <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/mensen/mensen_cafeterien.html">Mensen</a></li>
+            <li><a class="dropdown-item" href="https://www.studentenwerk-dresden.de/finanzierung/bafoeg.html">BaföG</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Über den StuRa", page_path("about"), method: "get", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Kontakt", contact_path, method: "get", class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "FAQ", page_path("faq"), method: "get", class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</header>

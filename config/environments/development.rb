@@ -64,6 +64,12 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Easier debugging of assets like javascript files
+  config.assets.debug = true
+
+  # Automatically recompile assets if they have been changed
+  config.assets.compile = true
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

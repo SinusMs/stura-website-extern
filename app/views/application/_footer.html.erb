@@ -1,0 +1,54 @@
+<footer class="section-dark">
+  <div class="container pt-4 pb-3">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-4 text-begin order-md-1 order-last col-auto">
+        <span>StuRa HTW Dresden<br></span>
+        <span>A-Gebäude 1. Etage (Erdgeschoss) rechts<br></span>
+        <span>Räume A101 - A110<br></span>
+        <span>Andreas-Schubert-Straße 23<br></span>
+        <span>01069 Dresden<br></span>
+      </div>
+
+      <div class="col-md-4 d-flex justify-content-center align-items-center order-5 order-md-3 p-3">
+        <%= image_tag "logo-mit-htwd-weiss.png", height: 60, alt: "Stura HTW" %>
+      </div>
+
+      <div class="col-md-4 order-md-5 order-1 d-flex flex-md-column justify-content-md-center justify-content-center flex-wrap column-gap-2">
+        <div class="text-md-end text-center order-md-1 order-2">
+          <%= link_to "Über uns", page_path("about") %>
+        </div>
+        <div class="text-md-end text-center order-md-2 order-3">
+          <%= link_to "Anfahrt", contact_path %>
+        </div>
+        <div class="social-icons d-flex justify-content-md-end justify-content-center order-md-3 order-last w-100">
+          <a href="#"><%= bootstrap_icon "discord" %></a>
+          <a href="#"><%= bootstrap_icon "instagram" %></a>
+          <a href="#"><%= bootstrap_icon "whatsapp" %></a>
+        </div>
+        <div class="text-md-end text-center order-md-4 order-4">
+          <%= link_to "FAQ", page_path("faq") %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col text-center">
+        <% if logged_in? %>
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Login", login_path %>
+        <% end %>
+        <span>|</span>
+        <a href="#">Impressum</a>
+        <span>|</span>
+        <a href="#">Datenschutzerklärung</a>
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col text-center">
+        <p class="pt-1">&copy; 2025 StuRa HTW Dresden</p>
+      </div>
+    </div>
+  </div>
+</footer>
+

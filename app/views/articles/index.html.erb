@@ -1,16 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
-<% if @article_category == nil %>
-  <% content_for :title, "Articles" %>
-  <h1>Articles</h1>
+<% if @articles.any? { |article| article.prioritize_until != nil and article.prioritize_until >= Time.now } %>
+  <div class="overflow-y-hidden py-4 section-dark">
 <% else %>
-  <% content_for :title, @article_category.name %>
-  <h1>Article Category: <%= @article_category.name %></h1>
+  <div class="overflow-y-hidden py-4 section-light">
 <% end %>
+  <div class="container">
+    <% if @article_category == nil %>
+      <% content_for :title, "Alle Artikel" %>
+      <h1>Alle Artikel</h1>
+    <% else %>
+      <% content_for :title, @article_category.name %>
+      <h1><%= @article_category.name %></h1>
+    <% end %>
+  </div>
+</div>
 
 
 <div id="articles">
   <% @articles.each do |article| %>
-    <%= render partial: "article_preview", object: article %>
+    <%= render partial: "article_preview", object: article, layout: (article.prioritize_until == nil or article.prioritize_until < Time.now) ? "layouts/section-light" : "layouts/section-dark" %>
   <% end %>
 </div>

@@ -1,38 +1,38 @@
-<%= form_with(model: user) do |form| %>
+<%= form_with(model: user, class: "needs-validation", local: true) do |form| %>
   <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h4>
+      <ul class="mb-0">
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username  %>
+
+  <div class="mb-3">
+    <%= form.label :username, "Nutzername", class: "form-label" %>
+    <%= form.text_field :username, class: "form-control"  %>
   </div>
 
-  <div>
-    <%= form.label :password, style: "display: block" %>
-    <%= form.password_field :password %>
+  <div class="mb-3">
+    <%= form.label :password, "Passwort", class: "form-label" %>
+    <%= form.password_field :password, class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :password_confirmation, style: "display: block" %>
-    <%= form.password_field :password_confirmation %>
+  <div class="mb-3">
+    <%= form.label :password_confirmation, "Passwort bestätigen", class: "form-label" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
   </div>
 
-<% if is_admin? %>
-  <div>
-    <%= form.label :is_admin, style: "display: block" %>
-    <%= form.check_box :is_admin %>
-  </div>
-<% end %>
+  <% if is_admin? %>
+    <div class="form-check form-switch mb-3">
+      <%= form.check_box :is_admin, class: "form-check-input event-check", id: "user_is_admin" %>
+      <%= form.label :is_admin, "Adminrechte", class: "form-check-label", for: "user_is_admin" %>
+    </div>
+  <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Bestätigen", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>

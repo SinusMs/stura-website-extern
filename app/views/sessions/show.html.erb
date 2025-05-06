@@ -1,7 +1,70 @@
-<h1>Session Information</h1>
-Logged in: <%=  logged_in? %><br>
-<% if logged_in? %>
-    Username: <%=  @user.username %><br>
-    Is Admin: <%= !!@user.is_admin %><br>
-    User ID: <%=  @user.id %><br>   
-<% end %>
+
+<div class="overflow-y-hidden py-4 section-dark">
+  <div class="container">
+    <h1 class="pb-3"><%= logged_in? ? "Eingeloggt als: " + @user.username + (!!@user.is_admin ? " (Admin)" : "") : "Nicht eingeloggt" %></h1>
+    <div class="d-flex flex-row justify-content-around flex-wrap gap-5">
+      <% if is_admin? %>
+      <div>
+        <div>
+          <%= link_to "Alle Nutzer", users_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <div>
+          <%= link_to "Nutzer erstellen", new_user_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+      </div>
+      <% end %>
+      <div>
+        <div>
+        <%= link_to "Alle Artikel", articles_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <div>
+          <%= link_to "Artikel erstellen", new_article_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <% ArticleCategory.all.each do |category| %>
+          <div>
+            <%= link_to category.name, article_category_articles_path(category.id), method: :get, class: "btn btn-primary m-1"  %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div>
+        <div>
+          <%= link_to "Alle Artikelkategorien", article_categories_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <div>
+          <%= link_to "Artikelkategorie erstellen", new_article_category_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+      </div>
+      
+      <div>
+        <div>
+          <%= link_to "Alle Veranstaltungen", events_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <div>
+          <%= link_to "Veranstaltung erstellen", new_event_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+      </div>
+      
+      <div>
+        <div>
+          <%= link_to "Alle Kontakt-Email-Adressen", contact_email_addresses_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <div>
+          <%= link_to "Kontakt Email-Adresse erstellen", new_contact_email_address_path, method: :get, class: "btn btn-primary m-1"   %>
+        </div>
+      </div>
+      
+      <div>
+        <div>
+          <%= link_to "Seiteneinstellungen", edit_settings_path, method: :get, class: "btn btn-primary m-1"   %>
+        </div>
+        <div>
+          <%= link_to "Nutzereinstellungen", edit_user_path(id: current_user.id), method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+        <div>
+          <%= link_to "Ausloggen", logout_path, method: :get, class: "btn btn-primary m-1"  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

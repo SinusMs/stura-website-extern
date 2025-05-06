@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Stu Ra Website" %></title>
+    <title><%= content_for(:title) || "StuRa Website" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -15,13 +15,25 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_include_tag "popper", "data-turbo-track": "reload", defer: true  %>
-    <%= javascript_include_tag "bootstrap.min", "data-turbo-track": "reload", defer: true  %>
   </head>
 
-  <%= render "main_menu" %>
-  <body>
-    <%= content_for?(:backend_menu) ? yield(:backend_menu) : nil  %>
+  <body class="d-flex flex-column min-vh-100">
+    <% if notice %>
+      <div class="toast-container position-fixed p-5 bottom-0 start-50 translate-middle-x">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-body text-center">
+            <strong><%= notice %></strong>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if logged_in? %>
+    <%= render "settings_panel" %>
+    <% end %>
+    <%= render "main_menu" %>
+    <main class="mt-5 flex-grow-1">
     <%= yield %>
+    </main>
+    <%= render "footer" %>
   </body>
 </html>

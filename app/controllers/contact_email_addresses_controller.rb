@@ -1,5 +1,5 @@
 class ContactEmailAddressesController < ApplicationController
-  layout "backend"
+  layout "application"
   before_action :set_contact_email_address, only: %i[ show edit update destroy ]
   before_action :verify_rights_to_access_contact_email
 
