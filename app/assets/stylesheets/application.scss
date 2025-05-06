@@ -80,8 +80,8 @@ $form-switch-focus-color:   $petrol-very-dark;
 @font-face {
   font-family: Open-Sans;
   src: url('fonts/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
-  font-weight: 300 800; // range of supported weights
-  font-stretch: 75% 125%; // optional: width range (if needed)
+  font-weight: 300 800;
+  font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
 }
@@ -172,7 +172,6 @@ body {
 
   &:focus {
     box-shadow: none;
-    // border: 1px solid $petrol-dark;
   }
 }
 
