@@ -1,7 +1,7 @@
 class ArticleCategoriesController < ApplicationController
   layout "application"
   before_action :set_article_category, only: %i[ show edit update destroy ]
-  before_action :verify_is_logged_in, only: %i[ new edit create update destroy ]
+  before_action :verify_is_logged_in
 
   # GET /article_categories or /article_categories.json
   def index
