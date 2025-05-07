@@ -8,13 +8,15 @@ class ArticlesController < ApplicationController
     if helpers.logged_in?
       @articles = Article.all.order(published: :desc)
     else
-      published_articles = Article.where(published: (Time.now - Setting.first().showArticlesForDays.days)..Time.now).order(published: :desc)
-      @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
+      @articles = Article.public_articles.order_by_date_and_priorization
     end
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    if !helpers.logged_in? && !ArticleCategory.find(Article.find(params[:id]).article_category_id).enabled
+      head :unauthorized
+    end
   end
 
   # GET /articles/new
@@ -66,14 +68,16 @@ class ArticlesController < ApplicationController
 
   # GET /articles/category/1
   def category
+    @article_category = ArticleCategory.find(params[:article_category_id])
     if helpers.logged_in?
       @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
+      render :index
+    elsif @article_category.enabled
+      @articles = Article.public_articles.where(article_category_id: params[:article_category_id]).order_by_date_and_priorization
+      render :index
     else
-      published_articles = Article.where(published: (Time.now - Setting.first().showArticlesForDays.days)..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
-      @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
+      head :unauthorized
     end
-    @article_category = ArticleCategory.find(params[:article_category_id])
-    render :index
   end
 
   private

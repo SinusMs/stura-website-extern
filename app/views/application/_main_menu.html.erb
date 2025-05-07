@@ -19,7 +19,9 @@
             <li><hr class="dropdown-divider"></li>
             <li class="dropdown-header text-md-center py-md-0 py-1" style="color: #CEE9E6; font-weight: bold">Kategorien</li>
             <% ArticleCategory.all.each do |category| %>
+              <% if category.enabled || logged_in? %>
                 <li><%= link_to category.name, article_category_articles_path(category.id), method: "get", class: "dropdown-item" %></li>
+              <% end %>
             <% end %>
           </ul>
         </li>
