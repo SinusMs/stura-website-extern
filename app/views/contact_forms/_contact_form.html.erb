@@ -1,0 +1,27 @@
+<%= form_with(model: contact_form, class: "needs-validation", local: true) do |form| %>
+  <% if contact_form.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading"><%= pluralize(contact_form.errors.count, "error") %> prohibited this contact form from being saved:</h4>
+      <ul class="mb-0">
+        <% contact_form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :email, "Deine E-Mail Adresse", class: "form-label" %>
+  <%= form.email_field :email, class: "form-control" %><br>
+  
+  <%= form.label :email_confirmation, "E-Mail Adresse wiederholen", class: "form-label" %>
+  <%= form.email_field :email_confirmation, class: "form-control" %><br>
+  
+  <%= form.label :contact_email_address_id, "Wie können wir dir helfen?", class: "form-label" %>
+  <%= form.select :contact_email_address_id, options_from_collection_for_select(ContactEmailAddress.all, "id", "name"), {}, class: "form-select" %><br>
+
+  <%= form.label :text, "Nachricht", class: "form-label" %>
+  <%= form.text_area :text, class: "form-control", rows: 10 %><br>
+  <div class="text-center">
+      <%= form.submit "Senden", class: "btn btn-secondary btn-lg" %><br>
+  </div>
+<% end %>
