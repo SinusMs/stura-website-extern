@@ -67,6 +67,6 @@ class ContactEmailAddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_email_address_params
-      params.require(:contact_email_address).permit(:name, :email_address)
+      params.require(:contact_email_address).permit(:name, :email_address, :email_address_confirmation)
     end
 end

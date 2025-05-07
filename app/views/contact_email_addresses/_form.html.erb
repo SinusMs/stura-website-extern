@@ -17,7 +17,12 @@
 
   <div class="mb-3">
     <%= form.label :email_address, "E-Mail Adresse", class: "form-label" %>
-    <%= form.text_field :email_address, class: "form-control" %>
+    <%= form.email_field :email_address, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email_address_confirmation, "E-Mail Adresse bestätigen", class: "form-label" %>
+    <%= form.email_field :email_address_confirmation, class: "form-control" %>
   </div>
 
   <div>
