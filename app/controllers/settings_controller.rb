@@ -30,10 +30,4 @@ class SettingsController < ApplicationController
     def setting_params
       params.require(:setting).permit(:showArticlesForDays)
     end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
-    end
 end

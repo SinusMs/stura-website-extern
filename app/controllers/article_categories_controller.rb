@@ -69,10 +69,4 @@ class ArticleCategoriesController < ApplicationController
     def article_category_params
       params.require(:article_category).permit(:name, :enabled)
     end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
-    end
 end

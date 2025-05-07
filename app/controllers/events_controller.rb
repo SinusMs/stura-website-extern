@@ -73,10 +73,4 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:datetime, :title, :description, :is_session, :location)
     end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
-    end
 end

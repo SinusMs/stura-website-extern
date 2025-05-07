@@ -90,10 +90,4 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :published, :content, :prioritize_until, :article_category_id)
     end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
-    end
 end

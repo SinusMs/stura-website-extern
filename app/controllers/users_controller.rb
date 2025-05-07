@@ -79,10 +79,4 @@ class UsersController < ApplicationController
       head :unauthorized
     end
   end
-
-  def verify_is_admin
-    if !helpers.is_admin?
-      head :unauthorized
-    end
-  end
 end
