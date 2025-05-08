@@ -6,10 +6,11 @@ class ContactMailer < ApplicationMailer
   #
   def contact
     @form = params[:contact_form]
+    @contact_email_address = ContactEmailAddress.find(@form.contact_email_address_id)
     mail(
-      to: ContactEmailAddress.find(@form.contact_email_address_id).email_address,
+      to: @contact_email_address.email_address,
       from: @form.email,
-      subject: "Contact request by #{@form.email}",
+      subject: "#{@contact_email_address.name} request by #{@form.email}",
       content_type: "text/html; charset=UTF-8"
     )
   end
