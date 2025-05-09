@@ -1,28 +1,30 @@
-<%= form_with(model: event, class: "needs-validation", local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h4>
-      <ul class="mb-0">
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: event, local: true) do |form| %>
+  <% event.errors.full_messages_for(:base).each do |msg| %>
+    <h5 class="alert-heading"><%= msg %></h5>
   <% end %>
 
   <div class="mb-3">
     <%= form.label :datetime, "Zeit", class: "form-label" %>
-    <%= form.datetime_field :datetime, class: "form-control" %>
+    <%= form.datetime_field :datetime, class: "form-control #{'is-invalid' if event.errors[:datetime].any?}" %>
+    <% event.errors.full_messages_for(:datetime).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :title, "Titel", class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
+    <%= form.text_field :title, class: "form-control #{'is-invalid' if event.errors[:title].any?}" %>
+    <% event.errors.full_messages_for(:title).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :description, "Beschreibung", class: "form-label" %>
-    <%= form.text_area :description, class: "form-control", rows: 4 %>
+    <%= form.text_area :description, class: "form-control #{'is-invalid' if event.errors[:description].any?}", rows: 4 %>
+    <% event.errors.full_messages_for(:description).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3 form-check form-switch">
@@ -32,7 +34,10 @@
 
   <div class="mb-3">
     <%= form.label :location, "Ort", class: "form-label" %>
-    <%= form.text_field :location, class: "form-control" %>
+    <%= form.text_field :location, class: "form-control #{'is-invalid' if event.errors[:location].any?}" %>
+    <% event.errors.full_messages_for(:location).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div>
