@@ -1,26 +1,22 @@
-<%= form_with(model: article_category, class: "needs-validation", local: true) do |form| %>
-  <% if article_category.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(article_category.errors.count, "error") %> prohibited this article_category from being saved:</h4>
-      <ul class="mb-0">
-        <% article_category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: article_category, local: true) do |form| %>
+  <% article_category.errors.full_messages_for(:base).each do |msg| %>
+    <h5 class="alert-heading"><%= msg %></h5>
   <% end %>
 
   <div class="mb-3">
     <%= form.label :name, class: "form-label" %>
-    <%= form.text_field :name, class: "form-control", style: "max-width: 400px" %>
+    <%= form.text_field :name, class: "form-control #{'is-invalid' if article_category.errors[:name].any?}", style: "max-width: 400px" %>
+    <% article_category.errors.full_messages_for(:name).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
-  <div class="mb-3 form-check form-switch ">
+  <div class="mb-3 form-check form-switch">
     <%= form.check_box :enabled, class: "form-check-input event-check", id: "article_category_enabled" %>
     <%= form.label :enabled, "Aktivieren", class: "form-check-label", for: "article_category_enabled" %>
   </div>
 
-  <div>
+  <div class="text-center">
     <%= form.submit "Speichern", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>

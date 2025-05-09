@@ -1,4 +1,5 @@
 class ArticleCategory < ApplicationRecord
+  validates :name, uniqueness: true, presence: true
   attribute :enabled, :boolean, default: true
 
   scope :enabled, -> { where(enabled: true) }
