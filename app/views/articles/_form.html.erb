@@ -1,43 +1,51 @@
-<%= form_with(model: article, class: "needs-validation", local: true) do |form| %>
-  <% if article.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h4>
-      <ul class="mb-0">
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: article, local: true) do |form| %>
+  <% article.errors.full_messages_for(:base).each do |msg| %>
+    <h5 class="alert-heading"><%= msg %></h5>
   <% end %>
 
   <div class="mb-3">
     <%= form.label :title, "Titel", class: "form-label" %>
-    <%= form.text_field :title, class: "form-control" %>
+    <%= form.text_field :title, class: "form-control #{'is-invalid' if article.errors[:title].any?}" %>
+    <% article.errors.full_messages_for(:title).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :published, "Veröffentlichung", class: "form-label" %>
-    <%= form.datetime_field :published, class: "form-control" %>
+    <%= form.datetime_field :published, class: "form-control #{'is-invalid' if article.errors[:published].any?}" %>
+    <% article.errors.full_messages_for(:published).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :prioritize_until, "Priorisieren bis", class: "form-label" %>
-    <%= form.datetime_field :prioritize_until, class: "form-control" %>
+    <%= form.datetime_field :prioritize_until, class: "form-control #{'is-invalid' if article.errors[:prioritize_until].any?}" %>
+    <% article.errors.full_messages_for(:prioritize_until).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :content, "Inhalt", class: "form-label" %>
-    <%= form.text_area :content, class: "form-control", rows: 30 %>
+    <%= form.text_area :content, class: "form-control #{'is-invalid' if article.errors[:content].any?}", rows: 30 %>
+    <% article.errors.full_messages_for(:content).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :article_category_id, "Kategorie", class: "form-label" %>
     <%= form.select :article_category_id,
         options_from_collection_for_select(ArticleCategory.all, "id", "name"),
-        {}, class: "form-select" %>
+        {}, class: "form-select #{'is-invalid' if article.errors[:article_category_id].any?}" %>
+    <% article.errors.full_messages_for(:article_category_id).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
-  <div class="mb-3">
+  <div>
     <%= form.submit "Speichern", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>

@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  validates :title, :published, :content, :article_category_id, presence: true
+
   scope :public_articles, -> {
     joins(:article_category)
       .where(article_categories: { enabled: true })
