@@ -1,28 +1,31 @@
-<%= form_with(model: user, class: "needs-validation", local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h4>
-      <ul class="mb-0">
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: user, local: true) do |form| %>
+  <% user.errors.full_messages_for(:base).each do |msg| %>
+    <h5 class="alert-heading"><%= msg %></h5>
   <% end %>
 
   <div class="mb-3">
     <%= form.label :username, "Nutzername", class: "form-label" %>
-    <%= form.text_field :username, class: "form-control"  %>
+    <%= form.text_field :username, class: "form-control #{'is-invalid' if user.errors[:username].any?}" %>
+    <% user.errors.full_messages_for(:username).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :password, "Passwort", class: "form-label" %>
-    <%= form.password_field :password, class: "form-control" %>
+    <%= form.password_field :password, class: "form-control #{'is-invalid' if user.errors[:password].any?}" %>
+    <div class="form-text">Unausgefüllt lassen, um Passwort nicht zu verändern.</div>
+    <% user.errors.full_messages_for(:password).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
     <%= form.label :password_confirmation, "Passwort bestätigen", class: "form-label" %>
-    <%= form.password_field :password_confirmation, class: "form-control" %>
+    <%= form.password_field :password_confirmation, class: "form-control #{'is-invalid' if user.errors[:password_confirmation].any?}" %>
+    <% user.errors.full_messages_for(:password_confirmation).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <% if is_admin? %>
