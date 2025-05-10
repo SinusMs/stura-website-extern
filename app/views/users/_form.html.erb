@@ -11,24 +11,15 @@
     <% end %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :password, "Passwort", class: "form-label" %>
-    <%= form.password_field :password, class: "form-control #{'is-invalid' if user.errors[:password].any?}" %>
-    <div class="form-text">Unausgefüllt lassen, um Passwort nicht zu verändern.</div>
-    <% user.errors.full_messages_for(:password).each do |msg| %>
-      <div class="invalid-feedback"><%= msg %></div>
-    <% end %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :password_confirmation, "Passwort bestätigen", class: "form-label" %>
-    <%= form.password_field :password_confirmation, class: "form-control #{'is-invalid' if user.errors[:password_confirmation].any?}" %>
-    <% user.errors.full_messages_for(:password_confirmation).each do |msg| %>
-      <div class="invalid-feedback"><%= msg %></div>
-    <% end %>
-  </div>
-
   <% if is_admin? %>
+    <div class="mb-3">
+      <%= form.label :email_address, "E-Mail Adresse", class: "form-label" %>
+      <%= form.email_field :email_address, class: "form-control #{'is-invalid' if user.errors[:email_address].any?}" %>
+      <% user.errors.full_messages_for(:email_address).each do |msg| %>
+        <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
     <div class="form-check form-switch mb-3">
       <%= form.check_box :is_admin, class: "form-check-input event-check", id: "user_is_admin" %>
       <%= form.label :is_admin, "Adminrechte", class: "form-check-label", for: "user_is_admin" %>

@@ -1,0 +1,37 @@
+<div class="container py-4 section-light">
+  <h1>Account aktivieren</h1>
+
+  <%= form_with(model: @user, url: activate_user_path(code: @user_activation_code.code), local: true) do |form| %>
+    <% @user.errors.full_messages_for(:base).each do |msg| %>
+      <h5 class="alert-heading"><%= msg %></h5>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :username, "Nutzername", class: "form-label" %>
+      <%= form.text_field :username, class: "form-control #{'is-invalid' if @user.errors[:username].any?}" %>
+      <% @user.errors.full_messages_for(:username).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :password, "Passwort", class: "form-label" %>
+      <%= form.password_field :password, class: "form-control #{'is-invalid' if @user.errors[:password].any?}" %>
+      <% @user.errors.full_messages_for(:password).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :password_confirmation, "Passwort bestätigen", class: "form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control #{'is-invalid' if @user.errors[:password_confirmation].any?}" %>
+      <% @user.errors.full_messages_for(:password_confirmation).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.submit "Bestätigen", class: "btn btn-secondary btn-lg" %>
+    </div>
+  <% end %>
+</div>

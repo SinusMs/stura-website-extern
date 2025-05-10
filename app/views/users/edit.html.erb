@@ -3,9 +3,10 @@
 
     <%= render "form", user: @user %>
 
-    <% if is_admin? %>
-        <%= button_to "Delete this User", @user, method: :delete, class: "btn btn-secondary btn-lg my-3" %>
-    <% else %>
+    <% if @user == current_user %>
+        <%= button_to "Passwort zurücksetzen", reset_password_request_path(@user), method: :put, class: "btn btn-secondary btn-lg my-3" %>
         <%= button_to "ACCOUNT LÖSCHEN", @user, method: :delete, class: "btn btn-secondary btn-lg my-3" %>
+    <% elsif is_admin? %>
+        <%= button_to "Nutzer Löschen", @user, method: :delete, class: "btn btn-secondary btn-lg my-3" %>
     <% end %>
 </div>

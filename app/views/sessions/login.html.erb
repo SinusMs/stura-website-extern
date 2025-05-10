@@ -9,6 +9,9 @@
             <%= form.password_field :password, placeholder: "",  class: "form-control" %>
             <%= form.label :password, "Passwort" %>
         </div>
-            <%= form.submit "Einloggen", id: "login", class: "btn btn-secondary btn-lg" %>
+        <div>
+            <%= link_to "Logindaten vergessen?", forgot_password_path %>
+        </div>
+            <%= form.submit "Einloggen", id: "login", class: "btn btn-secondary btn-lg my-3" %>
     <% end %>
 </div>
