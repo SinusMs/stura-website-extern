@@ -3,6 +3,7 @@ require "test_helper"
 class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @article_category = article_categories(:one)
+    @new_article_category = ArticleCategory.new(enabled: true, name: "New Category")
     post login_url, params: { username: "admin", password: "123" }
   end
 
@@ -18,7 +19,7 @@ class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create article_category" do
     assert_difference("ArticleCategory.count") do
-      post article_categories_url, params: { article_category: { enabled: @article_category.enabled, name: @article_category.name } }
+      post article_categories_url, params: { article_category: { enabled: @new_article_category.enabled, name: @new_article_category.name } }
     end
 
     assert_redirected_to article_category_url(ArticleCategory.last)
