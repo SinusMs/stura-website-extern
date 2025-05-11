@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy reset_password_request ]
   before_action :verify_rights_to_access_user, only: %i[ show edit update destroy reset_password_request ]
   before_action :verify_is_admin, only: %i[ index new create ]
-  before_action :set_password_reset_link_and_user, only: %i[ reset_password submit_reset_password ]
+  before_action :set_reset_password_code_and_user, only: %i[ reset_password submit_reset_password ]
 
   def index
     @users = User.all.includes(:reset_password_code)
@@ -120,10 +120,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def set_password_reset_link_and_user
+  def set_reset_password_code_and_user
     @reset_password_code = ResetPasswordCode.find_by(code: params[:code])
     if !@reset_password_code
       redirect_to forgot_password_path, notice: "Link ungültig! Bitte fordere einen neuen Zurücksetzungslink an!"
+    elsif @reset_password_code.expired?
+      @reset_password_code.delete
+      redirect_to forgot_password_path, notice: "Link abgelaufen! Bitte fordere einen neuen Zurücksetzungslink an!"
     else
       @user = @reset_password_code.user
     end
