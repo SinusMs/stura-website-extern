@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :set_password_reset_link_and_user, only: %i[ reset_password submit_reset_password ]
 
   def index
-    @users = User.all
+    @users = User.all.includes(:reset_password_code)
   end
 
   def show
