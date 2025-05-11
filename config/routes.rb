@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   get "/backend", to: "sessions#show", as: "backend_root"
 
   resources :users
-  get "users/activate/:code", to: "users#activate"
-  patch "users/activate/:code", to: "users#submit_activation", as: :activate_user
   put "users/:id/reset_password_request", to: "users#reset_password_request", as: :reset_password_request
   get "forgot_password", to: "users#forgot_password", as: :forgot_password
   post "forgot_password", to: "users#submit_forgot_password"
