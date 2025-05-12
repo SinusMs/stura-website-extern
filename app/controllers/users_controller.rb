@@ -80,9 +80,9 @@ class UsersController < ApplicationController
     reset_password_code = ResetPasswordCode.new(user: @user, code: SecureRandom.alphanumeric(32))
     if reset_password_code.save
       UserMailer.with(user: @user, reset_password_code: reset_password_code).reset_password.deliver_now
-      redirect_to root_path, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
+      redirect_to request.referrer, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
     else
-      redirect_to root_path, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
+      redirect_to request.referrer, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
     end
   end
 
@@ -91,9 +91,9 @@ class UsersController < ApplicationController
     reset_password_code = ResetPasswordCode.new(user: @user, code: SecureRandom.alphanumeric(32))
     if reset_password_code.save
       UserMailer.with(user: @user, reset_password_code: reset_password_code).reset_password.deliver_now
-      redirect_to root_path, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
+      redirect_to request.referrer, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
     else
-      redirect_to root_path, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
+      redirect_to request.referrer, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
     end
   end
 
