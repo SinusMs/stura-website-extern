@@ -19,6 +19,8 @@ class ContactForm
   def deliver
     return false unless valid?
 
-    ContactMailer.with(contact_form: self).contact.deliver_now
+    mailer = ContactMailer.with(contact_form: self)
+    mailer.contact.deliver_now
+    mailer.confirmation.deliver_now
   end
 end

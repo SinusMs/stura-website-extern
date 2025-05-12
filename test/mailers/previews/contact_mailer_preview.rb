@@ -10,4 +10,14 @@ class ContactMailerPreview < ActionMailer::Preview
 
     ContactMailer.with(contact_form: sample_form).contact
   end
+
+  def confirmation
+    sample_form = ContactForm.new(
+      email: "user@example.com",
+      email_confirmation: "user@example.com",
+      contact_email_address_id: ContactEmailAddress.first!.id,
+      text: "This is a test message from the mailer preview.")
+
+    ContactMailer.with(contact_form: sample_form).confirmation
+  end
 end

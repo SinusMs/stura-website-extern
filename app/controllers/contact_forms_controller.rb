@@ -7,7 +7,7 @@ class ContactFormsController < ApplicationController
     @contact_form = ContactForm.new(contact_form_params)
 
     if @contact_form.deliver
-      redirect_to request.referrer, notice: "Deine Anfrage wurde erfolgreich versendet!"
+      redirect_to request.referrer, notice: "Wir haben deine Anfrage erhalten! Eine Bestätigungsmail wurde an \"#{@contact_form.email}\" gesendet."
     else
       render :index, status: :unprocessable_entity
     end
