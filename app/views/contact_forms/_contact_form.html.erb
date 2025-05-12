@@ -1,4 +1,13 @@
 <turbo-frame id="contact_form">
+  <% if notice %>
+    <div class="toast-container position-fixed p-5 top-0 start-50 translate-middle-x">
+      <div id="contactToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body text-center">
+          <strong><%= notice %></strong>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <%= form_with(model: contact_form, local: true) do |form| %>
     <% contact_form.errors.full_messages_for(:base).each do |msg| %>
         <h5 class="alert-heading"><%= msg %></h5>

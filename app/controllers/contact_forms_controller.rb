@@ -9,8 +9,7 @@ class ContactFormsController < ApplicationController
     if @contact_form.deliver
       redirect_to request.referrer, notice: "Deine Anfrage wurde erfolgreich versendet!"
     else
-      # redirect_to request.referrer, notice: "Sending Message failed!"
-      render :index, status: :unprocessable_entity, notice: "Fehler: Deine Anfrage konnte nicht gesendet werden!"
+      render :index, status: :unprocessable_entity
     end
   end
 

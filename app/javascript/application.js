@@ -5,9 +5,17 @@ import "popper"
 import "bootstrap"
 
 document.addEventListener('turbo:load', function() {
-    const toastLiveExample = document.getElementById('liveToast');
-    if (toastLiveExample) {
-        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    const toast = document.getElementById('liveToast');
+    if (toast) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast);
+        toastBootstrap.show();
+    }
+});
+
+document.addEventListener('turbo:frame-load', function() {
+    const toast = document.getElementById('contactToast');
+    if (toast) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toast);
         toastBootstrap.show();
     }
 });
