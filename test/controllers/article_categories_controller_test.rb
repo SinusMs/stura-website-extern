@@ -22,7 +22,7 @@ class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
       post article_categories_url, params: { article_category: { enabled: @new_article_category.enabled, name: @new_article_category.name } }
     end
 
-    assert_redirected_to article_category_url(ArticleCategory.last)
+    assert_redirected_to article_categories_url
   end
 
   test "should show article_category" do
@@ -37,7 +37,7 @@ class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update article_category" do
     patch article_category_url(@article_category), params: { article_category: { enabled: @article_category.enabled, name: @article_category.name } }
-    assert_redirected_to article_category_url(@article_category)
+    assert_redirected_to article_categories_url
   end
 
   # Commented out for now because an article category can't be deleted when its related to an article
