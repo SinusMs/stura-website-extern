@@ -7,10 +7,10 @@ class ContactFormsController < ApplicationController
     @contact_form = ContactForm.new(contact_form_params)
 
     if @contact_form.deliver
-      redirect_to request.referrer, notice: "Your Request has been sent!"
+      redirect_to request.referrer, notice: "Deine Anfrage wurde erfolgreich versendet!"
     else
       # redirect_to request.referrer, notice: "Sending Message failed!"
-      render :index, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity, notice: "Fehler: Deine Anfrage konnte nicht gesendet werden!"
     end
   end
 

@@ -27,7 +27,7 @@ class ContactEmailAddressesController < ApplicationController
 
     respond_to do |format|
       if @contact_email_address.save
-        format.html { redirect_to @contact_email_address, notice: "Contact email address was successfully created." }
+        format.html { redirect_to @contact_email_address, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" erstellt." }
         format.json { render :show, status: :created, location: @contact_email_address }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ContactEmailAddressesController < ApplicationController
   def update
     respond_to do |format|
       if @contact_email_address.update(contact_email_address_params)
-        format.html { redirect_to @contact_email_address, notice: "Contact email address was successfully updated." }
+        format.html { redirect_to @contact_email_address, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @contact_email_address }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class ContactEmailAddressesController < ApplicationController
     @contact_email_address.destroy!
 
     respond_to do |format|
-      format.html { redirect_to contact_email_addresses_path, status: :see_other, notice: "Contact email address was successfully destroyed." }
+      format.html { redirect_to contact_email_addresses_path, status: :see_other, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" gelöscht." }
       format.json { head :no_content }
     end
   end

@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
   def update
     respond_to do |format|
       if @setting.update(setting_params)
-        format.html { redirect_to edit_settings_path, notice: "Settings was successfully updated." }
+        format.html { redirect_to edit_settings_path, notice: "Einstellungen aktualisiert." }
         format.json { render :show, status: :ok, location: @setting }
       else
         format.html { render :edit, status: :unprocessable_entity }
