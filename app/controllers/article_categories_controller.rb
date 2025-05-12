@@ -27,7 +27,7 @@ class ArticleCategoriesController < ApplicationController
 
     respond_to do |format|
       if @article_category.save
-        format.html { redirect_to @article_category, notice: "Artikelkategorie \"#{@article_category.name}\" erstellt." }
+        format.html { redirect_to article_categories_path, notice: "Artikelkategorie \"#{@article_category.name}\" erstellt." }
         format.json { render :show, status: :created, location: @article_category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ArticleCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @article_category.update(article_category_params)
-        format.html { redirect_to @article_category, notice: "Artikelkategorie \"#{@article_category.name}\" aktualisiert." }
+        format.html { redirect_to article_categories_path, notice: "Artikelkategorie \"#{@article_category.name}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @article_category }
       else
         format.html { render :edit, status: :unprocessable_entity }

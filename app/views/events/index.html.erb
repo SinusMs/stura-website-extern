@@ -43,6 +43,12 @@
   </div>
 </div>
 
+<% if logged_in? %>
+  <div class="container my-3 d-flex gap-3 flex-wrap">
+    <%= link_to "Veranstaltung erstellen", new_event_path, method: :get, class: "btn btn-secondary"  %>
+  </div>
+<% end %>
+
 <script>  
   function toggleRowVisibility() {
       var sessionRows = document.getElementsByClassName("session-row");

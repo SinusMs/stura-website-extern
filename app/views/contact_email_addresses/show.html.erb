@@ -1,9 +1,9 @@
 <div class="container section-light">
   <%= render @contact_email_address %>
+</div>
 
-  <div>
-    <%= button_to "Bearbeiten", edit_contact_email_address_path(@contact_email_address), method: :get, class: "btn btn-secondary btn-lg my-3" %>
-    <%= button_to "Löschen", @contact_email_address, method: :delete, class: "btn btn-secondary btn-lg my-3" %>
-    <%= button_to "Alle Kontakt-Email-Adressen", contact_email_addresses_path, method: :get, class: "btn btn-secondary btn-lg my-3" %>
-  </div>
+<div class="container my-3 d-flex gap-3 flex-wrap">
+  <%= button_to "Übersicht", contact_email_addresses_path, method: :get, class: "btn btn-secondary" %>
+  <%= button_to "Bearbeiten", edit_contact_email_address_path(@contact_email_address), method: :get, class: "btn btn-secondary" %>
+  <%= button_to "Löschen", @contact_email_address, method: :delete, class: "btn btn-secondary" %>
 </div>

@@ -3,3 +3,7 @@
 
     <%= render "form", contact_email_address: @contact_email_address %>
 </div>
+
+<div class="container my-3 d-flex gap-3 flex-wrap">
+  <%= button_to "Übersicht", contact_email_addresses_path, method: :get, class: "btn btn-secondary" %>
+</div>

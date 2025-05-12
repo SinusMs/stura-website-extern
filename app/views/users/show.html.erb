@@ -1,5 +1,8 @@
-<div class="container py-4 section-light">
-    <h1>User "<%= @user.username %>"</h1>
-    <%= render @user %>
-    <%= button_to "Edit this User", edit_user_path(id: @user.id), method: "get", class: "btn btn-secondary" %>
+<div class="container section-light">
+  <h1 class="mt-3">User "<%= @user.username %>"</h1>
+  <%= render @user %>
+</div>
+<div class="container my-3 d-flex gap-3 flex-wrap">
+  <%= button_to "Nutzerübersicht", users_path, method: :get, class: "btn btn-secondary" %>
+  <%= button_to "Edit this User", edit_user_path(id: @user.id), method: "get", class: "btn btn-secondary" %>
 </div>

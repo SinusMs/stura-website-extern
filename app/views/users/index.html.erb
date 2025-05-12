@@ -1,23 +1,26 @@
-<div class="container py-4 section-light">
-  <h1>Users</h1>
+<div class="container section-light">
+  <h1 class="mt-3">Nutzerübersicht</h1>
 
   <div id="users">
     <table class="table w-auto">
         <thead>
-          <th>Name</th> <th>E-Mail</th> <th>Is Admin</th> <th>Active</th> <th>Edit</th> <th>Delete</th>
+          <th>Name</th> <th>E-Mail</th> <th>Admin</th> <th>Aktiviert</th> <th>Bearbeiten</th> 
         </thead>
         <tbody>
           <% @users.each do |user| %>
             <tr>
               <td><%= user.username %></td>
               <td><%= user.email_address %></td>
-              <td><%= user.is_admin %></td>
-              <td><%= user.reset_password_code&.is_activation_code ? false : true %></td>
-              <td><%= button_to "Edit " + user.username, edit_user_path(id: user.id), method: :get, class: "btn btn-secondary btn-sm" %></td>
-              <td><%= button_to "Delete " + user.username, user, method: :delete, class: "btn btn-secondary btn-sm" %></td>
+              <td><%= user.is_admin ? "Ja" : "Nein" %></td>
+              <td><%= user.reset_password_code&.is_activation_code ? "Nein" : "Ja" %></td>
+              <td><%= link_to "#{user.username} bearbeiten", edit_user_path(id: user.id), method: :get %></td>
             </tr>
           <% end %>
         </tbody>
     </table>
   </div>
+</div>
+
+<div class="container my-3 d-flex gap-3 flex-wrap">
+  <%= link_to "Nutzer erstellen", new_user_path, method: :get, class: "btn btn-secondary"  %>
 </div>
