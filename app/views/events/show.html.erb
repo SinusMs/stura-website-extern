@@ -4,6 +4,6 @@
   <%= button_to "Veranstaltungsübersicht", events_path, method: :get, class: "btn btn-secondary" %>
   <% if logged_in? %>
     <%= button_to "Bearbeiten", edit_event_path(@event), method: :get, class: "btn btn-secondary" %>
-    <%= button_to "Löschen", @event, method: :delete, class: "btn btn-secondary" %>
+    <%= button_to "Löschen", @event, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
   <% end %>
 </div>

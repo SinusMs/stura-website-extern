@@ -10,9 +10,9 @@
   <% end %>
   <% if @user == current_user %>
     <%= button_to "Passwort zurücksetzen", reset_password_request_path(@user), method: :put, class: "btn btn-secondary" %>
-    <%= button_to "ACCOUNT LÖSCHEN", @user, method: :delete, class: "btn btn-secondary" %>
+    <%= button_to "ACCOUNT LÖSCHEN", @user, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
   <% elsif is_admin? %>
     <%= button_to "Zurücksetungslink an Nutzer senden", reset_password_request_path(@user), method: :put, class: "btn btn-secondary" %>
-    <%= button_to "Nutzer Löschen", @user, method: :delete, class: "btn btn-secondary" %>
+    <%= button_to "Nutzer Löschen", @user, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
   <% end %>
 </div>

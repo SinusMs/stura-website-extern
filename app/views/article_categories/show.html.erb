@@ -5,5 +5,5 @@
 <div class="container my-3 d-flex gap-3 flex-wrap">
   <%= button_to "Alle Artikelkategorien", article_categories_path, method: :get, class: "btn btn-secondary" %>
   <%= button_to "Bearbeiten", edit_article_category_path(@article_category), method: :get, class: "btn btn-secondary" %>
-  <%= button_to "Löschen", @article_category, method: :delete, class: "btn btn-secondary" %>
+  <%= button_to "Löschen", @article_category, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
 </div>
