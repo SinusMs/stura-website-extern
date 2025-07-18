@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :showArticlesForDays, "Zeige Artikel für x Tage ab Veröffentlichung", class: "form-label" %>
+    <%= form.label :showArticlesForDays, class: "form-label" %>
     <%= form.number_field :showArticlesForDays, class: "form-control #{'is-invalid' if setting.errors[:showArticlesForDays].any?}" %>
     <% setting.errors.full_messages_for(:showArticlesForDays).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>

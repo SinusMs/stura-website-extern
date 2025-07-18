@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :title, "Titel", class: "form-label" %>
+    <%= form.label :title, class: "form-label" %>
     <%= form.text_field :title, class: "form-control #{'is-invalid' if article.errors[:title].any?}" %>
     <% article.errors.full_messages_for(:title).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :published, "Veröffentlichung", class: "form-label" %>
+    <%= form.label :published, class: "form-label" %>
     <%= form.datetime_field :published, class: "form-control #{'is-invalid' if article.errors[:published].any?}" %>
     <% article.errors.full_messages_for(:published).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
@@ -20,7 +20,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :prioritize_until, "Priorisieren bis", class: "form-label" %>
+    <%= form.label :prioritize_until, class: "form-label" %>
     <%= form.datetime_field :prioritize_until, class: "form-control #{'is-invalid' if article.errors[:prioritize_until].any?}" %>
     <% article.errors.full_messages_for(:prioritize_until).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :content, "Inhalt", class: "form-label" %>
+    <%= form.label :content, class: "form-label" %>
     <%= form.text_area :content, class: "form-control #{'is-invalid' if article.errors[:content].any?}", rows: 30 %>
     <% article.errors.full_messages_for(:content).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="mb-3">
-    <%= form.label :article_category_id, "Kategorie", class: "form-label" %>
+    <%= form.label :article_category_id, class: "form-label" %>
     <%= form.select :article_category_id,
         options_from_collection_for_select(ArticleCategory.all, "id", "name"),
         {}, class: "form-select #{'is-invalid' if article.errors[:article_category_id].any?}" %>

@@ -4,7 +4,7 @@
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :username, "Nutzername", class: "form-label" %>
+    <%= form.label :username, class: "form-label" %>
     <%= form.text_field :username, class: "form-control #{'is-invalid' if user.errors[:username].any?}" %>
     <% user.errors.full_messages_for(:username).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
@@ -13,7 +13,7 @@
 
   <% if is_admin? %>
     <div class="mb-3">
-      <%= form.label :email_address, "E-Mail Adresse", class: "form-label" %>
+      <%= form.label :email_address, class: "form-label" %>
       <%= form.email_field :email_address, class: "form-control #{'is-invalid' if user.errors[:email_address].any?}" %>
       <% user.errors.full_messages_for(:email_address).each do |msg| %>
         <div class="invalid-feedback"><%= msg %></div>
@@ -22,7 +22,7 @@
 
     <div class="form-check form-switch mb-3">
       <%= form.check_box :is_admin, class: "form-check-input event-check", id: "user_is_admin" %>
-      <%= form.label :is_admin, "Adminrechte", class: "form-check-label", for: "user_is_admin" %>
+      <%= form.label :is_admin, class: "form-check-label", for: "user_is_admin" %>
     </div>
   <% end %>
 
