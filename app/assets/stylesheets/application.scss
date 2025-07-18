@@ -81,6 +81,9 @@ $form-switch-focus-color:   $petrol-very-dark;
 $form-feedback-invalid-color: $orange;
 $form-text-color: $petrol-dark;
 
+$card-border-width: 0px;
+$card-bg:           white;
+
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
@@ -155,6 +158,14 @@ html {
 
 body {
   font-family: Open-Sans, Arial, sans-serif;
+}
+
+.card {
+  text-align: left;
+  .card-subtitle, .card-title {
+    color: black;
+    font-weight: bolder;
+  }
 }
 
 .table {

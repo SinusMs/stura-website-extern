@@ -1,5 +1,13 @@
 <div class="text-center">
   <h2>Neues aus dem StuRa</h2>
-  <p>TODO: Dynamically generate news cards</p>
+  <div class="container" style="height: 380px;">
+    <div class="row">
+      <% for article in Article.order(published: :desc).limit(3) %>
+        <div class="col-4">
+          <%= render partial: "articles/article_card", object: article %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <button class="btn btn-secondary btn-lg">Mehr lesen</button>
 </div>

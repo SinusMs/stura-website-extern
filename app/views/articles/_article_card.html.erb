@@ -1,0 +1,14 @@
+<%= link_to article_card, class: "text-decoration-none text-reset" do %>
+  <div id="<%= dom_id article_card %>" class="card mb-3" style="height: 350px;">
+    <% if article_card.image.attached? %>
+      <div class="card-img-top" style="height: 300px; overflow: hidden;">
+        <%= image_tag article_card.image, class: "img-fluid h-100 w-100", style: "object-fit: cover;" %>
+      </div>
+    <% end %>
+    <div class="card-body">
+      <h6 class="card-subtitle text-muted"><%= article_card.published.try(:strftime, "%d.%m.%y") %></h6>
+      <h5 class="card-title"><%= article_card.title %></h5>
+      <p class="card-text text-truncate"><%= truncate(article_card.content, length: 100, separator: ' ') %></p>
+    </div>
+  </div>
+<% end %>
