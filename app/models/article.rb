@@ -10,4 +10,6 @@ class Article < ApplicationRecord
   scope :order_by_date_and_priorization, -> { order(Arel.sql("CASE WHEN prioritize_until >= ? THEN 0 ELSE 1 END, published DESC", Time.now)) }
 
   belongs_to :article_category
+
+  has_one_attached :image
 end

@@ -45,6 +45,20 @@
     <% end %>
   </div>
 
+  <div class="mb-3">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image, class: "form-control #{'is-invalid' if article.errors[:image].any?}" %>
+    <% article.errors.full_messages_for(:image).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
+  </div>
+
+  <% if article.image.attached? %>
+    <div class="mb-3">
+      <%= image_tag article.image, class: "img-fluid" %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.submit "Speichern", class: "btn btn-secondary btn-lg" %>
   </div>
