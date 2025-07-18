@@ -1,0 +1,52 @@
+<turbo-frame id="contact_form">
+  <% if notice %>
+    <div class="toast-container position-fixed p-5 top-0 start-50 translate-middle-x">
+      <div id="contactToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body text-center">
+          <strong><%= notice %></strong>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= form_with(model: contact_form, local: true) do |form| %>
+    <% contact_form.errors.full_messages_for(:base).each do |msg| %>
+        <h5 class="alert-heading"><%= msg %></h5>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-control #{'is-invalid' if contact_form.errors[:email].any?}" %>
+      <% contact_form.errors.full_messages_for(:email).each do |msg| %>
+        <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :email_confirmation, class: "form-label" %>
+      <%= form.email_field :email_confirmation, class: "form-control #{'is-invalid' if contact_form.errors[:email_confirmation].any?}" %>
+      <% contact_form.errors.full_messages_for(:email_confirmation).each do |msg| %>
+        <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_email_address_id, class: "form-label" %>
+      <%= form.select :contact_email_address_id, options_from_collection_for_select(ContactEmailAddress.all, "id", "name"), {}, class: "form-select #{'is-invalid' if contact_form.errors[:contact_email_address_id].any?}" %>
+      <% contact_form.errors.full_messages_for(:contact_email_address_id).each do |msg| %>
+        <div class="invalid-feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :text, class: "form-label" %>
+      <%= form.text_area :text, class: "form-control #{'is-invalid' if contact_form.errors[:text].any?}", rows: 10 %>
+      <% contact_form.errors.full_messages_for(:text).each do |msg| %>
+        <div class="invalid-feedback" id="feedback"><%= msg %></div>
+      <% end %>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit "Senden", class: "btn btn-secondary btn-lg" %>
+    </div>
+  <% end %>
+</turbo-frame>

@@ -1,7 +1,7 @@
 class ArticleCategoriesController < ApplicationController
   layout "application"
   before_action :set_article_category, only: %i[ show edit update destroy ]
-  before_action :verify_is_logged_in, only: %i[ new edit create update destroy ]
+  before_action :verify_is_logged_in
 
   # GET /article_categories or /article_categories.json
   def index
@@ -27,7 +27,7 @@ class ArticleCategoriesController < ApplicationController
 
     respond_to do |format|
       if @article_category.save
-        format.html { redirect_to @article_category, notice: "Article category was successfully created." }
+        format.html { redirect_to article_categories_path, notice: "Artikelkategorie \"#{@article_category.name}\" erstellt." }
         format.json { render :show, status: :created, location: @article_category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ArticleCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @article_category.update(article_category_params)
-        format.html { redirect_to @article_category, notice: "Article category was successfully updated." }
+        format.html { redirect_to article_categories_path, notice: "Artikelkategorie \"#{@article_category.name}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @article_category }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class ArticleCategoriesController < ApplicationController
     @article_category.destroy!
 
     respond_to do |format|
-      format.html { redirect_to article_categories_path, status: :see_other, notice: "Article category was successfully destroyed." }
+      format.html { redirect_to article_categories_path, status: :see_other, notice: "Artikelkategorie \"#{@article_category.name}\" gelöscht." }
       format.json { head :no_content }
     end
   end
@@ -68,11 +68,5 @@ class ArticleCategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_category_params
       params.require(:article_category).permit(:name, :enabled)
-    end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
     end
 end

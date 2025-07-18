@@ -1,26 +1,33 @@
-<%= form_with(model: contact_email_address, class: "needs-validation", local: true) do |form| %>
-  <% if contact_email_address.errors.any? %>
-    <div class="alert alert-danger">
-      <h4 class="alert-heading"><%= pluralize(contact_email_address.errors.count, "error") %> prohibited this contact_email_address from being saved:</h4>
-      <ul class="mb-0">
-        <% contact_email_address.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<%= form_with(model: contact_email_address, local: true) do |form| %>
+  <% contact_email_address.errors.full_messages_for(:base).each do |msg| %>
+    <h5 class="alert-heading"><%= msg %></h5>
   <% end %>
 
   <div class="mb-3">
-    <%= form.label :name, "Bezeichnung", class: "form-label" %>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control #{'is-invalid' if contact_email_address.errors[:name].any?}" %>
+    <% contact_email_address.errors.full_messages_for(:name).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :email_address, "E-Mail Adresse", class: "form-label" %>
-    <%= form.text_field :email_address, class: "form-control" %>
+    <%= form.label :email_address, class: "form-label" %>
+    <%= form.email_field :email_address, class: "form-control #{'is-invalid' if contact_email_address.errors[:email_address].any?}" %>
+    <% contact_email_address.errors.full_messages_for(:email_address).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email_address_confirmation, class: "form-label" %>
+    <%= form.email_field :email_address_confirmation, class: "form-control #{'is-invalid' if contact_email_address.errors[:email_address_confirmation].any?}" %>
+    <% contact_email_address.errors.full_messages_for(:email_address_confirmation).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
 
   <div>
-    <%= form.submit "Speichern", class: "btn btn-secondary btn-lg mb-3" %>
+    <%= form.submit "Speichern", class: "btn btn-secondary btn-lg" %>
   </div>
 <% end %>

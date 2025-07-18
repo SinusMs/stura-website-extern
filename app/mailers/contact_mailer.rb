@@ -5,9 +5,23 @@ class ContactMailer < ApplicationMailer
   #   en.contact_mailer.contact.subject
   #
   def contact
-    email_address = ContactEmailAddress.find(params[:contact_email_address_id]).email_address
-    @user_text = params[:text]
-    @user_email = params[:your_email]
-    mail to: email_address, from: params[:your_email], subject: "Contact request by " + params[:your_email], content_type: "text/html; charset=UTF-8"
+    @form = params[:contact_form]
+    @contact_email_address = ContactEmailAddress.find(@form.contact_email_address_id)
+    mail(
+      to: @contact_email_address.email_address,
+      from: @form.email,
+      subject: "#{@contact_email_address.name} Anfrage von #{@form.email}",
+      content_type: "text/html; charset=UTF-8"
+    )
+  end
+
+  def confirmation
+    @form = params[:contact_form]
+    @contact_email_address = ContactEmailAddress.find(@form.contact_email_address_id)
+    mail(
+      to: @form.email,
+      subject: "Bestätigung deiner Anfrage - StuRa HTW Dresden",
+      content_type: "text/html; charset=UTF-8"
+    )
   end
 end

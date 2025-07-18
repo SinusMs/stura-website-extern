@@ -17,16 +17,14 @@ class SessionsController < ApplicationController
 
     if !!@user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect_to backend_root_path
+      redirect_to backend_root_path, notice: "Angemeldet als: #{helpers.current_user.username}"
     else
-      message = "Error trying to log in!"
-      redirect_to login_path, notice: message
+      redirect_to login_path, notice: "Fehler beim Anmelden!"
     end
   end
 
   def logout
     session[:user_id] = nil
-    message = "Successfully logged out!"
-    redirect_to login_path, notice: message
+    redirect_to login_path, notice: "Erfolgreich abgemeldet!"
   end
 end

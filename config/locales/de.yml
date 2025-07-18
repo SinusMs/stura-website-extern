@@ -1,0 +1,156 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+# See https://github.com/svenfuchs/rails-i18n/blob/9259183a35c5acd6bb28456589ecc9814928aad7/rails/locale/de.yml for reference
+
+de:
+  activerecord:
+    models:
+      article_category:
+        one: "Artikelkategorie"
+        other: "Artikelkategorien"
+      article: "Artikel"
+      contact_email_address:
+        one: "Kontakt-E-Mail-Adresse"
+        other: "Kontakt-E-Mail-Adressen"
+      event:
+        one: "Veranstaltung"
+        other: "Veranstaltungen"
+      reset_password_code:
+        one: "Passwortrücksetzcode"
+        other: "Passwortrücksetzcodes"
+      setting:
+        one: "Einstellung"
+        other: "Einstellungen"
+      user: "Nutzer"
+    attributes:
+      article_category:
+        name: "Name"
+        enabled: "Aktiviert"
+      article:
+        title: "Titel"
+        published: "Veröffentlichung"
+        content: "Inhalt"
+        article_category_id: "Artikelkategorie"
+        prioritize_until: "Priorisiert bis"
+      contact_email_address:
+        name: "Name"
+        email_address: "E-Mail Adresse"
+        email_address_confirmation: "E-Mail-Adressbestätigung"
+      event:
+        datetime: "Datum und Uhrzeit"
+        title: "Titel"
+        description: "Beschreibung"
+        is_session: "Ist eine Sitzung"
+        location: "Ort"
+      reset_password_code:
+        code: "Code"
+        is_activation_code: "Aktivierungscode"
+        user_id: "Nutzer-ID"
+      setting:
+        showArticlesForDays: "Zeige Artikel für x Tage ab Veröffentlichung"
+      user:
+        username: "Benutzername"
+        password: "Passwort"
+        password_digest: "Passwort-Hash"
+        email_address: "E-Mail Adresse"
+        is_admin: "Administrator"
+    errors:
+      messages:
+        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
+            existiert.
+          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
+  activemodel:
+    models:
+      contact_form: Kontaktformular
+    attributes:
+      contact_form:
+        email: "Deine E-Mail Adresse"
+        email_confirmation: "E-Mail-Adressbestätigung"
+        contact_email_address_id: "Wie können wir dir helfen?"
+        text: "Nachricht"
+    errors:
+      messages:
+        record_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Datensatz kann nicht gelöscht werden, da ein abhängiger %{record}-Datensatz
+            existiert.
+          has_many: Datensatz kann nicht gelöscht werden, da abhängige %{record} existieren.
+  attributes:
+    created_at: "Erstellt am"
+    updated_at: "Aktualisiert am"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: muss akzeptiert werden
+      blank: muss ausgefüllt werden
+      confirmation: stimmt nicht mit %{attribute} überein
+      empty: muss ausgefüllt werden
+      equal_to: muss genau %{count} sein
+      even: muss gerade sein
+      exclusion: ist nicht verfügbar
+      greater_than: muss größer als %{count} sein
+      greater_than_or_equal_to: muss größer oder gleich %{count} sein
+      inclusion: ist kein gültiger Wert
+      invalid: ist nicht gültig
+      less_than: muss kleiner als %{count} sein
+      less_than_or_equal_to: muss kleiner oder gleich %{count} sein
+      model_invalid: 'Gültigkeitsprüfung ist fehlgeschlagen: %{errors}'
+      not_a_number: ist keine Zahl
+      not_an_integer: muss ganzzahlig sein
+      odd: muss ungerade sein
+      other_than: darf nicht gleich %{count} sein
+      present: darf nicht ausgefüllt werden
+      required: muss ausgefüllt werden
+      taken: ist bereits vergeben
+      too_long:
+        one: ist zu lang (mehr als %{count} Zeichen)
+        other: ist zu lang (mehr als %{count} Zeichen)
+      too_short:
+        one: ist zu kurz (weniger als %{count} Zeichen)
+        other: ist zu kurz (weniger als %{count} Zeichen)
+      wrong_length:
+        one: hat die falsche Länge (muss genau %{count} Zeichen haben)
+        other: hat die falsche Länge (muss genau %{count} Zeichen haben)
+      # custom error messages
+      invalid_email_address: "ist keine gültige E-Mail-Adresse"
+    template:
+      body: 'Bitte überprüfen Sie die folgenden Felder:'
+      header:
+        one: 'Konnte %{model} nicht speichern: ein Fehler.'
+        other: 'Konnte %{model} nicht speichern: %{count} Fehler.'
+  helpers:
+    select:
+      prompt: Bitte wählen
+    submit:
+      create: "%{model} erstellen"
+      submit: "%{model} speichern"
+      update: "%{model} aktualisieren"

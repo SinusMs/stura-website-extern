@@ -2,8 +2,13 @@ require "test_helper"
 
 class ContactMailerTest < ActionMailer::TestCase
   test "contact" do
-    mail = ContactMailer.with(contact_email_address_id: contact_email_addresses(:stu).id, text: user_text, your_email: user_email).contact
-    assert_equal "Contact request by " + user_email, mail.subject
+    contact_form = ContactForm.new(
+      contact_email_address_id: contact_email_addresses(:stu).id,
+      email: user_email,
+      text: user_text
+    )
+    mail = ContactMailer.with(contact_form: contact_form).contact
+    assert_equal contact_email_addresses(:stu).name + " Anfrage von " + user_email, mail.subject
     assert_equal [ contact_email_addresses(:stu).email_address ], mail.to
     assert_equal [ user_email ], mail.from
     puts mail.body.encoded

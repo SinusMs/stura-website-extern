@@ -1,6 +1,5 @@
-<h1>Contact</h1>
+<h1 style="color: #FFD6BA;"><%= "#{@contact_email_address.name} Anfrage von #{@form.email}" %></h1>
 
 <p>
-  User "<%= @user_email %>" has sent the following message:<br>
-  <%= @user_text %>
+  <%= @form.text %>
 </p>

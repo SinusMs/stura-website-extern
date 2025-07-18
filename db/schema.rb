@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_11_082149) do
+ActiveRecord::Schema[7.2].define(version: 2025_05_10_101722) do
   create_table "article_categories", force: :cascade do |t|
     t.string "name"
     t.boolean "enabled"
@@ -46,6 +46,15 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_11_082149) do
     t.string "location"
   end
 
+  create_table "reset_password_codes", force: :cascade do |t|
+    t.string "code"
+    t.boolean "is_activation_code"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reset_password_codes_on_user_id"
+  end
+
   create_table "settings", force: :cascade do |t|
     t.integer "showArticlesForDays"
     t.datetime "created_at", null: false
@@ -58,7 +67,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_04_11_082149) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_admin"
+    t.string "email_address"
   end
 
   add_foreign_key "articles", "article_categories"
+  add_foreign_key "reset_password_codes", "users"
 end

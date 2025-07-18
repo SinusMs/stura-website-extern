@@ -1,9 +1,20 @@
 class ContactFormsController < ApplicationController
   def index
-    @contact_names = ContactEmailAddress.select("contact_email_addresses.name")
+    @contact_form = ContactForm.new
   end
-  def post
-     ContactMailer.with(contact_email_address_id: params[:contact_email_address_id], text: params[:text], your_email: params[:your_email]).contact.deliver_now
-     redirect_to request.referrer, notice: "Your Request has been Sent!"
+
+  def create
+    @contact_form = ContactForm.new(contact_form_params)
+
+    if @contact_form.deliver
+      redirect_to request.referrer, notice: "Wir haben deine Anfrage erhalten! Eine Bestätigungsmail wurde an \"#{@contact_form.email}\" gesendet."
+    else
+      render :index, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def contact_form_params
+    params.require(:contact_form).permit(:contact_email_address_id, :email, :email_confirmation, :text)
   end
 end

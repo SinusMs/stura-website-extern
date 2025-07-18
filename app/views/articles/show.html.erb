@@ -1,9 +1,9 @@
 <%= render partial: @article, layout: "layouts/section-dark" %>
 
-<div class="container mt-3 d-flex flex-row align-items-center gap-3">
+<div class="container my-3 d-flex gap-3 flex-wrap">
+  <%= button_to "Artikelübersicht", articles_path, method: :get, class: "btn btn-secondary" %>
   <% if logged_in? %>
     <%= button_to "Bearbeiten", edit_article_path(@article), method: :get, class: "btn btn-secondary" %>
-    <%= button_to "Löschen", @article, method: :delete, class: "btn btn-secondary"   %>
+    <%= button_to "Löschen", @article, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
   <% end %>
-  <%= button_to "Artikelübersicht", articles_path, method: :get, class: "btn btn-secondary" %>
 </div>

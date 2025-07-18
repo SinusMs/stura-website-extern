@@ -3,7 +3,7 @@ require "json"
 
 class UserTest < ActiveSupport::TestCase
   test "create with valid userdata" do
-    user = User.new(username: valid_username, password: valid_password, is_admin: false)
+    user = User.new(username: valid_username, password: valid_password, email_address: valid_email, is_admin: false)
     if !user.validate
       user.errors.each do |error|
         puts error.full_message
@@ -44,5 +44,9 @@ class UserTest < ActiveSupport::TestCase
 
   def valid_password
     "123"
+  end
+
+  def valid_email
+    "test_user@example.com"
   end
 end

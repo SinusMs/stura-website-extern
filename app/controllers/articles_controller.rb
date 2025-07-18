@@ -8,13 +8,15 @@ class ArticlesController < ApplicationController
     if helpers.logged_in?
       @articles = Article.all.order(published: :desc)
     else
-      published_articles = Article.where(published: (Time.now - Setting.first().showArticlesForDays.days)..Time.now).order(published: :desc)
-      @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
+      @articles = Article.public_articles.order_by_date_and_priorization
     end
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    if !helpers.logged_in? && !ArticleCategory.find(Article.find(params[:id]).article_category_id).enabled
+      head :unauthorized
+    end
   end
 
   # GET /articles/new
@@ -32,7 +34,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: "Article was successfully created." }
+        format.html { redirect_to @article, notice: "Artikel \"#{@article.title}\" erstellt." }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,7 +47,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: "Article was successfully updated." }
+        format.html { redirect_to @article, notice: "Artikel \"#{@article.title}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,21 +61,23 @@ class ArticlesController < ApplicationController
     @article.destroy!
 
     respond_to do |format|
-      format.html { redirect_to articles_path, status: :see_other, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_path, status: :see_other, notice: "Artikel \"#{@article.title}\" gelöscht." }
       format.json { head :no_content }
     end
   end
 
   # GET /articles/category/1
   def category
+    @article_category = ArticleCategory.find(params[:article_category_id])
     if helpers.logged_in?
       @articles = Article.where(article_category_id: params[:article_category_id]).order(published: :desc)
+      render :index
+    elsif @article_category.enabled
+      @articles = Article.public_articles.where(article_category_id: params[:article_category_id]).order_by_date_and_priorization
+      render :index
     else
-      published_articles = Article.where(published: (Time.now - Setting.first().showArticlesForDays.days)..Time.now, article_category_id: params[:article_category_id]).order(published: :desc)
-      @articles = published_articles.where(prioritize_until: Time.now..) + published_articles.where("prioritize_until is NULL OR prioritize_until < ?", Time.now)
+      head :unauthorized
     end
-    @article_category = ArticleCategory.find(params[:article_category_id])
-    render :index
   end
 
   private
@@ -85,11 +89,5 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :published, :content, :prioritize_until, :article_category_id)
-    end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
     end
 end

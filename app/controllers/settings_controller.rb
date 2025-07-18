@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
   def update
     respond_to do |format|
       if @setting.update(setting_params)
-        format.html { redirect_to edit_settings_path, notice: "Settings was successfully updated." }
+        format.html { redirect_to edit_settings_path, notice: "Einstellungen aktualisiert." }
         format.json { render :show, status: :ok, location: @setting }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -29,11 +29,5 @@ class SettingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def setting_params
       params.require(:setting).permit(:showArticlesForDays)
-    end
-
-    def verify_is_logged_in
-      if !helpers.logged_in?
-        head :unauthorized
-      end
     end
 end

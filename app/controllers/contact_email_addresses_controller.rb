@@ -1,7 +1,7 @@
 class ContactEmailAddressesController < ApplicationController
   layout "application"
   before_action :set_contact_email_address, only: %i[ show edit update destroy ]
-  before_action :verify_rights_to_access_contact_email
+  before_action :verify_is_logged_in
 
   # GET /contact_email_addresses or /contact_email_addresses.json
   def index
@@ -27,7 +27,7 @@ class ContactEmailAddressesController < ApplicationController
 
     respond_to do |format|
       if @contact_email_address.save
-        format.html { redirect_to @contact_email_address, notice: "Contact email address was successfully created." }
+        format.html { redirect_to @contact_email_address, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" erstellt." }
         format.json { render :show, status: :created, location: @contact_email_address }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class ContactEmailAddressesController < ApplicationController
   def update
     respond_to do |format|
       if @contact_email_address.update(contact_email_address_params)
-        format.html { redirect_to @contact_email_address, notice: "Contact email address was successfully updated." }
+        format.html { redirect_to @contact_email_address, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @contact_email_address }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class ContactEmailAddressesController < ApplicationController
     @contact_email_address.destroy!
 
     respond_to do |format|
-      format.html { redirect_to contact_email_addresses_path, status: :see_other, notice: "Contact email address was successfully destroyed." }
+      format.html { redirect_to contact_email_addresses_path, status: :see_other, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" gelöscht." }
       format.json { head :no_content }
     end
   end
@@ -67,12 +67,6 @@ class ContactEmailAddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_email_address_params
-      params.require(:contact_email_address).permit(:name, :email_address)
-    end
-
-    def verify_rights_to_access_contact_email
-      if !helpers.logged_in?
-        head :unauthorized
-      end
+      params.require(:contact_email_address).permit(:name, :email_address, :email_address_confirmation)
     end
 end

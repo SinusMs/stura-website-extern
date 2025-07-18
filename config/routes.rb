@@ -14,7 +14,13 @@ Rails.application.routes.draw do
 
   get "/backend", to: "sessions#show", as: "backend_root"
 
-  resources :users, only: [ :new, :create, :edit, :update, :show, :destroy, :index ]
+  resources :users
+  put "users/:id/reset_password_request", to: "users#reset_password_request", as: :reset_password_request
+  get "forgot_password", to: "users#forgot_password", as: :forgot_password
+  post "forgot_password", to: "users#submit_forgot_password"
+  get "users/reset_password/:code", to: "users#reset_password", as: :reset_password
+  patch "users/reset_password/:code", to: "users#submit_reset_password"
+
   resources :contact_email_addresses
   resources :events
   resources :articles do
@@ -30,6 +36,5 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#logout", as: "logout"
   post "/logout", to: "sessions#logout"
 
-  get "/contact", to: "contact_forms#index", as: "contact"
-  post "/contact", to: "contact_forms#post"
+  resources :contact_forms, only: [ :index, :create ], path: "contact", path_names: { index: "" }
 end

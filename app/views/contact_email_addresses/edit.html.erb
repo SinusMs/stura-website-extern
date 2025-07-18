@@ -3,3 +3,8 @@
 
     <%= render "form", contact_email_address: @contact_email_address %>
 </div>
+
+<div class="container my-3 d-flex gap-3 flex-wrap">
+  <%= button_to "Übersicht", contact_email_addresses_path, method: :get, class: "btn btn-secondary" %>
+  <%= button_to "Löschen", @contact_email_address, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
+</div>

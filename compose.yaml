@@ -9,7 +9,10 @@ services:
     environment:
       - RAILS_ENV=development
       - DEFAULT_USER_USERNAME=admin
+      - DEFAULT_USER_EMAIL_ADDRESS=admin@example.com
       - DEFAULT_USER_PASSWORD=123
+      - ACCOUNT_ACTIVATION_CODE_VALIDITY_DAYS=14
+      - RESET_PASSWORD_CODE_VALIDITY_MINUTES=30
     #env_file: "webapp.env"
     volumes:
       - ./:/rails:rw
