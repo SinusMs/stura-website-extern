@@ -28,4 +28,7 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  errors:
+    messages:
+      # custom error messages
+      invalid_email_address: "is not a valid email address"
