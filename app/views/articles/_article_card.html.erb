@@ -6,7 +6,9 @@
       </div>
     <% end %>
     <div class="card-body flex-shrink-0">
-      <h6 class="card-subtitle text-muted"><%= article_card.published.try(:strftime, "%d.%m.%y") %></h6>
+      <h6 class="card-subtitle text-muted font-weight-light">
+        <%= article_card.published.try(:strftime, "%d.%m.%y") %> <%= ArticleCategory.find(article_card.article_category_id).name %>
+      </h6>
       <h5 class="card-title"><%= article_card.title %></h5>
       <p class="card-text text-truncate"><%= truncate(article_card.content, length: 100, separator: ' ') %></p>
     </div>

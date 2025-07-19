@@ -1,11 +1,29 @@
 <div class="text-center">
   <h2>Neues aus dem StuRa</h2>
-  <div class="container my-3" style="height: 20rem;">
-    <div class="row row-cols-1 row-cols-lg-3 h-100">
-      <% for article in Article.order(published: :desc).limit(3) %>
-          <%= render partial: "articles/article_card", object: article %>
-      <% end %>
-    </div>
+
+  <div class="container mt-3">
+    <% prioritized_articles = Article.public_articles.where("prioritize_until >= ?", Time.now).order(published: :desc).limit(2).to_a %>
+    <% if prioritized_articles.size > 0 %>
+      <div class="row row-cols-1 justify-content-center row-cols-md-2">
+        <% for article in prioritized_articles %>
+          <div class="col mb-4" style="height: 22rem;">
+            <%= render partial: "articles/article_card", object: article %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% articles = Article.public_articles.where("prioritize_until IS NULL OR prioritize_until < ?", Time.now).order(published: :desc).limit(3).to_a %>
+    <% if articles.size > 0 %>
+      <div class="row row-cols-1 justify-content-center row-cols-lg-3">
+        <% for article in articles %>
+          <div class="col mb-4" style="height: 18rem;">
+            <%= render partial: "articles/article_card", object: article %>
+          </div>
+        <% end %>
+      </div>
+    <% end%>
   </div>
+
   <button class="btn btn-secondary btn-lg">Mehr lesen</button>
 </div>
