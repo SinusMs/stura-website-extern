@@ -12,4 +12,8 @@ class Article < ApplicationRecord
   belongs_to :article_category
 
   has_one_attached :image
+
+  def prioritized?
+    prioritize_until.present? && prioritize_until >= Time.now
+  end
 end

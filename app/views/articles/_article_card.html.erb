@@ -1,5 +1,5 @@
 <%= link_to article_card, class: "text-decoration-none text-reset h-100" do %>
-  <div id="<%= dom_id article_card %>" class="card h-100 d-flex flex-column">
+  <div id="<%= dom_id article_card %>" class="card <%= "card-prioritized" if article_card.prioritized? %> h-100 d-flex flex-column">
     <% if article_card.image.attached? %>
       <div class="card-img-top flex-grow-1 d-flex overflow-hidden">
         <%= image_tag article_card.image, class: "object-fit-cover flex-grow-1 d-block", alt: dom_id(article_card) + "_image" %>
