@@ -53,7 +53,7 @@
     <% end %>
   </div>
 
-  <% if article.image.attached? %>
+  <% if article.persisted? && article.image.attached? %>
     <div class="mb-3">
       <%= image_tag article.image, class: "img-fluid" %>
     </div>
