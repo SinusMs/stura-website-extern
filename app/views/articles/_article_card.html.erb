@@ -1,10 +1,11 @@
-<%= link_to article_card, class: "text-decoration-none text-reset h-100" do %>
+<%= link_to article_card, class: "text-decoration-none text-reset d-block", style: article_card.prioritized? ? "height: 22rem;" : "height: 18rem" do %>
   <div id="<%= dom_id article_card %>" class="card <%= "card-prioritized" if article_card.prioritized? %> h-100 d-flex flex-column">
     <% if article_card.image.attached? %>
       <div class="card-img-top flex-grow-1 d-flex overflow-hidden">
-        <%= image_tag article_card.image, class: "object-fit-cover flex-grow-1 d-block", alt: dom_id(article_card) + "_image" %>
+        <%= image_tag article_card.image, class: "object-fit-cover flex-grow-1", alt: dom_id(article_card) + "_image" %>
       </div>
     <% end %>
+
     <div class="card-body flex-shrink-0">
       <h6 class="card-subtitle text-muted font-weight-light">
         <%= article_card.published.try(:strftime, "%d.%m.%y") %> <%= ArticleCategory.find(article_card.article_category_id).name %>

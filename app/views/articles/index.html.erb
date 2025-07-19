@@ -1,7 +1,7 @@
 <% if @articles.any? { |article| article.prioritize_until != nil and article.prioritize_until >= Time.now } %>
-  <div class="overflow-y-hidden py-4 section-dark">
+  <div class="overflow-y-hidden pt-5 pb-3 section-dark">
 <% else %>
-  <div class="overflow-y-hidden py-4 section-light">
+  <div class="overflow-y-hidden pt-5 pb-3 section-light">
 <% end %>
   <div class="container">
     <% if @article_category == nil %>
@@ -12,16 +12,38 @@
       <h1><%= @article_category.name %></h1>
     <% end %>
   </div>
+
+  <% if logged_in? %>
+    <div class="container my-3 d-flex gap-3 flex-wrap">
+      <%= link_to "Artikel erstellen", new_article_path, method: :get, class: "btn btn-secondary"  %>
+    </div>
+  <% end %>
 </div>
 
-<% if logged_in? %>
-  <div class="container my-3 d-flex gap-3 flex-wrap">
-    <%= link_to "Artikel erstellen", new_article_path, method: :get, class: "btn btn-secondary"  %>
+<% if @articles.any?(&:prioritized?) %>
+  <div class="overflow-y-hidden pb-4 section-dark">
+    <div id="prioritized_articles" class="container">
+      <div class="row row-cols-md-2 justify-content-center">
+        <% @articles.select(&:prioritized?).each do |article| %>
+          <div class="col mb-4">
+            <%= render partial: "article_card", object: article %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>
 
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render partial: "article_preview", object: article, layout: (article.prioritize_until == nil or article.prioritize_until < Time.now) ? "layouts/section-light" : "layouts/section-dark" %>
-  <% end %>
-</div>
+<% if @articles.any? { |article| !article.prioritized? } %>
+  <div class="overflow-y-hidden pb-5 <%= "pt-5" if @articles.any?(&:prioritized?) %> section-light">
+    <div id="articles" class="container">
+      <div class="row row-cols-lg-3 justify-content-center">
+        <% @articles.reject(&:prioritized?).each do |article| %>
+          <div class="col mb-4">
+            <%= render partial: "article_card", object: article %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

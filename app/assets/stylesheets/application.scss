@@ -162,10 +162,6 @@ body {
 
 .card {
   text-align: left;
-  &.card-prioritized {
-    border-width: 1px;
-    border-color: $petrol-very-dark;
-  }
   .card-subtitle, .card-title {
     color: black;
     font-weight: bolder;
