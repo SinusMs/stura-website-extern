@@ -1,6 +1,6 @@
 <div class="text-center">
   <h2>Neues aus dem StuRa</h2>
-  <div class="container" style="height: 380px;">
+  <div class="container my-3" style="height: 380px;">
     <div class="row row-cols-1 row-cols-lg-3 h-100">
       <% for article in Article.order(published: :desc).limit(3) %>
           <%= render partial: "articles/article_card", object: article %>

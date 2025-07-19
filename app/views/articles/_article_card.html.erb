@@ -1,11 +1,11 @@
 <%= link_to article_card, class: "text-decoration-none text-reset h-100" do %>
   <div id="<%= dom_id article_card %>" class="card h-100 d-flex flex-column">
     <% if article_card.image.attached? %>
-      <div class="card-img-top flex-grow-1" style="overflow: hidden;">
-        <%= image_tag article_card.image, class: "img-fluid wh-100", style: "object-fit: cover;" %>
+      <div class="card-img-top flex-grow-1 d-flex" style="min-height: 0; overflow: hidden;">
+        <%= image_tag article_card.image, style: "height: 100%; object-fit: cover; flex: 1 1 auto; max-width: none; max-height: none;" %>
       </div>
     <% end %>
-    <div class="card-body">
+    <div class="card-body flex-shrink-1">
       <h6 class="card-subtitle text-muted"><%= article_card.published.try(:strftime, "%d.%m.%y") %></h6>
       <h5 class="card-title"><%= article_card.title %></h5>
       <p class="card-text text-truncate"><%= truncate(article_card.content, length: 100, separator: ' ') %></p>
