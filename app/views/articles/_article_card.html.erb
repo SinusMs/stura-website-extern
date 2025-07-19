@@ -1,8 +1,8 @@
-<%= link_to article_card, class: "text-decoration-none text-reset" do %>
-  <div id="<%= dom_id article_card %>" class="card mb-3" style="height: 350px;">
+<%= link_to article_card, class: "text-decoration-none text-reset h-100" do %>
+  <div id="<%= dom_id article_card %>" class="card h-100 d-flex flex-column">
     <% if article_card.image.attached? %>
-      <div class="card-img-top" style="height: 300px; overflow: hidden;">
-        <%= image_tag article_card.image, class: "img-fluid h-100 w-100", style: "object-fit: cover;" %>
+      <div class="card-img-top flex-grow-1" style="overflow: hidden;">
+        <%= image_tag article_card.image, class: "img-fluid wh-100", style: "object-fit: cover;" %>
       </div>
     <% end %>
     <div class="card-body">
