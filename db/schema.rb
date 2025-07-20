@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 2025_07_18_113935) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,7 +53,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_18_113935) do
     t.string "title"
     t.datetime "published"
     t.text "content"
-    t.integer "article_category_id", null: false
+    t.bigint "article_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "prioritize_until"
@@ -77,7 +80,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_18_113935) do
   create_table "reset_password_codes", force: :cascade do |t|
     t.string "code"
     t.boolean "is_activation_code"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reset_password_codes_on_user_id"

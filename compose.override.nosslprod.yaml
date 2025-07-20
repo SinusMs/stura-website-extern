@@ -1,0 +1,14 @@
+# docker-compose.override.yml (dev only)
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    environment:
+      - RAILS_ENV=production
+      - DISABLE_SSL=true
+    volumes:
+      - rails_storage:/rails/storage
+
+volumes:
+  rails_storage:

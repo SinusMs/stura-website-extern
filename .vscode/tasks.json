@@ -2,9 +2,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Init",
+            "label": "Init (development)",
             "type": "shell",
-            "command": "./init.sh",
+            "command": "./init.dev.sh",
             "group": "build",
             "presentation": {
                 "echo": true,
@@ -16,9 +16,9 @@
             }
         },
         {
-            "label": "Run",
+            "label": "Run (development)",
             "type": "shell",
-            "command": "./run.sh",
+            "command": "./run.dev.sh",
             "group": "build",
             "presentation": {
                 "echo": true,
