@@ -13,11 +13,6 @@ if User.where(is_admin: true).blank?
   User.create!(username: ENV.fetch("DEFAULT_USER_USERNAME"), password: ENV.fetch("DEFAULT_USER_PASSWORD"), email_address: ENV.fetch("DEFAULT_USER_EMAIL_ADDRESS"), is_admin: true).username
 end
 
-if ArticleCategory.where(name: "News").blank?
-  puts "No News Category found, creating default News Category."
-  ArticleCategory.create!(name: "News", enabled: true)
-end
-
 if Setting.first().blank?
   puts "No Settings found, creating default Settings."
   Setting.create!(showArticlesForDays: 180)
