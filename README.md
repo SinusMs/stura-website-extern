@@ -109,3 +109,6 @@
       return 301 https://$host$request_uri; 
    }
    ```
+5. If there are problems with email delivery:
+   - check connectivity from within the docker container: `telnet <smtp-server-address> <port>`
+   - take a look at [this](https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration)
