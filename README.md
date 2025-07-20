@@ -45,12 +45,12 @@ Things you may want to cover:
    2. "Terminal: Select default Profile"
    3. "Git Bash"
 4. Ensure Docker is running
-6. First start: execute `docker compose up --build` from project directory
-    - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Init"
+6. First start: execute `init.dev.sh` from project directory
+    - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Init (development)"
     - This will create the docker containers, install required dependencies and start the containers
-7. If containers have already been created: execute `docker compose up` from project directory
-    - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Run"
-   - This will start the docker containers
+7. If containers have already been created: execute `run.dev.sh` from project directory
+    - Alternative: In VS Code `Ctrl` + `Shift` + `B` -> "Run (development)"
+    - This will start the docker containers
 8. Web application available under http://localhost:3000
 9. With the Terminal from which the Containers where started in focus: `Ctrl` + `C` to stop server
 10. (Optional) Set up Ruby syntax highlighting and autocomplete
@@ -91,4 +91,10 @@ Things you may want to cover:
 - [Docker Guides + Documentation](https://docs.docker.com/get-started/)
 
 ## Deployment Instructions
-TODO...
+- Prerequisites: docker compose
+1. Rename `.example.env` to `.env` and enter appropiate values for the variables in the file.
+2. Initialize services by running `init.prod.sh` helper script. This might take a while.
+3. Initialize Database:
+   1. Open a shell in the web-1 Container. (i.e. by running the `webserver-shell.sh` helper script)
+   2. In the shell of the webserver, run `bin/rails db:create db:migrate db:seed`
+4. Set up reverse proxy with https, e.g. using nginx/certbot
