@@ -96,5 +96,31 @@ Things you may want to cover:
 2. Initialize services by running `init.prod.sh` helper script. This might take a while.
 3. Initialize Database:
    1. Open a shell in the web-1 Container. (i.e. by running the `webserver-shell.sh` helper script)
-   2. In the shell of the webserver, run `bin/rails db:create db:migrate db:seed`
-4. Set up reverse proxy with https, e.g. using nginx/certbot
+   2. In the shell, run `bin/rails db:create db:migrate db:seed`
+4. Set up a reverse proxy with https, e.g. using nginx/certbot
+   - **Important:** The application is configured to use http requests for communication with the reverse proxy but assume they were https requests originally. However, the proxy needs to set a custom header for the application to recognize a request as https. (In nginx using `proxy_set_header X-Forwarded-Proto https;`)
+   - The final nginx configuration should look similar to this:
+```nginx
+server {
+  listen 443 ssl;
+  server_name yourdomain.com;
+
+  ssl_certificate     /etc/ssl/certs/your-cert.pem;
+  ssl_certificate_key /etc/ssl/private/your-key.pem;
+
+  location / {
+    proxy_pass http://rails_app:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto https;  # 👈 REQUIRED
+    proxy_set_header X-Forwarded-Ssl on;       # optional but common
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+}
+
+server {
+  listen 80;
+  server_name yourdomain.com;
+  # Use HTTPS only by redirecting all HTTP requests
+  return 301 https://$host$request_uri; 
+}
+```
