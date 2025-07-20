@@ -1,36 +1,25 @@
 services:
   web:
+    # Note that the build context and Dockerfile are specified in the override files for dev and prod environments individually.
     build: .
     command: bundle exec rails s -b '0.0.0.0'
     ports:
       - "3000:3000"
-    # depends_on:
-    #   - db
+    depends_on:
+      - db
     environment:
-      - RAILS_ENV=development
-      - DEFAULT_USER_USERNAME=admin
-      - DEFAULT_USER_EMAIL_ADDRESS=admin@example.com
-      - DEFAULT_USER_PASSWORD=123
-      - ACCOUNT_ACTIVATION_CODE_VALIDITY_DAYS=14
-      - RESET_PASSWORD_CODE_VALIDITY_MINUTES=30
-    #env_file: "webapp.env"
+      - POSTGRES_HOST=db
+    env_file: ".env"
+    
+  db:
+    image: postgres:latest
+    env_file: ".env"
     volumes:
-      - ./:/rails:rw
-      #     "Statt mounten würde man auf Deutsch montieren sagen. 
-      #      Wörtlich übersetzt heißt das zwar eigentlich reiten, aber kein Mensch reitet seinen PC." 
-      #       ~ Prof. Baumgartl
+      - postgres_data:/var/lib/postgresql/data
 
-#   db:
-#     image: postgres:latest
-#     secrets:
-#       - db-password
-#     environment:
-#       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-#     volumes:
-#       - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
 
-# volumes:
-#   postgres_data:
-# secrets:
-#   db-password:
-#     file: db/password.txt
+#     "Statt mounten würde man auf Deutsch montieren sagen. 
+#      Wörtlich übersetzt heißt das zwar eigentlich reiten, aber kein Mensch reitet seinen PC." 
+#       ~ Prof. Baumgartl

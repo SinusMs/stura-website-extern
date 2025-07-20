@@ -9,12 +9,16 @@ ARG RUBY_VERSION=3.3.0
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
+RUN mkdir /rails
 WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips libpq-dev nodejs && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Install Yarn 
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.22.22 
 
 # Set production environment
 ENV RAILS_ENV="production" \
