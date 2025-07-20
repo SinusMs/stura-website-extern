@@ -1,5 +1,29 @@
 <div class="text-center">
   <h2>Neues aus dem StuRa</h2>
-  <p>TODO: Dynamically generate news cards</p>
-  <button class="btn btn-secondary btn-lg">Mehr lesen</button>
+
+  <div class="container mt-3">
+    <% prioritized_articles = Article.public_articles.where("prioritize_until >= ?", Time.now).order(published: :desc).limit(2).to_a %>
+    <% if prioritized_articles.size > 0 %>
+      <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+        <% for article in prioritized_articles %>
+          <div class="col mb-4">
+            <%= render partial: "articles/article_card", object: article %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% articles = Article.public_articles.where("prioritize_until IS NULL OR prioritize_until < ?", Time.now).order(published: :desc).limit(3).to_a %>
+    <% if articles.size > 0 %>
+      <div class="row row-cols-1 row-cols-lg-3 justify-content-center">
+        <% for article in articles %>
+          <div class="col mb-4">
+            <%= render partial: "articles/article_card", object: article %>
+          </div>
+        <% end %>
+      </div>
+    <% end%>
+  </div>
+
+  <%= button_to "Mehr lesen", articles_path, method: :get, class: "btn btn-secondary btn-lg" %>
 </div>

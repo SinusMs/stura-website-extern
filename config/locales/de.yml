@@ -59,6 +59,7 @@ de:
         content: "Inhalt"
         article_category_id: "Artikelkategorie"
         prioritize_until: "Priorisiert bis"
+        image: "Bild"
       contact_email_address:
         name: "Name"
         email_address: "E-Mail Adresse"
