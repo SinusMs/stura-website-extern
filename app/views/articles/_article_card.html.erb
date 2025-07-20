@@ -11,7 +11,9 @@
         <%= article_card.published.try(:strftime, "%d.%m.%y") %> <%= ArticleCategory.find(article_card.article_category_id).name %>
       </h6>
       <h5 class="card-title"><%= article_card.title %></h5>
-      <p class="card-text text-truncate"><%= truncate(article_card.content, length: 100, separator: ' ') %></p>
+      <p class="card-text overflow-hidden <%= "text-truncate" if article_card.image.attached? %>">
+        <%= truncate(article_card.content, length: article_card.image.attached? ? 80 : 350, separator: ' ') %>
+      </p>
     </div>
   </div>
 <% end %>
