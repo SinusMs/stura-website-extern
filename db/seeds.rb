@@ -10,7 +10,7 @@
 
 if User.where(is_admin: true).blank?
   puts "No admin account found, creating default admin account."
-  User.create!(username: ENV["DEFAULT_USER_USERNAME"], password: ENV["DEFAULT_USER_PASSWORD"], email_address: ENV["DEFAULT_USER_EMAIL_ADDRESS"], is_admin: true).username
+  User.create!(username: ENV.fetch("DEFAULT_USER_USERNAME"), password: ENV.fetch("DEFAULT_USER_PASSWORD"), email_address: ENV.fetch("DEFAULT_USER_EMAIL_ADDRESS"), is_admin: true).username
 end
 
 if ArticleCategory.where(name: "News").blank?

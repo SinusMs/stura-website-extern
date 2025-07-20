@@ -6,7 +6,7 @@ class ResetPasswordCode < ApplicationRecord
 
   def expired?
     is_activation_code ?
-      created_at < ENV["ACCOUNT_ACTIVATION_CODE_VALIDITY_DAYS"].to_i.days.ago :
-      created_at < ENV["RESET_PASSWORD_CODE_VALIDITY_MINUTES"].to_i.minutes.ago
+      created_at < ENV.fetch("ACCOUNT_ACTIVATION_CODE_VALIDITY_DAYS").to_i.days.ago :
+      created_at < ENV.fetch("RESET_PASSWORD_CODE_VALIDITY_MINUTES").to_i.minutes.ago
   end
 end
