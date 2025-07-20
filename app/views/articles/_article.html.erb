@@ -9,7 +9,7 @@
   </div>
 
   <% if logged_in? %>
-    <% if article.prioritize_until != nil and article.prioritize_until >= Time.now %>
+    <% if article.prioritize_until != nil and article.prioritize_until >= Time.current %>
       <strong>Priorisiert:</strong> Ja <br>
     <% else %>
       <strong>Priorisiert:</strong> Nein <br>
