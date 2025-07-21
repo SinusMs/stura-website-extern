@@ -33,15 +33,15 @@
 9. Web application available at http://localhost:3000
 10. With the terminal from which the containers were started in focus: press `Ctrl` + `C` to stop the server
 11. *(Optional)* Set up Ruby syntax highlighting and autocomplete:
-   1. Install Ruby 3.3.0  
-      - **Note for WSL2 users:** Ruby must be installed in your **Linux** installation, **not** Windows
-      - [Windows download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
-      - **Linux recommended method:** use [Ruby Version Manager](https://rvm.io/)
-      - Alternative methods: https://www.ruby-lang.org/en/downloads/
-   2. Run `bundle install`
-      - This installs all dependencies required by the Ruby Language Server
-      - You’ll need to re-run this if new dependencies are added to the `Gemfile`
-   3. Install the [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) extension in VS Code
+    1. Install Ruby 3.3.0  
+       - **Note for WSL2 users:** Ruby must be installed in your **Linux** installation, **not** Windows
+       - [Windows download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
+       - **Linux recommended method:** use [Ruby Version Manager](https://rvm.io/)
+       - Alternative methods: https://www.ruby-lang.org/en/downloads/
+    2. Run `bundle install`
+       - This installs all dependencies required by the Ruby Language Server
+       - You’ll need to re-run this if new dependencies are added to the `Gemfile`
+    3. Install the [Ruby LSP](https://marketplace.visualstudio.com/items?itemName=Shopify.ruby-lsp) extension in VS Code
 
 ## Rails CLI
 - **Note:** Since Ruby runs in a Docker container, all CLI commands must be executed from a [shell within the container](#webserver-shell-webserver-shellsh).
