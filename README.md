@@ -17,20 +17,22 @@
 ## Development Environment Setup
 1. Clone the repository
 2. Open the project folder in VS Code
-3. **Windows only:** Set Git Bash as the default terminal in VS Code
+3. Copy `.example.env` and rename it to `.env`
+   - For local development, the example values for the environment variables should work fine, but feel free to adjust them.
+5. **Windows only:** Set Git Bash as the default terminal in VS Code
    1. Press `Ctrl` + `Shift` + `P`
    2. Select "Terminal: Select Default Profile"
    3. Choose "Git Bash"
-4. Ensure Docker is running
-5. First start: execute `init.dev.sh` from the project directory
+6. Ensure Docker is running
+7. First start: execute `init.dev.sh` from the project directory
    - Alternatively, in VS Code press `Ctrl` + `Shift` + `B` -> select "Init (development)"
    - This will create the Docker containers and start them
-6. If containers have already been created: execute `run.dev.sh` from the project directory
+8. If containers have already been created: execute `run.dev.sh` from the project directory
    - Alternatively, in VS Code press `Ctrl` + `Shift` + `B` -> select "Run (development)"
    - This will start the Docker containers
-7. Web application available at http://localhost:3000
-8. With the terminal from which the containers were started in focus: press `Ctrl` + `C` to stop the server
-9. *(Optional)* Set up Ruby syntax highlighting and autocomplete:
+9. Web application available at http://localhost:3000
+10. With the terminal from which the containers were started in focus: press `Ctrl` + `C` to stop the server
+11. *(Optional)* Set up Ruby syntax highlighting and autocomplete:
    1. Install Ruby 3.3.0  
       - **Note for WSL2 users:** Ruby must be installed in your **Linux** installation, **not** Windows
       - [Windows download](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.0-1/rubyinstaller-devkit-3.3.0-1-x64.exe)
@@ -74,7 +76,7 @@
 ## Deployment Instructions
 **Prerequisites:** Docker Compose
 
-1. Rename `.example.env` to `.env` and set appropriate values for all variables
+1. Copy `.example.env`, rename it to `.env` and set appropriate values for all variables
 2. Initialize services by running the `init.prod.sh` helper script (this may take some time)
 3. Initialize the database:
    1. Open a shell in the `web-1` container (e.g., via the `webserver-shell.sh` script)
