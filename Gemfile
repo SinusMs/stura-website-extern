@@ -45,6 +45,8 @@ gem "dartsass-sprockets"
 # easy routing for static pages [https://github.com/thoughtbot/high_voltage]
 gem "high_voltage", "~> 4.0.0"
 
+gem "invisible_captcha"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
