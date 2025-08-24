@@ -21,6 +21,5 @@ class ContactForm
 
     mailer = ContactMailer.with(contact_form: self)
     mailer.contact.deliver_now
-    mailer.confirmation.deliver_now
   end
 end
