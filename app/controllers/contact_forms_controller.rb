@@ -1,5 +1,5 @@
 class ContactFormsController < ApplicationController
-  invisible_captcha only: [:create], honeypot: :Anmerkung
+  invisible_captcha only: [ :create ], honeypot: :Anmerkung
   def index
     @contact_form = ContactForm.new
   end
