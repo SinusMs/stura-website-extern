@@ -4,6 +4,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @article = articles(:one)
     post login_url, params: { username: "admin", password: "123" }
+    assert_response :found
   end
 
   test "should get index" do

@@ -30,6 +30,9 @@
 # See https://github.com/svenfuchs/rails-i18n/blob/9259183a35c5acd6bb28456589ecc9814928aad7/rails/locale/de.yml for reference
 
 de:
+  invisible_captcha:
+    sentence_for_humans: ""
+    timestamp_error_message: "Das ging zu schnell, bitte sende das Fomular erneut ab."
   activerecord:
     models:
       article_category:

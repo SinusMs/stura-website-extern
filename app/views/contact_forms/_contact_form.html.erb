@@ -45,6 +45,12 @@
       <% end %>
     </div>
 
+    
+    <%= invisible_captcha :Anmerkung %>
+    <% if flash[:error] %>
+      <h2 class="text-center"><%= flash[:error] %></h2>
+    <% end %>
+
     <div class="text-center">
       <%= form.submit "Senden", class: "btn btn-secondary btn-lg" %>
     </div>

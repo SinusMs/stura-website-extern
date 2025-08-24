@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   layout "application"
   before_action :verify_is_logged_in, only: [ :show ]
+  invisible_captcha only: [ :create ], honeypot: :Wiederholung
   def login
     if helpers.logged_in?
       redirect_to backend_root_path

@@ -4,6 +4,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @event = events(:one)
     post login_url, params: { username: "admin", password: "123" }
+    assert_response :found
   end
 
   test "should get index" do

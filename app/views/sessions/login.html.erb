@@ -12,6 +12,11 @@
         <div>
             <%= link_to "Logindaten vergessen?", forgot_password_path %>
         </div>
-            <%= form.submit "Anmelden", id: "login", class: "btn btn-secondary btn-lg my-3" %>
+    
+        <%= invisible_captcha :Wiederholung %>
+        <% if flash[:error] %>
+        <h2 class="text-center"><%= flash[:error] %></h2>
+        <% end %>
+        <%= form.submit "Anmelden", id: "login", class: "btn btn-secondary btn-lg my-3" %>
     <% end %>
 </div>
