@@ -4,6 +4,7 @@ class ContactEmailAddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @contact_email_address = contact_email_addresses(:stu)
     post login_url, params: { username: "admin", password: "123" }
+    assert_response :found
   end
 
   test "should get index" do

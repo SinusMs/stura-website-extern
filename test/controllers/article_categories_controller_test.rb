@@ -5,6 +5,7 @@ class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
     @article_category = article_categories(:one)
     @new_article_category = ArticleCategory.new(enabled: true, name: "New Category")
     post login_url, params: { username: "admin", password: "123" }
+    assert_response :found
   end
 
   test "should get index" do
