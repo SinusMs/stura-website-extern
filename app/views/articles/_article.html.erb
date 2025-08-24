@@ -28,6 +28,6 @@
   <% end %>
 
   <p class="text-wrap text-break mt-4">
-    <%= article.content %>
+    <%= sanitize(Commonmarker.to_html(article.content)) %>
   </p>
 </div>

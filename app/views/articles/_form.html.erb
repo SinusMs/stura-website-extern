@@ -30,6 +30,7 @@
   <div class="mb-3">
     <%= form.label :content, class: "form-label" %>
     <%= form.text_area :content, class: "form-control #{'is-invalid' if article.errors[:content].any?}", rows: 30 %>
+    <div class="form-text">Formatierung mittels Markdown wird unterstützt.</div>
     <% article.errors.full_messages_for(:content).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
     <% end %>

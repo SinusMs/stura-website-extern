@@ -12,7 +12,7 @@
       </h6>
       <h5 class="card-title"><%= article_card.title %></h5>
       <p class="card-text overflow-hidden <%= "text-truncate" if article_card.image.attached? %>">
-        <%= truncate(article_card.content, length: article_card.image.attached? ? 80 : 350, separator: ' ') %>
+        <%= truncate(sanitize(Commonmarker.to_html(article_card.content), tags: []), length: article_card.image.attached? ? 80 : 350, separator: ' ') %>
       </p>
     </div>
   </div>
