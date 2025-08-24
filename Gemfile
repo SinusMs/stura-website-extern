@@ -47,6 +47,9 @@ gem "high_voltage", "~> 4.0.0"
 
 gem "invisible_captcha"
 
+# Markdown parser
+gem "commonmarker"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
