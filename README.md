@@ -1,6 +1,4 @@
-# README
-
-## Prerequisites
+## Prerequisites for Development
 - Linux or Windows  
   - **Note:** If you're using Windows and want proper syntax highlighting/autocompletion for Ruby scripts, it's recommended to install and use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) to run a Linux instance on top of Windows. Setting up a language server for Ruby on Windows natively is an absolute pain in the ass.
   - WSL2 setup instructions:
@@ -66,13 +64,6 @@
 - Runs any pending database migrations
 - Usage: `./migrate.sh`
 
-## Useful Links
-- [Ruby Documentation](https://www.ruby-lang.org/en/documentation/)
-- [Rails Guides](https://guides.rubyonrails.org/index.html)
-- [Rails API Documentation](https://api.rubyonrails.org/)
-- [Rails CLI Guide](https://guides.rubyonrails.org/command_line.html)
-- [Docker Docs](https://docs.docker.com/get-started/)
-
 ## Deployment Instructions
 **Prerequisites:** Docker Compose
 
@@ -114,3 +105,15 @@
 5. If there are problems with email delivery:
    - check connectivity from within the docker container: `telnet <smtp-server-address> <port>`
    - take a look at [this](https://guides.rubyonrails.org/action_mailer_basics.html#action-mailer-configuration)
+
+## Updating a deployed Instance
+1. run `git pull`
+2. run `./init.prod.sh`
+3. execute any pending database migrations if present
+
+## Useful Links
+- [Ruby Documentation](https://www.ruby-lang.org/en/documentation/)
+- [Rails Guides](https://guides.rubyonrails.org/index.html)
+- [Rails API Documentation](https://api.rubyonrails.org/)
+- [Rails CLI Guide](https://guides.rubyonrails.org/command_line.html)
+- [Docker Docs](https://docs.docker.com/get-started/)

@@ -10,8 +10,7 @@ class ContactMailer < ApplicationMailer
     mail(
       to: @contact_email_address.email_address,
       from: @form.email,
-      subject: "#{@contact_email_address.name} Anfrage von #{@form.email}",
-      content_type: "text/html; charset=UTF-8"
+      subject: "#{@contact_email_address.name} Anfrage von #{@form.email}"
     )
   end
 end
