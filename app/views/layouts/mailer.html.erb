@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<meta charset="utf-8">
 
-  <body style="font-family: Arial, sans-serif; color: white; background-color: #1B423E;">
-    <%= yield %>
+<html>
+  <body>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" 
+           style="background-color:#1B423E; font-family:Arial, sans-serif; color:white;">
+      <tr>
+        <td align="center">
+          <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" 
+                 style="background-color:#1B423E; color:white; padding:20px;">
+            <tr>
+              <td>
+                <%= yield %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
