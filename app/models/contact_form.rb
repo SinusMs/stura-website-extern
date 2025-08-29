@@ -12,7 +12,7 @@ class ContactForm
 
   def contact_email_address_id_must_exist
     unless ContactEmailAddress.exists?(id: contact_email_address_id)
-      errors.add(:contact_email_address_id, "not found")
+      errors.add(:contact_email_address_id, "nicht gefunden")
     end
   end
 
