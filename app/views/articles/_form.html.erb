@@ -12,20 +12,18 @@
   </div>
 
 <div class="mb-3 row justify-content-between">
-  <div class="col-6 col-md-4 mb-3 mb-md-0">
-    <%= form.label :published_day, class: "form-label" %>
-    <%= form.date_field :published_day, class: "form-control #{'is-invalid' if article.errors[:published].any? || article.errors[:published_day].any?}" %>
+  <div class="col-12 col-md-8 mb-3 mb-md-0">
+    <%= form.label :published, for: "article_published_day", class: "form-label" %>
+    <div class="input-group <%= 'is-invalid' if article.errors[:published].any? || article.errors[:published_day].any? || article.errors[:published_time].any? %>">
+      <%= form.time_field :published_time, class: "form-control #{'is-invalid' if article.errors[:published_time].any?}" %>
+      <%= form.date_field :published_day, class: "form-control #{'is-invalid' if article.errors[:published].any? || article.errors[:published_day].any?}" %>
+    </div>
     <% article.errors.full_messages_for(:published).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
     <% end %>
     <% article.errors.full_messages_for(:published_day).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
     <% end %>
-  </div>
-
-  <div class="col-6 col-md-4 mb-3 mb-md-0">
-    <%= form.label :published_time, class: "form-label" %>
-    <%= form.time_field :published_time, class: "form-control #{'is-invalid' if article.errors[:published_time].any?}" %>
     <% article.errors.full_messages_for(:published_time).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
     <% end %>
