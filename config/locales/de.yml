@@ -59,6 +59,8 @@ de:
       article:
         title: "Titel"
         published: "Veröffentlichung"
+        published_day: "Veröffentlichungsdatum"
+        published_time: "Veröffentlichungszeit"
         content: "Inhalt"
         article_category_id: "Artikelkategorie"
         prioritize_until: "Priorisiert bis"

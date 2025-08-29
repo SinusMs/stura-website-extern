@@ -11,13 +11,26 @@
     <% end %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :published, class: "form-label" %>
-    <%= form.datetime_field :published, class: "form-control #{'is-invalid' if article.errors[:published].any?}" %>
+<div class="mb-3 row justify-content-between">
+  <div class="col-6">
+    <%= form.label :published_day, class: "form-label" %>
+    <%= form.date_field :published_day, class: "form-control #{'is-invalid' if article.errors[:published].any? || article.errors[:published_day].any?}" %>
     <% article.errors.full_messages_for(:published).each do |msg| %>
       <div class="invalid-feedback"><%= msg %></div>
     <% end %>
+    <% article.errors.full_messages_for(:published_day).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
   </div>
+
+  <div class="col-5">
+    <%= form.label :published_time, class: "form-label" %>
+    <%= form.time_field :published_time, class: "form-control #{'is-invalid' if article.errors[:published_time].any?}" %>
+    <% article.errors.full_messages_for(:published_time).each do |msg| %>
+      <div class="invalid-feedback"><%= msg %></div>
+    <% end %>
+  </div>
+</div>
 
   <div class="mb-3">
     <%= form.label :prioritize_until, class: "form-label" %>
