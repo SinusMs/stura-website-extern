@@ -41,9 +41,9 @@ class Article < ApplicationRecord
       .where(published: (Setting.first.showArticlesForDays.days.ago..Time.current))
   }
 
-  scope :order_by_date_and_priorization, -> { order(Arel.sql("CASE WHEN prioritize_until >= ? THEN 0 ELSE 1 END, published DESC", Time.current)) }
+  scope :order_by_date_and_priorization, -> { order(Arel.sql("CASE WHEN prioritize_until >= ? THEN 0 ELSE 1 END, published DESC", Date.current)) }
 
   def prioritized?
-    prioritize_until.present? && prioritize_until >= Time.current
+    prioritize_until.present? && prioritize_until >= Date.current
   end
 end

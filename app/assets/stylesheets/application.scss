@@ -63,7 +63,7 @@ $input-border-radius:           5px;
 $input-color:                   $petrol-very-dark;
 $input-font-family:             Open-Sans;
 $focus-ring-color:              $petrol;
-$focus-ring-box-shadow:         0 0 0 3px $petrol;
+$focus-ring-box-shadow:         0 0 0 2px $petrol;
 $form-select-focus-box-shadow:  $focus-ring-box-shadow;
 
 $toast-background-color:            $orange-light;
@@ -160,6 +160,15 @@ body {
   font-family: Open-Sans, Arial, sans-serif;
 }
 
+.form-control.is-invalid {
+  border: $orange;
+  border-style: solid;
+  border-width: 1px;
+  &:focus{
+    box-shadow: 0 0 0 1px $orange;
+  }
+}
+
 .card {
   text-align: left;
   .card-subtitle, .card-title {
@@ -250,6 +259,7 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: $orange-light;
     font-weight: bolder;
+    text-align: center;
   }
 
   @include light-link;
@@ -262,6 +272,7 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: $orange;
     font-weight: bolder;
+    text-align: center;
   }
 
   @include dark-link;

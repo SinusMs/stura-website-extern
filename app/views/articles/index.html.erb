@@ -1,4 +1,4 @@
-<% if @articles.any? { |article| article.prioritize_until != nil and article.prioritize_until >= Time.current } %>
+<% if @articles.any? { |article| article.prioritize_until != nil and article.prioritize_until >= Date.current } %>
   <div class="overflow-y-hidden pt-5 pb-3 section-dark">
 <% else %>
   <div class="overflow-y-hidden pt-5 pb-3 section-light">
