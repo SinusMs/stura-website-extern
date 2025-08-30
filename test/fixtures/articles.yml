@@ -1,13 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  published: 2024-11-13 09:46:30
-  content: MyText
-  article_category: one
+not_prioritized:
+  title: not_prioritized
+  published: <%= Time.current %>
+  content: not_prioritized
+  article_category: enabled
 
-two:
-  title: MyString
-  published: 2024-11-13 09:46:30
-  content: MyText
-  article_category: two
+prioritized:
+  title: prioritized
+  published: <%= Time.current %>
+  content: prioritized
+  article_category: enabled
+  prioritize_until: <%= Date.current + 1.day %>
+
+prioritization_expired:
+  title: prioritization_expired
+  published: <%= Time.current - 2.days %>
+  content: prioritization_expired
+  article_category: enabled
+  prioritize_until: <%= Date.current - 1.day %>
+
+not_published:
+  title: not_published
+  published: <%= Time.current + 1.day %>
+  content: not_published
+  article_category: enabled
+
+category_disabled:
+  title: category_disabled
+  published: <%= Time.current - 1.day %>
+  content: category_disabled
+  article_category: disabled

@@ -2,7 +2,8 @@ require "test_helper"
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article = articles(:one)
+    @article = articles(:not_prioritized)
+    @new_article = Article.new(title: "New", published: Time.current, content: "content", article_category: article_categories(:enabled))
     post login_url, params: { username: "admin", password: "123" }
     assert_response :found
   end
@@ -19,7 +20,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create article" do
     assert_difference("Article.count") do
-      post articles_url, params: { article: { article_category_id: @article.article_category_id, content: @article.content, published_day: @article.published_day, published_time: @article.published_time, title: @article.title } }
+      post articles_url, params: { article: { article_category_id: @new_article.article_category_id, content: @new_article.content, published_day: @new_article.published_day, published_time: @new_article.published_time, title: @new_article.title } }
     end
 
     assert_redirected_to article_url(Article.last)

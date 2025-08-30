@@ -2,7 +2,7 @@ require "test_helper"
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @event = events(:one)
+    @event = events(:event)
     post login_url, params: { username: "admin", password: "123" }
     assert_response :found
   end

@@ -46,6 +46,11 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: "Artikel \"#{@article.title}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @article }
       else
+        p @article.errors.full_messages
+        p @article.published
+        p @article.published_day
+        p @article.published_time
+
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end

@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 stu:
-  name: Stu
+  name: stu
   email_address: stu@stura.htw-dresden.de
 
 public_relations:
-  name: "Public Relations"
+  name: public_relations
   email_address: pr@stura.htw-dresden.de

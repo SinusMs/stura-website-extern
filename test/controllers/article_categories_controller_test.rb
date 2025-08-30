@@ -2,7 +2,7 @@ require "test_helper"
 
 class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @article_category = article_categories(:one)
+    @article_category = article_categories(:enabled)
     @new_article_category = ArticleCategory.new(enabled: true, name: "New Category")
     post login_url, params: { username: "admin", password: "123" }
     assert_response :found
