@@ -11,5 +11,13 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def login_admin
+      get logout_url
+      post login_url, params: { username: "admin", password: "123" }
+    end
+    def login_user
+      get logout_url
+      post login_url, params: { username: "user", password: "123" }
+    end
   end
 end

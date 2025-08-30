@@ -44,7 +44,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "Nutzer \"#{@user.username}\" aktualisiert." }
+        if helpers.is_admin?
+          format.html { redirect_to users_url, notice: "Nutzer \"#{@user.username}\" aktualisiert." }
+        else
+          format.html { redirect_to edit_user_url(@user), notice: "Nutzer \"#{@user.username}\" aktualisiert." }
+        end
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,7 +66,11 @@ class UsersController < ApplicationController
     @user.destroy!
 
     respond_to do |format|
-      format.html { redirect_to users_path, notice: "Nutzer \"#{@user.username}\" gelöscht." }
+      if helpers.is_admin?
+        format.html { redirect_to users_path, notice: "Nutzer \"#{@user.username}\" gelöscht." }
+      else
+        format.html { redirect_to root_path, notice: "Nutzer \"#{@user.username}\" gelöscht." }
+      end
       format.json { head :no_content }
     end
   end
@@ -71,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def submit_forgot_password
-    @user = User.find_by(email_address: params[:email_address])
+    @user = User.find_by(email_address: params.permit(:email_address)[:email_address])
     if !@user
       redirect_to forgot_password_path, notice: "E-Mail Adresse nicht gefunden!"
       return
@@ -80,9 +88,9 @@ class UsersController < ApplicationController
     reset_password_code = ResetPasswordCode.new(user: @user, code: SecureRandom.alphanumeric(32))
     if reset_password_code.save
       UserMailer.with(user: @user, reset_password_code: reset_password_code).reset_password.deliver_now
-      redirect_to request.referrer, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
+      redirect_to forgot_password_path, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
     else
-      redirect_to request.referrer, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
+      redirect_to forgot_password_path, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
     end
   end
 
@@ -91,9 +99,9 @@ class UsersController < ApplicationController
     reset_password_code = ResetPasswordCode.new(user: @user, code: SecureRandom.alphanumeric(32))
     if reset_password_code.save
       UserMailer.with(user: @user, reset_password_code: reset_password_code).reset_password.deliver_now
-      redirect_to request.referrer, notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
+      redirect_to (request.referrer.presence || edit_user_path(@user)), notice: "Ein E-Mail zum Zurücksetzen wurde an \"#{@user.email_address}\" gesendet."
     else
-      redirect_to request.referrer, notice: "Fehler beim Erstellen des Zurücksetzungscodes."
+      redirect_to (request.referrer.presence || edit_user_path(@user)), notice: "Fehler beim Erstellen des Zurücksetzungscodes."
     end
   end
 
