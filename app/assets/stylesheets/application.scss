@@ -250,6 +250,7 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: $orange-light;
     font-weight: bolder;
+    text-align: center;
   }
 
   @include light-link;
@@ -262,6 +263,7 @@ body {
   h1, h2, h3, h4, h5, h6 {
     color: $orange;
     font-weight: bolder;
+    text-align: center;
   }
 
   @include dark-link;
