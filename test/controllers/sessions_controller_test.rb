@@ -7,12 +7,14 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     post login_url, params: { username: "admin", password: "123" }
     assert_response :found, "expected to log in successfully"
+    assert_equal session[:user_id], users(:admin).id
 
     get backend_root_url
     assert_response :success, "expected logged in user to be able to view backend landing page"
 
     get logout_path
     assert_redirected_to login_url, "expected to redirect to login page after successful logout"
+    assert_nil session[:user_id]
   end
 
   test "should not get backend landing page when not logged in" do
