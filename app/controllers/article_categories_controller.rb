@@ -65,8 +65,8 @@ class ArticleCategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article_category
-      if ArticleCategory.exists?(params[:id])
-        @article_category = ArticleCategory.find(params[:id])
+      if ArticleCategory.exists?(params[:id].to_i)
+        @article_category = ArticleCategory.find(params[:id].to_i)
       else
         head :not_found
       end
