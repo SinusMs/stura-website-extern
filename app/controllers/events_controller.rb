@@ -66,7 +66,11 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id].to_i)
+      if Event.exists?(params[:id].to_i)
+        @event = Event.find(params[:id].to_i)
+      else
+        head :not_found
+      end
     end
 
     # Only allow a list of trusted parameters through.
