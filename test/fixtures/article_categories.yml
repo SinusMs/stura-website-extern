@@ -7,3 +7,7 @@ enabled:
 disabled:
   name: Disabled
   enabled: false
+
+no_articles:
+  name: no_articles
+  enabled: false
