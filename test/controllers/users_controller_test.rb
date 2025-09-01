@@ -178,6 +178,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should send forgot password email if email address exists" do
+    assert_emails 0 do
+      post forgot_password_url, params: { email_address: "doesnt@exist.lol" }
+    end
+    assert_emails 1 do
+      post forgot_password_url, params: { email_address: @user.email_address }
+    end
+    assert_emails 1 do
+      post forgot_password_url, params: { email_address: @user.email_address }
+    end
+  end
+
   test "should generate reset code only for self as non admin" do
     assert_difference("ResetPasswordCode.count", 0, "Non-logged-in user should not generate reset code") do
       put reset_password_request_url(@user)
@@ -195,6 +207,20 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "should send reset code email only for self as non admin" do
+    assert_emails 0 do
+      put reset_password_request_url(@user)
+    end
+
+    login_user
+    assert_emails 1 do
+      put reset_password_request_url(@user)
+    end
+    assert_emails 0 do
+      put reset_password_request_url(@user2)
+    end
+  end
+
   test "should generate reset codes for any user as admin" do
     login_admin
     assert_difference("ResetPasswordCode.count", 1, "Admin should generate reset code for self") do
@@ -208,6 +234,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference("ResetPasswordCode.count", 1, "Admin should generate reset code for regular user") do
       put reset_password_request_url(@user)
       assert_redirected_to edit_user_url(@user), "Should redirect after generating code"
+    end
+  end
+
+  test "should send reset code emails for any user as admin" do
+    login_admin
+    assert_emails 1 do
+      put reset_password_request_url(@admin)
+    end
+    assert_emails 1 do
+      put reset_password_request_url(@admin2)
+    end
+    assert_emails 1 do
+      put reset_password_request_url(@user)
     end
   end
 
