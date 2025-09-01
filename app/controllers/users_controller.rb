@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   end
 
   def submit_forgot_password
-    @user = User.find_by(email_address: params.permit(:email_address)[:email_address])
+    @user = User.find_by(email_address: params[:email_address])
     if !@user
       redirect_to forgot_password_path, notice: "E-Mail Adresse nicht gefunden!"
       return
@@ -125,7 +125,11 @@ class UsersController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+    else
+      head :not_found
+    end
   end
 
   def set_reset_password_code_and_user

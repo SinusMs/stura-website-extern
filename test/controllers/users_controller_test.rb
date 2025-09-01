@@ -7,6 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:user)
     @user2 = users(:user2)
     @new_user = { username: "user3", email_address: "user3@address.com", is_admin: false }
+    @invalid_user = { username: "~", email_address: "AHHHHHHHH", is_admin: "nah" }
   end
 
   test "should get index as admin" do
@@ -150,6 +151,28 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized, "User should not destroy another user"
     delete user_url(@user)
     assert_redirected_to root_url, "User should be redirected to root after destroying self"
+  end
+
+  test "should handle invalid reqests" do
+    login_admin
+
+    get user_url(id: 7650545)
+    assert_response :not_found
+
+    get edit_user_url(id: 7650545)
+    assert_response :not_found
+
+    post users_url, params: { user: @invalid_user }
+    assert_response :unprocessable_entity
+
+    patch user_url(@user), params: { user: @invalid_user }
+    assert_response :unprocessable_entity
+
+    delete user_url(id: 7650545)
+    assert_response :not_found
+
+    put reset_password_request_url(id: 7650545)
+    assert_response :not_found
   end
 
   test "should get forgot password" do
