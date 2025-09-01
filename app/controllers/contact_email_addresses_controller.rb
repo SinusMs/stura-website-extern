@@ -62,7 +62,11 @@ class ContactEmailAddressesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact_email_address
-      @contact_email_address = ContactEmailAddress.find(params[:id])
+      if ContactEmailAddress.exists?(params[:id])
+        @contact_email_address = ContactEmailAddress.find(params[:id])
+      else
+        head :not_found
+      end
     end
 
     # Only allow a list of trusted parameters through.
