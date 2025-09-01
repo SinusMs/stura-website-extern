@@ -1,11 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  datetime: 2024-11-07 18:44:13
-  title: Event1
-  description: "Super duper event 1"
+event:
+  datetime: <%= Time.current + 3 %>
+  title: event
+  description: event
+  is_session: false
+  location: Rosengarten
 
-two:
-  datetime: 2024-11-07 18:44:13
-  title: Event2
-  description: "Super duper event 1"
+past_event:
+  datetime: <%= Time.current - 3 %>
+  title: past_event
+  description: past_event
+  is_session: false
+  location:
+
+current_event:
+  datetime: <%= Time.current %>
+  title: current_event
+  description: current_event
+  is_session: false
+  location: Rosengarten
+
+session:
+  datetime: <%= Time.current + 3 %>
+  title: session
+  description: session
+  is_session: true
+  location: A101

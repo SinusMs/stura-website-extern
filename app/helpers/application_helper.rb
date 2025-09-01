@@ -1,6 +1,6 @@
 module ApplicationHelper
   def logged_in?
-    !session[:user_id].blank?
+    !session[:user_id].blank? && User.exists?(session[:user_id])
   end
 
   def current_user

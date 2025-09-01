@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
-    if !helpers.logged_in? && !ArticleCategory.find(Article.find(params[:id]).article_category_id).enabled
+    if !helpers.logged_in? && (!ArticleCategory.find(Article.find(params[:id].to_i).article_category_id).enabled || @article.published > Time.current)
       head :unauthorized
     end
   end
@@ -76,7 +76,11 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      if Article.exists?(params[:id].to_i)
+        @article = Article.find(params[:id].to_i)
+      else
+        head :not_found
+      end
     end
 
     # Only allow a list of trusted parameters through.

@@ -51,18 +51,25 @@ class ArticleCategoriesController < ApplicationController
 
   # DELETE /article_categories/1 or /article_categories/1.json
   def destroy
-    @article_category.destroy!
-
     respond_to do |format|
-      format.html { redirect_to article_categories_path, status: :see_other, notice: "Artikelkategorie \"#{@article_category.name}\" gelöscht." }
-      format.json { head :no_content }
+      if @article_category.destroy
+        format.html { redirect_to article_categories_path, status: :see_other, notice: "Artikelkategorie \"#{@article_category.name}\" gelöscht." }
+        format.json { head :no_content }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @article_category.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article_category
-      @article_category = ArticleCategory.find(params[:id])
+      if ArticleCategory.exists?(params[:id].to_i)
+        @article_category = ArticleCategory.find(params[:id].to_i)
+      else
+        head :not_found
+      end
     end
 
     # Only allow a list of trusted parameters through.

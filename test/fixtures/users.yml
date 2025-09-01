@@ -6,8 +6,21 @@ admin:
   password_digest: <%= BCrypt::Password.create("123") %>
   is_admin: true
 
+admin2:
+  username: admin2
+  email_address: "admin2@address.com"
+  password_digest: <%= BCrypt::Password.create("123") %>
+  is_admin: true
+
 user:
   username: user
   email_address: "user@address.com"
+  password_digest: <%= BCrypt::Password.create("123") %>
+  is_admin: false
+
+
+user2:
+  username: user2
+  email_address: "user2@address.com"
   password_digest: <%= BCrypt::Password.create("123") %>
   is_admin: false
