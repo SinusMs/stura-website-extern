@@ -11,7 +11,6 @@ class ContactMailerTest < ActionMailer::TestCase
     assert_equal contact_email_addresses(:stu).name + " Anfrage von " + user_email, mail.subject
     assert_equal [ contact_email_addresses(:stu).email_address ], mail.to
     assert_equal [ user_email ], mail.from
-    puts mail.body.encoded
     assert_match Regexp.new(user_text), mail.body.encoded
   end
 
