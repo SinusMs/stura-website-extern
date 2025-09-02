@@ -15,25 +15,19 @@
       </div>
       <table class="table table-hover table-borderless w-auto mx-auto">
         <thead>
-          <th>Datum</th> <th>Uhrzeit</th> <th class="text-start">Veranstaltung</th> <th>Ort</th>
-          <% if logged_in? %>
-            <th>Bearbeiten</th>
-          <% end %>
+          <th>Datum</th> <th>Beginn</th> <th class="text-start">Veranstaltung</th> <th class="text-start">Ort</th>
         </thead>
         <tbody>
-          <% @events.each do |event| %>
-            <% if event.is_session %>
+          <% @calendar.events.each do |event| %>
+            <% if /[0-9]\. Sitzung/.match(event.summary) %>
               <tr class="session-row" style="display: none;">
             <% else %>
               <tr class="event-row">
             <% end %>
-                <td><%= event.datetime.try(:strftime, "%d.%m.%y") %></td>
-                <td><%= event.datetime.try(:strftime, "%H:%M") %></td>
-                <td class="text-start"><%= link_to event.title, event %></td>
-                <td><%= event.location %></td>
-                <% if logged_in? %>
-                  <td><%= link_to "Bearbeiten", edit_event_path(event), method: :get %></td>
-                <% end %>
+                <td><%= event.dtstart.try(:strftime, "%d.%m.%y") %></td>
+                <td><%= event.dtstart.try(:strftime, "%H:%M") %></td>
+                <td class="text-start"><%= link_to event.summary, event_path(id: event.uid) %></td>
+                <td class="text-start"><%= event.location %></td>
               </tr>
           <% end %>
         </tbody>
@@ -41,12 +35,6 @@
     </div>
   </div>
 </div>
-
-<% if logged_in? %>
-  <div class="container my-3 d-flex gap-3 flex-wrap">
-    <%= link_to "Veranstaltung erstellen", new_event_path, method: :get, class: "btn btn-secondary"  %>
-  </div>
-<% end %>
 
 <script>  
   function toggleRowVisibility() {

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   patch "users/reset_password/:code", to: "users#submit_reset_password"
 
   resources :contact_email_addresses
-  resources :events
+  resources :events, only: [ :index, :show ]
   resources :articles do
     collection do
       get "category/:article_category_id", to: "articles#category", as: "article_category"

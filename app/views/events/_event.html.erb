@@ -1,19 +1,46 @@
 <div id="<%= dom_id event %>">
-  <h1><%= event.title %></h1>
-  <div class="d-flex flex-md-row flex-column-reverse justify-content-between">
+  <h1><%= @event.summary %></h1>
+  <div class="d-flex flex-lg-row flex-column-reverse justify-content-between">
     <p class="text-wrap text-break">
-      <%= event.description %>
+      <%= @event.description || "Keine Beschreibung vorhanden." %>
     </p>
 
-    <table class="table table-borderless w-auto align-self-start flex-shrink-0">
+    <table class="table table-borderless w-auto align-self-start">
       <tr>
-        <th>Zeit</th><td><%= event.datetime.try(:strftime, "%d.%m.%y %H:%M") %></td>
+        <th>Beginn</th><td><%= @event.dtstart.try(:strftime, "%d.%m.%y %H:%M") %></td>
       </tr>
+      <% if @event.dtend.present? %>
+        <tr>
+          <th>Ende</th><td><%= @event.dtend.try(:strftime, "%d.%m.%y %H:%M") %></td>
+        </tr>
+      <% end %>
+      <% if @event.location.present? %>
+        <tr>
+          <th>Ort</th><td><%= @event.location %></td>
+        </tr>
+      <% end %>
+      <% if @event.url.present? %>
+        <tr>
+          <th>Veranstalterseite</th><td><%= link_to "Link", @event.url %></td>
+        </tr>
+      <% end %>
+      <% if @event.contact_name.present? || @event.contact_email.present? %>
+        <tr>
+          <th>Kontakt</th>
+          <% if @event.contact_email.present? %>
+            <td><%= link_to (@event.contact_name || @event.contact_email), "mailto:#{@event.contact_email}" %></td>
+          <% else %>
+            <td><%= @event.contact_name %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      <% if @event.contact_phone.present? %>
+        <tr>
+          <th>Tel.</th><td><%= @event.contact_phone %></td>
+        </tr>
+      <% end %>
       <tr>
-        <th>Ort</th><td><%= event.location %></td>
-      </tr>
-      <tr>
-        <th>Typ</th><td><% if event.is_session %>Sitzung<% else %>Veranstaltung<% end %></td>
+        <th>Typ</th><td><%= @event.type %></td>
       </tr>
     </table>
   </div>
