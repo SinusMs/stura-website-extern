@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   def show
     calendar = fetch_calendar
     ics_event = calendar.events.find { |e| e.uid == params[:id] }
+    return head :not_found if ics_event.blank?
     @event = Event.new(ics_event: ics_event)
   end
 
