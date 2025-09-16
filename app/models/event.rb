@@ -5,8 +5,8 @@ class Event
   attr_accessor :contact_phone, :contact_email, :contact_name
   attr_accessor :type
 
-  def type
-    /[0-9]\. Sitzung/.match(self.summary) ? :Sitzung : :Veranstaltung
+  def self.from_ical(ics)
+    new.tap { |event| event.ics_event = ics }
   end
 
   def ics_event=(ics)
@@ -22,5 +22,7 @@ class Event
     self.contact_phone = contact_arr.find { |c| /^\+?[0-9\s\-()]+$/.match(c.strip) }
     self.contact_email = contact_arr.find { |c| URI::MailTo::EMAIL_REGEXP.match(c.strip) }
     self.contact_name = contact_arr.first unless [ self.contact_phone, self.contact_email ].include?(contact_arr.first)
+
+    self.type = /[0-9]\. Sitzung/.match(ics.summary) || ics.categories.flatten.any? { |c| /^Sitzungen$/.match(c.strip) } ? :Sitzung : :Veranstaltung
   end
 end

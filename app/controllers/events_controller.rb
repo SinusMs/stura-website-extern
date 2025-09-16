@@ -4,13 +4,13 @@ class EventsController < ApplicationController
 
   # GET /events or /events.json
   def index
-    @calendar = fetch_calendar
+    @events = fetch_calendar.events.map { |ics| Event.from_ical(ics) }
   end
 
   # GET /events/1 or /events/1.json
   def show
-    calendar = fetch_calendar
-    ics_event = calendar.events.find { |e| e.uid == params[:id] }
+    ics_calendar = fetch_calendar
+    ics_event = ics_calendar.events.find { |e| e.uid == params[:id] }
     return head :not_found if ics_event.blank?
     @event = Event.new(ics_event: ics_event)
   end

@@ -18,8 +18,8 @@
           <th>Datum</th> <th>Beginn</th> <th class="text-start">Veranstaltung</th> <th class="text-start">Ort</th>
         </thead>
         <tbody>
-          <% @calendar.events.each do |event| %>
-            <% if /[0-9]\. Sitzung/.match(event.summary) %>
+          <% @events.each do |event| %>
+            <% if event.type == :Sitzung %>
               <tr class="session-row" style="display: none;">
             <% else %>
               <tr class="event-row">
