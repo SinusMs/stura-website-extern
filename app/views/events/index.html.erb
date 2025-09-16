@@ -15,7 +15,7 @@
       </div>
       <table class="table table-hover table-borderless w-auto mx-auto">
         <thead>
-          <th>Datum</th> <th>Beginn</th> <th class="text-start">Veranstaltung</th> <th class="text-start">Ort</th>
+          <th>Datum</th> <th>Beginn</th> <th class="text-start">Veranstaltung</th> <th class="text-start d-none d-md-table-cell">Ort</th>
         </thead>
         <tbody>
           <% @events.each do |event| %>
@@ -27,7 +27,7 @@
                 <td><%= event.dtstart.try(:strftime, "%d.%m.%y") %></td>
                 <td><%= event.dtstart.try(:strftime, "%H:%M") %></td>
                 <td class="text-start"><%= link_to event.summary, event_path(id: event.uid) %></td>
-                <td class="text-start"><%= event.location %></td>
+                <td class="text-start d-none d-md-table-cell"><%= event.location %></td>
               </tr>
           <% end %>
         </tbody>
