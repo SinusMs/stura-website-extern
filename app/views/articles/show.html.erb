@@ -1,6 +1,6 @@
 <%= render partial: @article, layout: "layouts/section-dark" %>
 
-<div class="container my-3 d-flex gap-3 flex-wrap">
+<div class="container my-3 d-flex gap-3 flex-wrap justify-content-center">
   <%= button_to "Artikelübersicht", articles_path, method: :get, class: "btn btn-secondary" %>
   <% if logged_in? %>
     <%= button_to "Bearbeiten", edit_article_path(@article), method: :get, class: "btn btn-secondary" %>

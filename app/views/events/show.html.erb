@@ -1,9 +1,5 @@
 <%= render partial: @event, layout: "layouts/section-light" %>
 
-<div class="container d-flex flex-row align-items-center gap-3">
+<div class="container d-flex flex-row align-items-center justify-content-center gap-3">
   <%= button_to "Veranstaltungsübersicht", events_path, method: :get, class: "btn btn-secondary" %>
-  <% if logged_in? %>
-    <%= button_to "Bearbeiten", edit_event_path(@event), method: :get, class: "btn btn-secondary" %>
-    <%= button_to "Löschen", @event, method: :delete, class: "btn btn-secondary", form: {data: {turbo_confirm: "WARNUNG: Diese Aktion kann nicht rückgängig gemacht werden!"}} %>
-  <% end %>
 </div>

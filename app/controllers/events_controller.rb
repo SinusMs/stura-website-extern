@@ -1,80 +1,26 @@
 class EventsController < ApplicationController
+  require "net/http"
   layout "application"
-  before_action :set_event, only: %i[ show edit update destroy ]
-  before_action :verify_is_logged_in, only: %i[ new edit create update destroy ]
 
   # GET /events or /events.json
   def index
-    if helpers.logged_in?
-      @events = Event.all.order(datetime: :desc)
-    else
-      @events = Event.where("datetime >= ?", Date.today).order(:datetime)
-    end
+    @events = fetch_calendar.events.map { |ics| Event.from_ical(ics) }
   end
 
   # GET /events/1 or /events/1.json
   def show
-  end
-
-  # GET /events/new
-  def new
-    @event = Event.new
-  end
-
-  # GET /events/1/edit
-  def edit
-  end
-
-  # POST /events or /events.json
-  def create
-    @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: "Veranstaltung \"#{@event.title}\" erstellt." }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /events/1 or /events/1.json
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: "Veranstaltung \"#{@event.title}\" aktualisiert." }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /events/1 or /events/1.json
-  def destroy
-    @event.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to events_path, status: :see_other, notice: "Veranstaltung \"#{@event.title}\" gelöscht.." }
-      format.json { head :no_content }
-    end
+    ics_calendar = fetch_calendar
+    ics_event = ics_calendar.events.find { |e| e.uid == params[:id] }
+    return head :not_found if ics_event.blank?
+    @event = Event.new(ics_event: ics_event)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      if Event.exists?(params[:id].to_i)
-        @event = Event.find(params[:id].to_i)
-      else
-        head :not_found
-      end
-    end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.require(:event).permit(:datetime, :title, :description, :is_session, :location)
+  def fetch_calendar
+    raw_ics = Rails.cache.fetch(:stura_ics_calendar, expires_in: 5.minutes) do
+      Net::HTTP.get(URI(ENV.fetch("ICAL_URL", "https://www.stura.htw-dresden.de/events/@@ics_view")))
     end
+    Icalendar::Calendar.parse(raw_ics).first
+  end
 end
