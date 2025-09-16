@@ -2,7 +2,7 @@ require "test_helper"
 
 class EventsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    raw_ics = Net::HTTP.get(URI("https://www.stura.htw-dresden.de/events/@@ics_view"))
+    raw_ics = Net::HTTP.get(URI(ENV.fetch("ICAL_URL", "https://www.stura.htw-dresden.de/events/@@ics_view")))
     @calendar = Icalendar::Calendar.parse(raw_ics).first
     @event = @calendar.events.first
   end

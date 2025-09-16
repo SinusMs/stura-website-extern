@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def fetch_calendar
     raw_ics = Rails.cache.fetch(:stura_ics_calendar, expires_in: 5.minutes) do
-      Net::HTTP.get(URI("https://www.stura.htw-dresden.de/events/@@ics_view"))
+      Net::HTTP.get(URI(ENV.fetch("ICAL_URL", "https://www.stura.htw-dresden.de/events/@@ics_view")))
     end
     Icalendar::Calendar.parse(raw_ics).first
   end
