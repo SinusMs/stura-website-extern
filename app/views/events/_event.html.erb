@@ -5,7 +5,7 @@
       <%= @event.description || "Keine Beschreibung vorhanden." %>
     </p>
 
-    <table class="table table-borderless w-auto align-self-start">
+    <table class="table table-borderless w-auto">
       <tr>
         <th>Beginn</th><td><%= @event.dtstart.try(:strftime, "%d.%m.%y %H:%M") %></td>
       </tr>
