@@ -14,7 +14,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips libpq-dev libyaml-dev libxml2-dev libxslt-dev zlib1g-dev nodejs telnet && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips libpq-dev libxml2 libxslt1.1 zlib1g libyaml-0-2 nodejs telnet && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Yarn 
@@ -31,7 +31,7 @@ FROM base AS build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git pkg-config && \
+    apt-get install --no-install-recommends -y build-essential git pkg-config libyaml-dev libxml2-dev libxslt-dev zlib1g-dev libclang-dev llvm-dev clang && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install application gems
