@@ -30,8 +30,8 @@ class ArticleCategoriesController < ApplicationController
         format.html { redirect_to article_categories_path, notice: "Artikelkategorie \"#{@article_category.name}\" erstellt." }
         format.json { render :show, status: :created, location: @article_category }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article_category.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @article_category.errors, status: :unprocessable_content }
       end
     end
   end
@@ -43,8 +43,8 @@ class ArticleCategoriesController < ApplicationController
         format.html { redirect_to article_categories_path, notice: "Artikelkategorie \"#{@article_category.name}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @article_category }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article_category.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @article_category.errors, status: :unprocessable_content }
       end
     end
   end
@@ -56,8 +56,8 @@ class ArticleCategoriesController < ApplicationController
         format.html { redirect_to article_categories_path, status: :see_other, notice: "Artikelkategorie \"#{@article_category.name}\" gelöscht." }
         format.json { head :no_content }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article_category.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @article_category.errors, status: :unprocessable_content }
       end
     end
   end

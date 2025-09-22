@@ -14,8 +14,8 @@ class SettingsController < ApplicationController
         format.html { redirect_to edit_settings_path, notice: "Einstellungen aktualisiert." }
         format.json { render :show, status: :ok, location: @setting }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @setting.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @setting.errors, status: :unprocessable_content }
       end
     end
   end

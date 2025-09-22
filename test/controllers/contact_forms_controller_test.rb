@@ -20,11 +20,11 @@ class ContactFormsControllerTest < ActionDispatch::IntegrationTest
   test "should handle invalid form" do
     assert_emails 0 do
       post contact_forms_url, params: { contact_form: { contact_email_address_id: @valid_contact_form[:contact_email_address_id], email: "lol", email_confirmation: "lel", text: nil } }
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
     assert_emails 0 do
       post contact_forms_url, params: { contact_form: { contact_email_address_id: 345634, email: @valid_contact_form[:email], email_confirmation: @valid_contact_form[:email_confirmation], text: @valid_contact_form[:text] } }
-      assert_response :unprocessable_entity
+      assert_response :unprocessable_content
     end
   end
 end

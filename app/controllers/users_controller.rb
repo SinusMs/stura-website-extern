@@ -29,8 +29,8 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: "Account-Aktivierungslink an #{@user.email_address} gesendet!" }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @user.errors, status: :unprocessable_content }
       end
     end
   end
@@ -51,8 +51,8 @@ class UsersController < ApplicationController
         end
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @user.errors, status: :unprocessable_content }
       end
     end
   end
@@ -117,7 +117,7 @@ class UsersController < ApplicationController
         @reset_password_code.destroy
         format.html { redirect_to login_path, notice: notice }
       else
-        format.html { render :reset_password, status: :unprocessable_entity }
+        format.html { render :reset_password, status: :unprocessable_content }
       end
     end
   end
