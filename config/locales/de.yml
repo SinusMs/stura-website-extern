@@ -54,7 +54,7 @@ de:
       user: "Nutzer"
     attributes:
       article_category:
-        name: "Name"
+        name: "Bezeichnung"
         enabled: "Aktiviert"
       article:
         title: "Titel"
