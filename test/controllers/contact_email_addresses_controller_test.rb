@@ -111,7 +111,7 @@ class ContactEmailAddressesControllerTest < ActionDispatch::IntegrationTest
     post edit_contact_email_address_url(id: 456763)
     assert_response :not_found, "Should respond with not_found for post to edit form of non-existent contact email address"
     patch contact_email_address_url(@contact_email_address), params: { contact_email_address: { name: @contact_email_address2.name } }
-    assert_response :unprocessable_entity, "Should respond with unprocessable_entity for invalid update (duplicate name)"
+    assert_response :unprocessable_content, "Should respond with unprocessable_entity for invalid update (duplicate name)"
     delete contact_email_address_url(id: 456763)
     assert_response :not_found, "Should respond with not_found when trying to delete a non-existent contact email address"
   end

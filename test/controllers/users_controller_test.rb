@@ -163,10 +163,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
 
     post users_url, params: { user: @invalid_user }
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
 
     patch user_url(@user), params: { user: @invalid_user }
-    assert_response :unprocessable_entity
+    assert_response :unprocessable_content
 
     delete user_url(id: 7650545)
     assert_response :not_found

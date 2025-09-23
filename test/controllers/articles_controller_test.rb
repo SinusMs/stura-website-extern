@@ -153,7 +153,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     post edit_article_url(id: 456763)
     assert_response :not_found, "Should respond with not_found for post to edit form of non-existent article"
     patch article_url(@not_prioritized), params: { article: { title: nil } }
-    assert_response :unprocessable_entity, "Should respond with unprocessable_entity for invalid update (missing title)"
+    assert_response :unprocessable_content, "Should respond with unprocessable_entity for invalid update (missing title)"
     delete article_url(id: 456763)
     assert_response :not_found, "Should respond with not_found when trying to delete a non-existent article category"
   end

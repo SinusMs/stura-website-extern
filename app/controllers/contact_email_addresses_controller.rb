@@ -30,8 +30,8 @@ class ContactEmailAddressesController < ApplicationController
         format.html { redirect_to @contact_email_address, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" erstellt." }
         format.json { render :show, status: :created, location: @contact_email_address }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @contact_email_address.errors, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_content }
+        format.json { render json: @contact_email_address.errors, status: :unprocessable_content }
       end
     end
   end
@@ -43,8 +43,8 @@ class ContactEmailAddressesController < ApplicationController
         format.html { redirect_to @contact_email_address, notice: "Kontakt Email-Adresse \"#{@contact_email_address.name}\" aktualisiert." }
         format.json { render :show, status: :ok, location: @contact_email_address }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @contact_email_address.errors, status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_content }
+        format.json { render json: @contact_email_address.errors, status: :unprocessable_content }
       end
     end
   end

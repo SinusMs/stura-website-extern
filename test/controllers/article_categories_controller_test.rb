@@ -87,7 +87,7 @@ class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_difference("ArticleCategory.count", 0, "Should not destroy an article category that has associated articles") do
       delete article_category_url(article_categories(:enabled))
     end
-    assert_response :unprocessable_entity, "Should respond with unprocessable_entity when trying to destroy a category with articles"
+    assert_response :unprocessable_content, "Should respond with unprocessable_entity when trying to destroy a category with articles"
   end
 
   test "should handle invalid requests" do
@@ -99,7 +99,7 @@ class ArticleCategoriesControllerTest < ActionDispatch::IntegrationTest
     post edit_article_category_url(id: 456763)
     assert_response :not_found, "Should respond with not_found for post to edit form of non-existent article category"
     patch article_category_url(@enabled), params: { article_category: { enabled: true, name: @disabled.name } }
-    assert_response :unprocessable_entity, "Should respond with unprocessable_entity for invalid update (duplicate name)"
+    assert_response :unprocessable_content, "Should respond with unprocessable_entity for invalid update (duplicate name)"
     delete article_category_url(id: 456763)
     assert_response :not_found, "Should respond with not_found when trying to delete a non-existent article category"
   end

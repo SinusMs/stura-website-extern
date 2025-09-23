@@ -39,6 +39,6 @@ class SettingsControllerTest < ActionDispatch::IntegrationTest
     login_admin
     assert_response :found, "Should log in as admin"
     patch settings_url, params: { setting: { showArticlesForDays: nil } }
-    assert_response :unprocessable_entity, "Should respond with unprocessable_entity for invalid update"
+    assert_response :unprocessable_content, "Should respond with unprocessable_entity for invalid update"
   end
 end
