@@ -7,10 +7,10 @@
     <% end %>
 
     <div class="card-body flex-shrink-0">
-      <h6 class="card-subtitle text-muted font-weight-light">
+      <h6 class="card-subtitle text-muted text-start font-weight-light">
         <%= article_card.published.try(:strftime, "%d.%m.%y") %> <%= ArticleCategory.find(article_card.article_category_id).name %>
       </h6>
-      <h5 class="card-title"><%= article_card.title %></h5>
+      <h5 class="card-title text-start"><%= article_card.title %></h5>
       <p class="card-text overflow-hidden <%= "text-truncate" if article_card.image.attached? %>">
         <%= truncate(sanitize(Commonmarker.to_html(article_card.content), tags: []), length: article_card.image.attached? ? 80 : 350, separator: ' ') %>
       </p>
