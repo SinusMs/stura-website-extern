@@ -21,7 +21,7 @@ gem "jbuilder"
 # Ostruct dependency required for Rake Task Runner
 gem "ostruct"
 # Rake Task Runner
-gem "rake", "13.1.0"
+gem "rake", "13.3.1"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
